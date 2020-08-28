@@ -1,12 +1,23 @@
 import './styles.scss';
+
 import { MDCSwitch } from '@material/switch';
 import { MDCSnackbar } from '@material/snackbar';
 
-const config = {
+interface IAction {
+  action: () => void;
+  probability: number;
+}
+
+interface IChance {
+  active: number;
+  total: number;
+}
+
+const config: { chances: { [key: string]: IChance }; [key: string]: any } = {
   chances: {
     mousemove: {
-      total: 100,
       active: 20,
+      total: 100,
     },
   },
   distanceMinToTriggerAction: 50,
@@ -14,7 +25,7 @@ const config = {
   timerDisappearImages: 500,
 };
 
-const actionsOnClick = [
+const actionsOnClick: IAction[] = [
   {
     action: bounceInRight,
     probability: 20,
@@ -35,7 +46,7 @@ let isMouseFarEnough = false;
 let switchControl: MDCSwitch;
 let switchEl: HTMLInputElement | null;
 
-function calculateDistance(elem: HTMLInputElement, mouseX: number, mouseY: number) {
+function calculateDistance(elem: HTMLElement, mouseX: number, mouseY: number): number {
   const rect = elem.getBoundingClientRect();
   return Math.floor(
     Math.sqrt(Math.pow(mouseX - (rect.left + elem.offsetWidth / 2), 2) + Math.pow(mouseY - (rect.top + elem.offsetHeight / 2), 2))
@@ -46,7 +57,7 @@ function getRandomProbabilities(multiplier: number = 100): number {
   return Math.floor(Math.random() * multiplier);
 }
 
-function randomMousemoveAction() {
+function randomMousemoveAction(): void {
   setTimeout(() => {
     setSwitchOff();
   }, 1000);
@@ -65,7 +76,7 @@ function manageFirstMousemove(): void {
   }
 }
 
-function manageMousemoveAction(evt: MouseEvent) {
+function manageMousemoveAction(evt: MouseEvent): void {
   if (!switchEl) return;
 
   const mX = evt.pageX;
@@ -81,7 +92,7 @@ function manageMousemoveAction(evt: MouseEvent) {
   isMouseFarEnough = false;
 }
 
-function setSwitchOff() {
+function setSwitchOff(): void {
   const collisionEl = document.querySelector('.collision');
   if (!collisionEl) return;
 
@@ -127,7 +138,7 @@ function randomClickAction(): void {
 
   let sum = 0;
   let previousSum = 0;
-  const actionToTrigger = actionsOnClick.find((actionOnClick) => {
+  const actionToTrigger = actionsOnClick.find((actionOnClick): boolean => {
     sum += actionOnClick.probability;
     if (probabilityToTrigger > previousSum && probabilityToTrigger <= sum) return true;
 
