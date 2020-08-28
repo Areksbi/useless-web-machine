@@ -117,7 +117,7 @@ function bounceInRight(): void {
 // endregion Animations on click
 
 function randomClickAction(): void {
-  if (actionCounter < config.initialBasicMoves) {
+  if (actionCounter <= config.initialBasicMoves) {
     bounceInRight();
     return;
   }
@@ -144,7 +144,7 @@ function manageSwitchEvent(evt: Event): void {
   switchControl.disabled = true;
 
   actionCounter++;
-  if (actionCounter < config.initialBasicMoves) {
+  if (actionCounter <= config.initialBasicMoves) {
     randomClickAction();
     return;
   }
