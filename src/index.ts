@@ -48,8 +48,8 @@ enum AnimationsEnum {
 
 function init() {
   let actionCounter = 0;
-  let handEl = document.querySelector('.hand');
-  let donutEl = document.querySelector('.donut');
+  let handEl = document.querySelector('.hand') as HTMLElement;
+  let donutEl = document.querySelector('.donut') as HTMLElement;
   let isMouseFarEnough = false;
   let switchControl: MDCSwitch;
   let switchEl: HTMLInputElement | null;
@@ -71,23 +71,23 @@ function init() {
 
   const actionsOnClick: IAction[] = [
     {
-      action: () => bounceAction(handEl),
+      action: () => triggerAction(handEl),
       probability: 65,
     },
     {
-      action: () => bounceAction(handEl, AnimationsEnum.BOUNCE_IN_RIGHT, SpeedsEnum.FASTER, RepeatsEnum.ONE, DelaysEnum.TWO),
+      action: () => triggerAction(handEl, AnimationsEnum.BOUNCE_IN_RIGHT, SpeedsEnum.FASTER, RepeatsEnum.ONE, DelaysEnum.TWO),
       probability: 25,
     },
     {
-      action: () => bounceAction(handEl, AnimationsEnum.BOUNCE_IN_RIGHT, SpeedsEnum.SLOW),
+      action: () => triggerAction(handEl, AnimationsEnum.BOUNCE_IN_RIGHT, SpeedsEnum.SLOW),
       probability: 10,
     },
     {
-      action: () => bounceAction(handEl, AnimationsEnum.BOUNCE_IN_RIGHT, SpeedsEnum.SLOW, RepeatsEnum.TWO),
+      action: () => triggerAction(handEl, AnimationsEnum.BOUNCE_IN_RIGHT, SpeedsEnum.SLOW, RepeatsEnum.TWO),
       probability: 10,
     },
     {
-      action: () => bounceAction(donutEl, AnimationsEnum.FADE_IN_UP, SpeedsEnum.SLOW),
+      action: () => triggerAction(donutEl, AnimationsEnum.FADE_IN_UP, SpeedsEnum.SLOW),
       probability: 5,
     },
   ].sort((a: IAction, b: IAction) => a.probability + b.probability);
@@ -152,17 +152,16 @@ function init() {
     }, config.timerDisappearImages);
   }
 
-  // region Animations on click
-  function bounceAction(
-    elem: Element | null,
-    animation: AnimationsEnum = AnimationsEnum.BOUNCE_IN_RIGHT,
-    speed?: SpeedsEnum,
-    repeats?: RepeatsEnum,
-    delay?: DelaysEnum
-  ): void {
+  function handleAnimations(
+    elem: HTMLElement | null,
+    speed: SpeedsEnum | undefined,
+    repeats: RepeatsEnum | undefined,
+    delay: DelaysEnum | undefined,
+    animation: AnimationsEnum
+  ) {
     if (!elem) return;
-    const hiddenClass = Array.from(elem.classList).find((className: string) => className.endsWith('--hidden'));
 
+    const hiddenClass = Array.from(elem.classList).find((className: string) => className.endsWith('--hidden'));
     if (!hiddenClass) return;
     elem.classList.remove(hiddenClass);
     elem.classList.add(
@@ -203,11 +202,35 @@ function init() {
 
     elem.addEventListener('animationend', onStartAnimationEnd);
   }
+
+  // region Animations on click
+  function triggerAction(
+    elem: HTMLElement | null,
+    animation: AnimationsEnum = AnimationsEnum.BOUNCE_IN_RIGHT,
+    speed?: SpeedsEnum,
+    repeats?: RepeatsEnum,
+    delay?: DelaysEnum
+  ): void {
+    if (!elem) return;
+
+    const src = elem.dataset.src;
+    if (src && !elem.getAttribute('src')) {
+      const onImageLoad = () => {
+        handleAnimations(elem, speed, repeats, delay, animation);
+        elem.removeEventListener('load', onImageLoad);
+      };
+      elem.addEventListener('load', onImageLoad);
+      elem.setAttribute('src', src);
+      return;
+    }
+
+    handleAnimations(elem, speed, repeats, delay, animation);
+  }
   // endregion Animations on click
 
   function randomClickAction(): void {
     if (actionCounter <= config.initialBasicMoves) {
-      bounceAction(handEl);
+      triggerAction(handEl);
       return;
     }
 
