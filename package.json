@@ -1,0 +1,21 @@
+{
+  "name": "useless-web-machine",
+  "version": "0.0.0",
+  "description": "A useless web machine, is a website which has a function but no direct purpose ¯\\_(ツ)_/¯",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Areksbi/useless-web-machine.git"
+  },
+  "keywords": [
+    "Useless",
+    "Web",
+    "Machine"
+  ],
+  "author": "Areksbi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Areksbi/useless-web-machine/issues"
+  },
+  "homepage": "https://github.com/Areksbi/useless-web-machine#readme"
+}
