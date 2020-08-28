@@ -3,6 +3,7 @@ import './styles.scss';
 import { MDCSwitch } from '@material/switch';
 import { MDCSnackbar } from '@material/snackbar';
 
+// region Interfaces
 interface IAction {
   action: () => void;
   probability: number;
@@ -12,7 +13,9 @@ interface IChance {
   active: number;
   total: number;
 }
+// endregion Interfaces
 
+// region Enums
 enum SpeedsEnum {
   SLOW = 'slow',
   SLOWER = 'slower',
@@ -26,6 +29,7 @@ enum DelaysEnum {
   FOUR = 4,
   FIVE = 5,
 }
+// endregion Enums
 
 const config: { chances: { [key: string]: IChance }; [key: string]: any } = {
   chances: {
