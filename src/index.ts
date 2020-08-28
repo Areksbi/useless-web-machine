@@ -10,10 +10,27 @@ const config = {
     },
   },
   distanceMinToTriggerAction: 50,
-  initialBasicMoves: 3,
+  initialBasicMoves: 2,
+  timerDisappearImages: 500,
 };
 
+const actionsOnClick = [
+  {
+    action: bounceInRight,
+    probability: 20,
+  },
+  {
+    action: bounceInRight,
+    probability: 70,
+  },
+  {
+    action: bounceInRight,
+    probability: 90,
+  },
+];
+
 let actionCounter = 0;
+let handEl: HTMLElement | null;
 let isMouseFarEnough = false;
 let switchControl: MDCSwitch;
 let switchEl: HTMLInputElement | null;
@@ -74,14 +91,52 @@ function setSwitchOff() {
     collisionEl.classList.add('collision--hidden');
     switchControl.checked = false;
     switchControl.disabled = false;
-  }, 250);
+  }, config.timerDisappearImages);
 }
 
-function randomClickAction(): void {
-  setTimeout(() => {
+// region Animations on click
+function bounceInRight(): void {
+  if (!handEl) return;
+
+  handEl.classList.remove('hand--hidden');
+  handEl.classList.add('animate__animated', 'animate__bounceInRight');
+
+  function onAnimationEnd() {
     setSwitchOff();
-  }, 1000);
-  console.log('randomClickAction');
+
+    setTimeout(() => {
+      if (!handEl) return;
+      handEl.classList.remove('animate__animated', 'animate__bounceInRight');
+      handEl.classList.add('hand--hidden');
+      handEl.removeEventListener('animationend', onAnimationEnd);
+    }, config.timerDisappearImages);
+  }
+
+  handEl.addEventListener('animationend', onAnimationEnd);
+}
+// endregion Animations on click
+
+function randomClickAction(): void {
+  if (actionCounter < config.initialBasicMoves) {
+    bounceInRight();
+    return;
+  }
+
+  const totalProbabilities = actionsOnClick.reduce((acc, curr) => acc + curr.probability, 0);
+  const probabilityToTrigger = getRandomProbabilities(totalProbabilities);
+
+  let sum = 0;
+  let previousSum = 0;
+  const actionToTrigger = actionsOnClick.find((actionOnClick) => {
+    sum += actionOnClick.probability;
+    if (probabilityToTrigger > previousSum && probabilityToTrigger <= sum) return true;
+
+    previousSum += actionOnClick.probability;
+    return false;
+  });
+
+  if (!actionToTrigger) return;
+  actionToTrigger.action();
 }
 
 function manageSwitchEvent(evt: Event): void {
@@ -107,7 +162,8 @@ function manageSwitchEvent(evt: Event): void {
 
 function init(): void {
   const switchContainer = document.querySelector('.mdc-switch');
-  if (!switchContainer) return;
+  handEl = document.querySelector('.hand');
+  if (!switchContainer || !handEl) return;
   switchControl = new MDCSwitch(switchContainer);
 
   switchEl = switchContainer.querySelector('.mdc-switch__native-control');

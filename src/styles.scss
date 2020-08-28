@@ -1,5 +1,8 @@
-@import '@material/switch/dist/mdc.switch';
-@import '@material/snackbar/dist/mdc.snackbar';
+@import '~@material/switch/dist/mdc.switch';
+@import '~@material/snackbar/dist/mdc.snackbar';
+@import '~animate.css/animate.min.css';
+
+$image-transition: opacity 200ms ease-out;
 
 @mixin visually-hidden {
   clip: rect(0 0 0 0);
@@ -43,7 +46,7 @@ main {
   pointer-events: none;
   position: absolute;
   top: -8px;
-  transition: opacity 150ms ease-in-out;
+  transition: $image-transition;
 
   &--hidden {
     opacity: 0;
@@ -57,8 +60,14 @@ main {
 .hand {
   left: 50%;
   margin: 0;
+  opacity: 1;
   position: absolute;
   top: 50%;
+  transition: $image-transition;
+
+  &--hidden {
+    opacity: 0;
+  }
 
   &__caption {
     @include visually-hidden;

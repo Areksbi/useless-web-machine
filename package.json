@@ -18,6 +18,12 @@
     "Web",
     "Machine"
   ],
+  "contributors": [
+    {
+      "name": "Sfranew",
+      "url": "https://github.com/Sfranew"
+    }
+  ],
   "author": "Areksbi",
   "license": "MIT",
   "bugs": {
@@ -26,7 +32,8 @@
   "homepage": "https://github.com/Areksbi/useless-web-machine#readme",
   "dependencies": {
     "@material/snackbar": "^7.0.0",
-    "@material/switch": "^7.0.0"
+    "@material/switch": "^7.0.0",
+    "animate.css": "^4.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.11.4",
