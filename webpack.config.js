@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const glob = require('glob');
 const path = require('path');
+const CopyPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -78,6 +79,9 @@ const config = {
     ],
   },
   plugins: [
+    new CopyPlugin({
+      patterns: [{ from: 'src/images', to: 'images' }],
+    }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'src/index.html',

@@ -2,7 +2,16 @@
 @import '~@material/snackbar/dist/mdc.snackbar';
 @import '~animate.css/animate.min.css';
 
-$image-transition: opacity 200ms ease-out;
+// region Mixins
+@mixin hideable-image {
+  opacity: 1;
+  pointer-events: none;
+  transition: opacity 200ms ease-out;
+
+  &--hidden {
+    opacity: 0;
+  }
+}
 
 @mixin visually-hidden {
   clip: rect(0 0 0 0);
@@ -13,44 +22,40 @@ $image-transition: opacity 200ms ease-out;
   white-space: nowrap;
   width: 1px;
 }
+// endregion Mixins
 
 html {
   font-family: Arial, sans-serif;
 }
 
 body {
-  height: 100vh;
-  margin: 0;
-}
-
-main {
   align-items: center;
   display: flex;
   flex-direction: column;
-  height: 100%;
   justify-content: center;
+  margin: 0;
+  min-height: 100vh;
+  position: relative;
+}
+
+main {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .mdc-switch__label:not(:focus):not(:active) {
   @include visually-hidden;
 }
 
-.switch {
-  position: relative;
-}
-
 .collision {
   left: 6px;
   margin: 0;
-  opacity: 1;
-  pointer-events: none;
   position: absolute;
   top: -8px;
-  transition: $image-transition;
 
-  &--hidden {
-    opacity: 0;
-  }
+  @include hideable-image;
 
   &__caption {
     @include visually-hidden;
@@ -60,16 +65,24 @@ main {
 .hand {
   left: 50%;
   margin: 0;
-  opacity: 1;
   position: absolute;
   top: 50%;
-  transition: $image-transition;
 
-  &--hidden {
-    opacity: 0;
-  }
+  @include hideable-image;
 
   &__caption {
     @include visually-hidden;
   }
+}
+
+.donut {
+  position: absolute;
+  right: -42px;
+  top: -38px;
+
+  @include hideable-image;
+}
+
+.alternate-animation {
+  animation-direction: alternate-reverse;
 }
