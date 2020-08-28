@@ -31,6 +31,7 @@ enum DelaysEnum {
 }
 // endregion Enums
 
+// region Configs
 const config: { chances: { [key: string]: IChance }; [key: string]: any } = {
   chances: {
     mousemove: {
@@ -57,6 +58,7 @@ const actionsOnClick: IAction[] = [
     probability: 10,
   },
 ].sort((a: IAction, b: IAction) => a.probability + b.probability);
+// endregion Configs
 
 let actionCounter = 0;
 let handEl: HTMLElement | null;
