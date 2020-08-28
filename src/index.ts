@@ -13,10 +13,24 @@ interface IChance {
   total: number;
 }
 
+enum SpeedsEnum {
+  SLOW = 'slow',
+  SLOWER = 'slower',
+  FAST = 'fast',
+  FASTER = 'faster',
+}
+
+enum DelaysEnum {
+  TWO = 2,
+  THREE = 3,
+  FOUR = 4,
+  FIVE = 5,
+}
+
 const config: { chances: { [key: string]: IChance }; [key: string]: any } = {
   chances: {
     mousemove: {
-      active: 20,
+      active: 0,
       total: 100,
     },
   },
@@ -28,17 +42,17 @@ const config: { chances: { [key: string]: IChance }; [key: string]: any } = {
 const actionsOnClick: IAction[] = [
   {
     action: bounceInRight,
-    probability: 20,
+    probability: 65,
   },
   {
-    action: bounceInRight,
-    probability: 70,
+    action: () => bounceInRight(SpeedsEnum.FASTER, DelaysEnum.TWO),
+    probability: 25,
   },
   {
-    action: bounceInRight,
-    probability: 90,
+    action: () => bounceInRight(SpeedsEnum.SLOW),
+    probability: 10,
   },
-];
+].sort((a: IAction, b: IAction) => a.probability + b.probability);
 
 let actionCounter = 0;
 let handEl: HTMLElement | null;
@@ -106,10 +120,16 @@ function setSwitchOff(): void {
 }
 
 // region Animations on click
-function bounceInRight(): void {
+function bounceInRight(speed?: SpeedsEnum, delay?: DelaysEnum): void {
   if (!handEl) return;
 
   handEl.classList.remove('hand--hidden');
+  if (speed) {
+    handEl.classList.add(`animate__${speed}`);
+  }
+  if (delay) {
+    handEl.classList.add(`animate__delay-${delay}s`);
+  }
   handEl.classList.add('animate__animated', 'animate__bounceInRight');
 
   function onAnimationEnd() {
@@ -118,6 +138,12 @@ function bounceInRight(): void {
     setTimeout(() => {
       if (!handEl) return;
       handEl.classList.remove('animate__animated', 'animate__bounceInRight');
+      if (speed) {
+        handEl.classList.remove(`animate__${speed}`);
+      }
+      if (delay) {
+        handEl.classList.remove(`animate__delay-${delay}s`);
+      }
       handEl.classList.add('hand--hidden');
       handEl.removeEventListener('animationend', onAnimationEnd);
     }, config.timerDisappearImages);
