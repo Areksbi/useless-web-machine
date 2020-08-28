@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/Areksbi/useless-web-machine#readme",
   "dependencies": {
+    "@material/snackbar": "^7.0.0",
     "@material/switch": "^7.0.0"
   },
   "devDependencies": {

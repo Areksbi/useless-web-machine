@@ -1,4 +1,5 @@
 @import '@material/switch/dist/mdc.switch';
+@import '@material/snackbar/dist/mdc.snackbar';
 
 @mixin visually-hidden {
   clip: rect(0 0 0 0);
@@ -29,4 +30,37 @@ main {
 
 .mdc-switch__label:not(:focus):not(:active) {
   @include visually-hidden;
+}
+
+.switch {
+  position: relative;
+}
+
+.collision {
+  left: 6px;
+  margin: 0;
+  opacity: 1;
+  pointer-events: none;
+  position: absolute;
+  top: -8px;
+  transition: opacity 150ms ease-in-out;
+
+  &--hidden {
+    opacity: 0;
+  }
+
+  &__caption {
+    @include visually-hidden;
+  }
+}
+
+.hand {
+  left: 50%;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+
+  &__caption {
+    @include visually-hidden;
+  }
 }
