@@ -24,15 +24,18 @@
     "url": "https://github.com/Areksbi/useless-web-machine/issues"
   },
   "homepage": "https://github.com/Areksbi/useless-web-machine#readme",
+  "dependencies": {
+    "@material/switch": "^7.0.0"
+  },
   "devDependencies": {
     "@babel/core": "^7.11.4",
     "@babel/preset-env": "^7.11.0",
     "autoprefixer": "^9.8.6",
     "babel-loader": "^8.1.0",
     "clean-webpack-plugin": "^3.0.0",
-    "copy-webpack-plugin": "^6.0.3",
     "css-loader": "^4.2.2",
     "file-loader": "^6.0.0",
+    "glob": "^7.1.6",
     "html-webpack-plugin": "^4.3.0",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.13",
