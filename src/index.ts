@@ -2,49 +2,8 @@ import './styles.scss';
 
 import { MDCSwitch } from '@material/switch';
 import { MDCSnackbar } from '@material/snackbar';
-
-// region Interfaces
-interface IAction {
-  action: () => void;
-  probability: number;
-}
-
-interface IChance {
-  active: number;
-  total: number;
-}
-// endregion Interfaces
-
-// region Enums
-enum SpeedsEnum {
-  SLOW = 'slow',
-  SLOWER = 'slower',
-  FAST = 'fast',
-  FASTER = 'faster',
-}
-
-enum DelaysEnum {
-  TWO = 2,
-  THREE = 3,
-  FOUR = 4,
-  FIVE = 5,
-}
-
-enum RepeatsEnum {
-  ONE = 1,
-  TWO = 2,
-  THREE = 3,
-}
-
-enum AnimationsEnum {
-  BOUNCE_IN_LEFT = 'bounceInLeft',
-  BOUNCE_IN_RIGHT = 'bounceInRight',
-  BOUNCE_IN_UP = 'bounceInUP',
-
-  FADE_IN_DOWN = 'fadeInDown',
-  FADE_IN_UP = 'fadeInUp',
-}
-// endregion Enums
+import { AnimationsEnum, DelaysEnum, RepeatsEnum, SpeedsEnum } from './enums';
+import { IAction, IChance } from './interfaces';
 
 function init() {
   let actionCounter = 0;
