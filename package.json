@@ -34,6 +34,8 @@
     "css-loader": "^4.2.2",
     "file-loader": "^6.0.0",
     "html-webpack-plugin": "^4.3.0",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.13",
     "mini-css-extract-plugin": "^0.11.0",
     "node-sass": "^4.14.1",
     "postcss-loader": "^3.0.0",
@@ -47,5 +49,19 @@
     "webpack-bundle-analyzer": "^3.8.0",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.ts": [
+      "prettier --write",
+      "tslint --fix"
+    ],
+    "*{.json,.css,.scss,.html,.js}": [
+      "prettier --write"
+    ]
   }
 }
