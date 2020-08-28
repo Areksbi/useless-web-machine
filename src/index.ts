@@ -29,6 +29,12 @@ enum DelaysEnum {
   FOUR = 4,
   FIVE = 5,
 }
+
+enum RepeatsEnum {
+  ONE = 1,
+  TWO = 2,
+  THREE = 3,
+}
 // endregion Enums
 
 // region Configs
@@ -50,11 +56,15 @@ const actionsOnClick: IAction[] = [
     probability: 65,
   },
   {
-    action: () => bounceInRight(SpeedsEnum.FASTER, DelaysEnum.TWO),
+    action: () => bounceInRight(SpeedsEnum.FASTER, RepeatsEnum.ONE, DelaysEnum.TWO),
     probability: 25,
   },
   {
     action: () => bounceInRight(SpeedsEnum.SLOW),
+    probability: 10,
+  },
+  {
+    action: () => bounceInRight(SpeedsEnum.FAST, RepeatsEnum.TWO),
     probability: 10,
   },
 ].sort((a: IAction, b: IAction) => a.probability + b.probability);
@@ -126,12 +136,15 @@ function setSwitchOff(): void {
 }
 
 // region Animations on click
-function bounceInRight(speed?: SpeedsEnum, delay?: DelaysEnum): void {
+function bounceInRight(speed?: SpeedsEnum, repeats?: RepeatsEnum, delay?: DelaysEnum): void {
   if (!handEl) return;
 
   handEl.classList.remove('hand--hidden');
   if (speed) {
     handEl.classList.add(`animate__${speed}`);
+  }
+  if (repeats) {
+    handEl.classList.add(`animate__repeat-${repeats}`);
   }
   if (delay) {
     handEl.classList.add(`animate__delay-${delay}s`);
@@ -146,6 +159,9 @@ function bounceInRight(speed?: SpeedsEnum, delay?: DelaysEnum): void {
       handEl.classList.remove('animate__animated', 'animate__bounceInRight');
       if (speed) {
         handEl.classList.remove(`animate__${speed}`);
+      }
+      if (repeats) {
+        handEl.classList.remove(`animate__repeat-${repeats}`);
       }
       if (delay) {
         handEl.classList.remove(`animate__delay-${delay}s`);
