@@ -83,7 +83,7 @@ function init() {
       probability: 10,
     },
     {
-      action: () => triggerAction(handEl, AnimationsEnum.BOUNCE_IN_RIGHT, SpeedsEnum.SLOW, RepeatsEnum.TWO),
+      action: () => triggerAction(handEl, AnimationsEnum.BOUNCE_IN_RIGHT, SpeedsEnum.FAST, RepeatsEnum.TWO),
       probability: 10,
     },
     {
