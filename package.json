@@ -3,6 +3,12 @@
   "version": "0.0.0",
   "description": "A useless web machine, is a website which has a function but no direct purpose ¯\\_(ツ)_/¯",
   "main": "index.js",
+  "scripts": {
+    "clean": "rm dist/bundle.js",
+    "dev": "webpack -d --mode development",
+    "prod": "webpack -p --mode production",
+    "start": "webpack-dev-server"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Areksbi/useless-web-machine.git"
@@ -17,5 +23,29 @@
   "bugs": {
     "url": "https://github.com/Areksbi/useless-web-machine/issues"
   },
-  "homepage": "https://github.com/Areksbi/useless-web-machine#readme"
+  "homepage": "https://github.com/Areksbi/useless-web-machine#readme",
+  "devDependencies": {
+    "@babel/core": "^7.11.4",
+    "@babel/preset-env": "^7.11.0",
+    "autoprefixer": "^9.8.6",
+    "babel-loader": "^8.1.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^6.0.3",
+    "css-loader": "^4.2.2",
+    "file-loader": "^6.0.0",
+    "html-webpack-plugin": "^4.3.0",
+    "mini-css-extract-plugin": "^0.11.0",
+    "node-sass": "^4.14.1",
+    "postcss-loader": "^3.0.0",
+    "prettier": "^2.1.1",
+    "sass-loader": "^10.0.1",
+    "style-loader": "^1.2.1",
+    "ts-loader": "^8.0.3",
+    "typescript": "^4.0.2",
+    "url-loader": "^4.1.0",
+    "webpack": "^4.44.1",
+    "webpack-bundle-analyzer": "^3.8.0",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  }
 }
