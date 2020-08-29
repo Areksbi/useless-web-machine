@@ -3,7 +3,7 @@ import './styles.scss';
 import { MDCSwitch } from '@material/switch';
 import { MDCSnackbar } from '@material/snackbar';
 import { AnimationsEnum, DelaysEnum, RepeatsEnum, SpeedsEnum } from './enums';
-import { IAction, IChance } from './interfaces';
+import { IAction, IConfig } from './interfaces';
 
 function init() {
   let actionCounter = 0;
@@ -17,7 +17,7 @@ function init() {
   if (!handEl || !donutEl || !batmanEl) return;
 
   // region Configs
-  const config: { chances: { [key: string]: IChance }; [key: string]: any } = {
+  const config: IConfig = {
     chances: {
       mousemove: {
         active: 0,
@@ -29,6 +29,9 @@ function init() {
         container: 'batman__container',
         el: 'batman',
         hidden: 'batman--hidden',
+      },
+      collision: {
+        hidden: 'collision--hidden',
       },
     },
     distanceMinToTriggerAction: 50,
@@ -129,10 +132,13 @@ function init() {
     const collisionEl = document.querySelector('.collision');
     if (!collisionEl) return;
 
-    collisionEl.classList.remove('collision--hidden');
+    const hiddenClass = config.classes.collision.hidden;
+    if (!hiddenClass) return;
+
+    collisionEl.classList.remove(hiddenClass);
 
     setTimeout(() => {
-      collisionEl.classList.add('collision--hidden');
+      collisionEl.classList.add(hiddenClass);
       switchControl.checked = false;
     }, config.timerDisappearImages);
   }
