@@ -39,11 +39,11 @@ function init() {
   const actionsOnClick: IAction[] = [
     {
       action: () => triggerAction(handEl),
-      probability: 65,
+      probability: 50,
     },
     {
       action: () => triggerAction(handEl, AnimationsEnum.BOUNCE_IN_RIGHT, SpeedsEnum.FASTER, RepeatsEnum.ONE, DelaysEnum.TWO),
-      probability: 25,
+      probability: 20,
     },
     {
       action: () => triggerAction(handEl, AnimationsEnum.BOUNCE_IN_RIGHT, SpeedsEnum.SLOW),
