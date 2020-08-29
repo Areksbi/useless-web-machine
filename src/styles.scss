@@ -35,9 +35,10 @@ body {
   align-items: center;
   display: flex;
   flex-direction: column;
+  height: 100vh;
   justify-content: center;
   margin: 0;
-  min-height: 100vh;
+  overflow: hidden;
   position: relative;
   transition: background-color 1s; // Standard for body background-color (look at: enums.ts, DelaysEnum, ONE)
 }
