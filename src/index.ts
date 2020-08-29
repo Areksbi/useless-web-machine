@@ -9,11 +9,12 @@ function init() {
   let actionCounter = 0;
   let handEl = document.querySelector('.hand') as HTMLElement;
   let donutEl = document.querySelector('.donut') as HTMLElement;
+  let batmanEl = document.querySelector('.batman') as HTMLElement;
   let isMouseFarEnough = false;
   let switchControl: MDCSwitch;
   let switchEl: HTMLInputElement | null;
 
-  if (!handEl || !donutEl) return;
+  if (!handEl || !donutEl || !batmanEl) return;
 
   // region Configs
   const config: { chances: { [key: string]: IChance }; [key: string]: any } = {
@@ -21,6 +22,13 @@ function init() {
       mousemove: {
         active: 0,
         total: 100,
+      },
+    },
+    classes: {
+      batman: {
+        container: 'batman__container',
+        el: 'batman',
+        hidden: 'batman--hidden',
       },
     },
     distanceMinToTriggerAction: 50,
@@ -47,6 +55,18 @@ function init() {
     },
     {
       action: () => triggerAction(donutEl, AnimationsEnum.FADE_IN_UP, SpeedsEnum.SLOW),
+      probability: 5,
+    },
+    {
+      action: () =>
+        triggerAction(
+          batmanEl,
+          AnimationsEnum.FADE_IN,
+          SpeedsEnum.FASTER,
+          RepeatsEnum.ONE,
+          DelaysEnum.ONE,
+          config.classes.batman.container
+        ),
       probability: 5,
     },
   ].sort((a: IAction, b: IAction) => a.probability + b.probability);
@@ -116,7 +136,8 @@ function init() {
     speed: SpeedsEnum | undefined,
     repeats: RepeatsEnum | undefined,
     delay: DelaysEnum | undefined,
-    animation: AnimationsEnum
+    animation: AnimationsEnum,
+    bgBodyClass?: string
   ) {
     if (!elem) return;
 
@@ -139,6 +160,10 @@ function init() {
 
       if (!hiddenClass) return;
       elem.classList.add(hiddenClass);
+
+      if (bgBodyClass) {
+        document.body.classList.remove(bgBodyClass);
+      }
 
       switchControl.disabled = false;
     }
@@ -168,14 +193,19 @@ function init() {
     animation: AnimationsEnum = AnimationsEnum.BOUNCE_IN_RIGHT,
     speed?: SpeedsEnum,
     repeats?: RepeatsEnum,
-    delay?: DelaysEnum
+    delay?: DelaysEnum,
+    bgBodyClass?: string
   ): void {
     if (!elem) return;
+
+    if (bgBodyClass) {
+      document.body.classList.add(bgBodyClass);
+    }
 
     const src = elem.dataset.src;
     if (src && !elem.getAttribute('src')) {
       const onImageLoad = () => {
-        handleAnimations(elem, speed, repeats, delay, animation);
+        handleAnimations(elem, speed, repeats, delay, animation, bgBodyClass);
         elem.removeEventListener('load', onImageLoad);
       };
       elem.addEventListener('load', onImageLoad);
@@ -183,7 +213,7 @@ function init() {
       return;
     }
 
-    handleAnimations(elem, speed, repeats, delay, animation);
+    handleAnimations(elem, speed, repeats, delay, animation, bgBodyClass);
   }
   // endregion Animations on click
 

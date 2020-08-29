@@ -15,7 +15,7 @@
       <label for="basic-switch" class="mdc-switch__label">On / Off</label>
       <!-- endregion Switch -->
 
-      <!-- region Images -->
+      <!-- region Images relative to switch -->
       <figure class="hand hand--hidden">
         <svg id="svg" version="1.1" xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0, 0, 400,400">
           <g id="hand">
@@ -92,15 +92,19 @@
       </figure>
       <!-- TODO: add image lazy loading -->
       <img class="donut donut--hidden" data-src="images/donut.png" src="" alt="Image of Homer Simpson with a donut." />
-      <!-- endregion Images -->
+      <!-- endregion Images relative to switch -->
     </main>
 
+    <!-- region Images relative to body -->
+    <img class="batman batman--hidden" data-src="images/batman.jpg" src="" alt="Image of Batman." />
+    <!-- endregion Images relative to body -->
+
     <!-- region Snackbar -->
-    <div class="mdc-snackbar">
+    <footer class="mdc-snackbar">
       <div class="mdc-snackbar__surface">
         <div class="mdc-snackbar__label" role="status" aria-live="polite">He might be a little shy .. try to move a bit!</div>
       </div>
-    </div>
+    </footer>
     <!-- endregion Snackbar -->
   </body>
 </html>
