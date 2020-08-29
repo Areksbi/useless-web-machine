@@ -84,7 +84,7 @@ function init() {
       id: 6,
       probability: 10,
     },
-  ].sort((a: IAction, b: IAction) => a.probability + b.probability);
+  ].sort((a: IAction, b: IAction) => a.probability - b.probability);
   // endregion Configs
 
   function calculateDistance(elem: HTMLElement, mouseX: number, mouseY: number): number {
@@ -242,11 +242,13 @@ function init() {
     }
 
     const totalProbabilities = actionsOnClick.reduce((acc, curr) => acc + curr.probability, 0);
-    const probabilityToTrigger = getRandomProbabilities(totalProbabilities);
+    let probabilityToTrigger = getRandomProbabilities(totalProbabilities);
 
     let sum = 0;
     let previousSum = 0;
     const actionToTrigger = actionsOnClick.find((actionOnClick): boolean => {
+      if (probabilityToTrigger === 0) return true;
+
       sum += actionOnClick.probability;
       if (probabilityToTrigger > previousSum && probabilityToTrigger <= sum) return true;
 
