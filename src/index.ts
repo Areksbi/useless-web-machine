@@ -50,6 +50,7 @@ function init() {
   let actionCounter = 0;
   let handEl = document.querySelector('.hand') as HTMLElement;
   let donutEl = document.querySelector('.donut') as HTMLElement;
+  let saitamaEl = document.querySelector('.saitama') as HTMLElement;
   let isMouseFarEnough = false;
   let switchControl: MDCSwitch;
   let switchEl: HTMLInputElement | null;
@@ -89,6 +90,10 @@ function init() {
     {
       action: () => triggerAction(donutEl, AnimationsEnum.FADE_IN_UP, SpeedsEnum.SLOW),
       probability: 5,
+    },
+    {
+      action: () => triggerAction(saitamaEl, AnimationsEnum.BOUNCE_IN_RIGHT, SpeedsEnum.SLOW),
+      probability: 250,
     },
   ].sort((a: IAction, b: IAction) => a.probability + b.probability);
   // endregion Configs

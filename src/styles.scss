@@ -83,6 +83,14 @@ main {
   @include hideable-image;
 }
 
+.saitama {
+  position: absolute;
+  top: -35px;
+  left: -80px;
+
+  @include hideable-image;
+}
+
 .alternate-animation {
   animation-direction: alternate-reverse;
 }
