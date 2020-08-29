@@ -2,67 +2,37 @@ import './styles.scss';
 
 import { MDCSwitch } from '@material/switch';
 import { MDCSnackbar } from '@material/snackbar';
-
-// region Interfaces
-interface IAction {
-  action: () => void;
-  probability: number;
-}
-
-interface IChance {
-  active: number;
-  total: number;
-}
-// endregion Interfaces
-
-// region Enums
-enum SpeedsEnum {
-  SLOW = 'slow',
-  SLOWER = 'slower',
-  FAST = 'fast',
-  FASTER = 'faster',
-}
-
-enum DelaysEnum {
-  TWO = 2,
-  THREE = 3,
-  FOUR = 4,
-  FIVE = 5,
-}
-
-enum RepeatsEnum {
-  ONE = 1,
-  TWO = 2,
-  THREE = 3,
-}
-
-enum AnimationsEnum {
-  BOUNCE_IN_LEFT = 'bounceInLeft',
-  BOUNCE_IN_RIGHT = 'bounceInRight',
-  BOUNCE_IN_UP = 'bounceInUP',
-
-  FADE_IN_DOWN = 'fadeInDown',
-  FADE_IN_UP = 'fadeInUp',
-}
-// endregion Enums
+import { AnimationsEnum, DelaysEnum, RepeatsEnum, SpeedsEnum } from './enums';
+import { IAction, IConfig } from './interfaces';
 
 function init() {
   let actionCounter = 0;
   let handEl = document.querySelector('.hand') as HTMLElement;
   let donutEl = document.querySelector('.donut') as HTMLElement;
   let saitamaEl = document.querySelector('.saitama') as HTMLElement;
+  let batmanEl = document.querySelector('.batman') as HTMLElement;
   let isMouseFarEnough = false;
   let switchControl: MDCSwitch;
   let switchEl: HTMLInputElement | null;
 
-  if (!handEl || !donutEl) return;
+  if (!handEl || !donutEl || !batmanEl) return;
 
   // region Configs
-  const config: { chances: { [key: string]: IChance }; [key: string]: any } = {
+  const config: IConfig = {
     chances: {
       mousemove: {
         active: 0,
         total: 100,
+      },
+    },
+    classes: {
+      batman: {
+        container: 'batman__container',
+        el: 'batman',
+        hidden: 'batman--hidden',
+      },
+      collision: {
+        hidden: 'collision--hidden',
       },
     },
     distanceMinToTriggerAction: 50,
@@ -73,27 +43,46 @@ function init() {
   const actionsOnClick: IAction[] = [
     {
       action: () => triggerAction(handEl),
-      probability: 65,
+      id: 0,
+      probability: 50,
     },
     {
       action: () => triggerAction(handEl, AnimationsEnum.BOUNCE_IN_RIGHT, SpeedsEnum.FASTER, RepeatsEnum.ONE, DelaysEnum.TWO),
-      probability: 25,
+      id: 1,
+      probability: 20,
     },
     {
       action: () => triggerAction(handEl, AnimationsEnum.BOUNCE_IN_RIGHT, SpeedsEnum.SLOW),
+      id: 2,
       probability: 10,
     },
     {
-      action: () => triggerAction(handEl, AnimationsEnum.BOUNCE_IN_RIGHT, SpeedsEnum.SLOW, RepeatsEnum.TWO),
+      action: () => triggerAction(handEl, AnimationsEnum.BOUNCE_IN_RIGHT, SpeedsEnum.FAST, RepeatsEnum.TWO),
+      id: 3,
       probability: 10,
     },
     {
       action: () => triggerAction(donutEl, AnimationsEnum.FADE_IN_UP, SpeedsEnum.SLOW),
+      id: 4,
+      probability: 5,
+    },
+    {
+      action: () =>
+        triggerAction(
+          batmanEl,
+          AnimationsEnum.FADE_IN,
+          SpeedsEnum.FASTER,
+          RepeatsEnum.ONE,
+          DelaysEnum.ONE,
+          config.classes.batman.container
+        ),
+      id: 5,
       probability: 5,
     },
     {
       action: () => triggerAction(saitamaEl, AnimationsEnum.BOUNCE_IN_RIGHT, SpeedsEnum.SLOW),
-      probability: 250,
+      id: 6,
+      probability: 10,
     },
   ].sort((a: IAction, b: IAction) => a.probability + b.probability);
   // endregion Configs
@@ -149,10 +138,13 @@ function init() {
     const collisionEl = document.querySelector('.collision');
     if (!collisionEl) return;
 
-    collisionEl.classList.remove('collision--hidden');
+    const hiddenClass = config.classes.collision.hidden;
+    if (!hiddenClass) return;
+
+    collisionEl.classList.remove(hiddenClass);
 
     setTimeout(() => {
-      collisionEl.classList.add('collision--hidden');
+      collisionEl.classList.add(hiddenClass);
       switchControl.checked = false;
     }, config.timerDisappearImages);
   }
@@ -162,7 +154,8 @@ function init() {
     speed: SpeedsEnum | undefined,
     repeats: RepeatsEnum | undefined,
     delay: DelaysEnum | undefined,
-    animation: AnimationsEnum
+    animation: AnimationsEnum,
+    bgBodyClass?: string
   ) {
     if (!elem) return;
 
@@ -185,6 +178,10 @@ function init() {
 
       if (!hiddenClass) return;
       elem.classList.add(hiddenClass);
+
+      if (bgBodyClass) {
+        document.body.classList.remove(bgBodyClass);
+      }
 
       switchControl.disabled = false;
     }
@@ -214,14 +211,19 @@ function init() {
     animation: AnimationsEnum = AnimationsEnum.BOUNCE_IN_RIGHT,
     speed?: SpeedsEnum,
     repeats?: RepeatsEnum,
-    delay?: DelaysEnum
+    delay?: DelaysEnum,
+    bgBodyClass?: string
   ): void {
     if (!elem) return;
+
+    if (bgBodyClass) {
+      document.body.classList.add(bgBodyClass);
+    }
 
     const src = elem.dataset.src;
     if (src && !elem.getAttribute('src')) {
       const onImageLoad = () => {
-        handleAnimations(elem, speed, repeats, delay, animation);
+        handleAnimations(elem, speed, repeats, delay, animation, bgBodyClass);
         elem.removeEventListener('load', onImageLoad);
       };
       elem.addEventListener('load', onImageLoad);
@@ -229,7 +231,7 @@ function init() {
       return;
     }
 
-    handleAnimations(elem, speed, repeats, delay, animation);
+    handleAnimations(elem, speed, repeats, delay, animation, bgBodyClass);
   }
   // endregion Animations on click
 
