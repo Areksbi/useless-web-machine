@@ -1,5 +1,6 @@
 export interface IAction {
   action: () => void;
+  id: number;
   probability: number;
 }
 

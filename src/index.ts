@@ -39,22 +39,27 @@ function init() {
   const actionsOnClick: IAction[] = [
     {
       action: () => triggerAction(handEl),
+      id: 0,
       probability: 50,
     },
     {
       action: () => triggerAction(handEl, AnimationsEnum.BOUNCE_IN_RIGHT, SpeedsEnum.FASTER, RepeatsEnum.ONE, DelaysEnum.TWO),
+      id: 1,
       probability: 20,
     },
     {
       action: () => triggerAction(handEl, AnimationsEnum.BOUNCE_IN_RIGHT, SpeedsEnum.SLOW),
+      id: 2,
       probability: 10,
     },
     {
       action: () => triggerAction(handEl, AnimationsEnum.BOUNCE_IN_RIGHT, SpeedsEnum.FAST, RepeatsEnum.TWO),
+      id: 3,
       probability: 10,
     },
     {
       action: () => triggerAction(donutEl, AnimationsEnum.FADE_IN_UP, SpeedsEnum.SLOW),
+      id: 4,
       probability: 5,
     },
     {
@@ -67,6 +72,7 @@ function init() {
           DelaysEnum.ONE,
           config.classes.batman.container
         ),
+      id: 5,
       probability: 5,
     },
   ].sort((a: IAction, b: IAction) => a.probability + b.probability);
