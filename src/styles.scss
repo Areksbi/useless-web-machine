@@ -2,6 +2,9 @@
 @import '~@material/snackbar/dist/mdc.snackbar';
 @import '~animate.css/animate.min.css';
 
+$black: black;
+$z-index-main: 2;
+
 // region Mixins
 @mixin hideable-image {
   opacity: 1;
@@ -32,10 +35,12 @@ body {
   align-items: center;
   display: flex;
   flex-direction: column;
+  height: 100vh;
   justify-content: center;
   margin: 0;
-  min-height: 100vh;
+  overflow: hidden;
   position: relative;
+  transition: background-color 1s; // Standard for body background-color (look at: enums.ts > DelaysEnum > ONE)
 }
 
 main {
@@ -43,6 +48,7 @@ main {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: $z-index-main;
 }
 
 .mdc-switch__label:not(:focus):not(:active) {
@@ -93,4 +99,12 @@ main {
 
 .alternate-animation {
   animation-direction: alternate-reverse;
+}
+
+.batman {
+  @include hideable-image;
+
+  &__container {
+    background-color: $black;
+  }
 }
