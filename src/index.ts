@@ -242,7 +242,7 @@ function init() {
     }
 
     const totalProbabilities = actionsOnClick.reduce((acc, curr) => acc + curr.probability, 0);
-    let probabilityToTrigger = getRandomProbabilities(totalProbabilities);
+    const probabilityToTrigger = getRandomProbabilities(totalProbabilities);
 
     let sum = 0;
     let previousSum = 0;
