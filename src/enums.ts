@@ -7,7 +7,7 @@ export enum SpeedsEnum {
 
 export enum DelaysEnum {
   ZERO = 0,
-  ONE = 1, // Standard for body background-color (look at: styles.scss, body, transition)
+  ONE = 1, // Standard for body background-color (look at: styles.scss > body > transition)
   TWO = 2,
   THREE = 3,
   FOUR = 4,
