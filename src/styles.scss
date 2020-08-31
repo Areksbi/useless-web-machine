@@ -126,7 +126,7 @@ main {
 }
 
 .batman {
-  @include concealable-image;
+  @include concealable-image($z-index-base);
 
   &__container {
     background-color: $black;

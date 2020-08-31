@@ -112,14 +112,6 @@ function init() {
     return Math.floor(Math.random() * multiplier);
   }
 
-  function randomMousemoveAction(): void {
-    setTimeout(() => {
-      switchControl.disabled = false;
-      setSwitchOff();
-    }, 1000);
-    console.log('randomMousemoveAction');
-  }
-
   function manageFirstMousemove(): void {
     if (!window.sessionStorage.getItem('isFirstMousemove')) {
       const snackbarEl = document.querySelector('.mdc-snackbar');
@@ -142,7 +134,7 @@ function init() {
     if (distance > config.distanceMinToTriggerAction) isMouseFarEnough = true;
     if (distance < config.distanceMinToTriggerAction && !isMouseFarEnough) return;
 
-    randomMousemoveAction();
+    randomAction();
 
     document.removeEventListener('mousemove', manageMousemoveAction);
     isMouseFarEnough = false;
@@ -249,7 +241,7 @@ function init() {
   }
   // endregion Animations on click
 
-  function randomClickAction(): void {
+  function randomAction(): void {
     if (actionCounter <= config.initialBasicMoves) {
       triggerAction(handEl);
       return;
@@ -283,14 +275,14 @@ function init() {
 
     actionCounter++;
     if (actionCounter <= config.initialBasicMoves) {
-      randomClickAction();
+      randomAction();
       return;
     }
 
     const randomProbability = getRandomProbabilities(config.chances.mousemove.total);
     const doesNextMoveHasOnMoveAction = randomProbability < config.chances.mousemove.active;
     if (!doesNextMoveHasOnMoveAction) {
-      randomClickAction();
+      randomAction();
       return;
     }
 
