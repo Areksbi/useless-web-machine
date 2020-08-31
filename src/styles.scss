@@ -4,16 +4,25 @@
 
 $black: black;
 $blue: #0000ee;
-$z-index-main: 2;
+
+$z-index-main: 3;
+$z-index-image: 2;
 
 // region Mixins
 @mixin hideable-image {
   opacity: 1;
   pointer-events: none;
   transition: opacity 200ms ease-out;
+  z-index: $z-index-image;
 
   &--hidden {
     opacity: 0;
+  }
+
+  &__container {
+    .add-animations__link {
+      opacity: 0;
+    }
   }
 }
 
@@ -30,18 +39,22 @@ $z-index-main: 2;
 
 html {
   font-family: Arial, sans-serif;
+  height: 100vh;
+  overflow: hidden;
+  width: 100vw;
 }
 
 body {
   align-items: center;
   display: flex;
   flex-direction: column;
-  height: 100vh;
   justify-content: center;
   margin: 0;
-  overflow: hidden;
   position: relative;
   transition: background-color 1s; // Standard for body background-color (look at: enums.ts > DelaysEnum > ONE)
+  height: 100vh;
+  overflow: hidden;
+  width: 100vw;
 }
 
 main {
@@ -123,12 +136,22 @@ main {
 }
 
 .add-animations {
+  opacity: 1;
+  transition: opacity 250ms ease;
+
   &__link {
     align-items: center;
     bottom: 0;
     display: flex;
+    justify-content: center;
     position: absolute;
     transform: translate(-50%, -50%);
+    width: 100%;
+
+    &--hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
   }
 
   &__github {

@@ -6,12 +6,14 @@ import { AnimationsEnum, DelaysEnum, RepeatsEnum, SpeedsEnum } from './enums';
 import { IAction, IConfig } from './interfaces';
 
 function init() {
+  // region Action elements
+  const handEl = document.querySelector('.hand') as HTMLElement;
+  const donutEl = document.querySelector('.donut') as HTMLElement;
+  const batmanEl = document.querySelector('.batman') as HTMLElement;
+  const saitamaEl = document.querySelector('.saitama') as HTMLElement;
+  const rickEl = document.querySelector('.rick') as HTMLElement;
+  // endregion Action elements
   let actionCounter = 0;
-  let handEl = document.querySelector('.hand') as HTMLElement;
-  let donutEl = document.querySelector('.donut') as HTMLElement;
-  let batmanEl = document.querySelector('.batman') as HTMLElement;
-  let saitamaEl = document.querySelector('.saitama') as HTMLElement;
-  let rickEl = document.querySelector('.rick') as HTMLElement;
   let isMouseFarEnough = false;
   let switchControl: MDCSwitch;
   let switchEl: HTMLInputElement | null;
@@ -249,6 +251,9 @@ function init() {
 
     const totalProbabilities = actionsOnClick.reduce((acc, curr) => acc + curr.probability, 0);
     const probabilityToTrigger = getRandomProbabilities(totalProbabilities);
+
+    // TODO: remove before release
+    console.log('probabilityToTrigger: ', probabilityToTrigger);
 
     let sum = 0;
     let previousSum = 0;
