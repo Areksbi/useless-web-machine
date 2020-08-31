@@ -188,6 +188,14 @@ main {
   @include concealable-image($z-index-image-below);
 }
 
+.crash-bandicoot {
+  left: -215px;
+  position: absolute;
+  top: -320px;
+
+  @include concealable-image;
+}
+
 .add-animations {
   &__link {
     align-items: center;

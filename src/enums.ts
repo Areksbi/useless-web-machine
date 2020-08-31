@@ -21,6 +21,7 @@ export enum RepeatsEnum {
 }
 
 export enum AnimationsEnum {
+  BOUNCE_IN_DOWN = 'bounceInDown',
   BOUNCE_IN_LEFT = 'bounceInLeft',
   BOUNCE_IN_RIGHT = 'bounceInRight',
   BOUNCE_IN_UP = 'bounceInUP',
