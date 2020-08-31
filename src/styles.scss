@@ -75,6 +75,11 @@ body {
   }
 }
 
+.paypal {
+  display: flex;
+  justify-content: center;
+}
+
 .mdc-top-app-bar {
   position: absolute;
   top: 0;
