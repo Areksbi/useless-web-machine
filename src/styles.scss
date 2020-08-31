@@ -9,7 +9,7 @@ $z-index-main: 3;
 $z-index-image: 2;
 
 // region Mixins
-@mixin hideable-image {
+@mixin concealable-image {
   opacity: 1;
   pointer-events: none;
   transition: opacity 200ms ease-out;
@@ -79,7 +79,7 @@ main {
   position: absolute;
   top: -8px;
 
-  @include hideable-image;
+  @include concealable-image;
 
   &__caption {
     @include visually-hidden;
@@ -92,7 +92,7 @@ main {
   position: absolute;
   top: 50%;
 
-  @include hideable-image;
+  @include concealable-image;
 
   &__caption {
     @include visually-hidden;
@@ -104,7 +104,7 @@ main {
   right: -42px;
   top: -38px;
 
-  @include hideable-image;
+  @include concealable-image;
 }
 
 .saitama {
@@ -112,7 +112,7 @@ main {
   top: -35px;
   left: -80px;
 
-  @include hideable-image;
+  @include concealable-image;
 }
 
 .alternate-animation {
@@ -120,7 +120,7 @@ main {
 }
 
 .batman {
-  @include hideable-image;
+  @include concealable-image;
 
   &__container {
     background-color: $black;
@@ -132,7 +132,7 @@ main {
   position: absolute;
   top: -140px;
 
-  @include hideable-image;
+  @include concealable-image;
 }
 
 .add-animations {
