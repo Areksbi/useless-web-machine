@@ -30,7 +30,7 @@ function init() {
   const config: IConfig = {
     chances: {
       mousemove: {
-        active: 20,
+        active: 0,
         total: 100,
       },
     },

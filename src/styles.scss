@@ -10,12 +10,15 @@ $black: black;
 $blue: #0000ee;
 
 $z-index-base: 0;
-$z-index-switch: 1;
-$z-index-collision: 2;
-$z-index-image: 3;
+$z-index-top-bar: 4;
+$z-index-drawer: 6;
+$z-index-image-below: 7;
+$z-index-switch: 8;
+$z-index-collision: 9;
+$z-index-image-above: 10;
 
 // region Mixins
-@mixin concealable-image($z-index: $z-index-image) {
+@mixin concealable-image($z-index: $z-index-image-above) {
   opacity: 1;
   pointer-events: none;
   transition: opacity 200ms ease-out;
@@ -26,7 +29,9 @@ $z-index-image: 3;
   }
 
   &__container {
-    .add-animations__link {
+    .add-animations__link,
+    .mdc-top-app-bar,
+    .mdc-drawer {
       opacity: 0;
     }
   }
@@ -61,6 +66,11 @@ body {
   height: 100vh;
   overflow: hidden;
   width: 100vw;
+}
+
+.mdc-drawer {
+  opacity: 1;
+  transition: opacity 250ms ease;
 }
 
 .app-drawer-layout {
@@ -152,7 +162,7 @@ main {
 }
 
 .batman {
-  @include concealable-image($z-index-base);
+  @include concealable-image($z-index-image-below);
 
   &__container {
     background-color: $black;
@@ -172,20 +182,19 @@ main {
   position: absolute;
   top: -160px;
 
-  @include concealable-image($z-index-base);
+  @include concealable-image($z-index-image-below);
 }
 
 .add-animations {
-  opacity: 1;
-  transition: opacity 250ms ease;
-
   &__link {
     align-items: center;
     bottom: 10px;
     left: 0;
     display: flex;
     justify-content: center;
+    opacity: 1;
     position: absolute;
+    transition: opacity 250ms ease;
     width: 100%;
 
     &--hidden {
