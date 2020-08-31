@@ -5,15 +5,17 @@
 $black: black;
 $blue: #0000ee;
 
-$z-index-main: 3;
-$z-index-image: 2;
+$z-index-base: 0;
+$z-index-switch: 1;
+$z-index-collision: 2;
+$z-index-image: 3;
 
 // region Mixins
-@mixin concealable-image {
+@mixin concealable-image($z-index: $z-index-image) {
   opacity: 1;
   pointer-events: none;
   transition: opacity 200ms ease-out;
-  z-index: $z-index-image;
+  z-index: $z-index;
 
   &--hidden {
     opacity: 0;
@@ -62,11 +64,15 @@ main {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: $z-index-main;
+  z-index: $z-index-switch;
 }
 
-.mdc-switch__label:not(:focus):not(:active) {
-  @include visually-hidden;
+.mdc-switch {
+  z-index: $z-index-switch;
+
+  &__label:not(:focus):not(:active) {
+    @include visually-hidden;
+  }
 }
 
 .mdc-snackbar {
@@ -79,7 +85,7 @@ main {
   position: absolute;
   top: -8px;
 
-  @include concealable-image;
+  @include concealable-image($z-index-collision);
 
   &__caption {
     @include visually-hidden;
@@ -133,6 +139,14 @@ main {
   top: -140px;
 
   @include concealable-image;
+}
+
+.chuck-norris {
+  left: -212px;
+  position: absolute;
+  top: -160px;
+
+  @include concealable-image($z-index-base);
 }
 
 .add-animations {
