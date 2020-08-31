@@ -88,7 +88,7 @@ function init() {
     {
       action: () => triggerAction(rickEl, AnimationsEnum.BOUNCE_IN_RIGHT, SpeedsEnum.SLOW),
       id: 7,
-      probability: 1000,
+      probability: 5,
     },
   ].sort((a: IAction, b: IAction) => a.probability - b.probability);
   // endregion Configs
