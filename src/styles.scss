@@ -3,6 +3,7 @@
 @import '~animate.css/animate.min.css';
 
 $black: black;
+$blue: #0000ee;
 $z-index-main: 2;
 
 // region Mixins
@@ -53,6 +54,10 @@ main {
 
 .mdc-switch__label:not(:focus):not(:active) {
   @include visually-hidden;
+}
+
+.mdc-snackbar {
+  margin-bottom: 40px;
 }
 
 .collision {
@@ -115,4 +120,20 @@ main {
   top: -140px;
 
   @include hideable-image;
+}
+
+.add-animations {
+  &__link {
+    align-items: center;
+    bottom: 0;
+    display: flex;
+    position: absolute;
+    transform: translate(-50%, -50%);
+  }
+
+  &__github {
+    border-bottom: 1px solid $blue;
+    height: 17px;
+    width: 17px;
+  }
 }
