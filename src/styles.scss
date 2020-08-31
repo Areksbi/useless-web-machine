@@ -69,7 +69,6 @@ body {
 }
 
 .mdc-drawer {
-  opacity: 1;
   transition: opacity 250ms ease;
 }
 
@@ -87,7 +86,15 @@ body {
 
 .paypal {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+
+  &__label {
+    display: block;
+    font-size: 0.66rem;
+    line-height: 1.2;
+    margin: 0;
+  }
 }
 
 .mdc-top-app-bar {
