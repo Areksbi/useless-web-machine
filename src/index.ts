@@ -9,13 +9,14 @@ function init() {
   let actionCounter = 0;
   let handEl = document.querySelector('.hand') as HTMLElement;
   let donutEl = document.querySelector('.donut') as HTMLElement;
-  let saitamaEl = document.querySelector('.saitama') as HTMLElement;
   let batmanEl = document.querySelector('.batman') as HTMLElement;
+  let saitamaEl = document.querySelector('.saitama') as HTMLElement;
+  let rickEl = document.querySelector('.rick') as HTMLElement;
   let isMouseFarEnough = false;
   let switchControl: MDCSwitch;
   let switchEl: HTMLInputElement | null;
 
-  if (!handEl || !donutEl || !batmanEl) return;
+  if (!handEl || !donutEl || !batmanEl || !saitamaEl || !rickEl) return;
 
   // region Configs
   const config: IConfig = {
@@ -82,7 +83,12 @@ function init() {
     {
       action: () => triggerAction(saitamaEl, AnimationsEnum.BOUNCE_IN_RIGHT, SpeedsEnum.SLOW),
       id: 6,
-      probability: 10,
+      probability: 5,
+    },
+    {
+      action: () => triggerAction(rickEl, AnimationsEnum.BOUNCE_IN_RIGHT, SpeedsEnum.SLOW),
+      id: 7,
+      probability: 1000,
     },
   ].sort((a: IAction, b: IAction) => a.probability - b.probability);
   // endregion Configs

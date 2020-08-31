@@ -108,3 +108,11 @@ main {
     background-color: $black;
   }
 }
+
+.rick {
+  left: 30px;
+  position: absolute;
+  top: -140px;
+
+  @include hideable-image;
+}
