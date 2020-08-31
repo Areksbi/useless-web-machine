@@ -85,7 +85,7 @@ const config = {
     }),
     new ManifestPlugin(),
     new HtmlWebpackPlugin({
-      filename: 'index.[contenthash].html',
+      filename: 'index.html',
       template: 'src/index.html',
     }),
     new BundleAnalyzerPlugin({
