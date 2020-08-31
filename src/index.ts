@@ -25,7 +25,7 @@ function init() {
   const config: IConfig = {
     chances: {
       mousemove: {
-        active: 0,
+        active: 20,
         total: 100,
       },
     },
@@ -48,12 +48,12 @@ function init() {
     {
       action: () => triggerAction(handEl),
       id: 0,
-      probability: 50,
+      probability: 40,
     },
     {
       action: () => triggerAction(handEl, AnimationsEnum.BOUNCE_IN_RIGHT, SpeedsEnum.FASTER, RepeatsEnum.ONE, DelaysEnum.TWO),
       id: 1,
-      probability: 20,
+      probability: 15,
     },
     {
       action: () => triggerAction(handEl, AnimationsEnum.BOUNCE_IN_RIGHT, SpeedsEnum.SLOW),
