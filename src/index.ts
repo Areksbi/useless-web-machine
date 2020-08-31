@@ -1,7 +1,10 @@
 import './styles.scss';
 
+import { MDCDrawer } from '@material/drawer';
 import { MDCSwitch } from '@material/switch';
 import { MDCSnackbar } from '@material/snackbar';
+import { MDCTopAppBar } from '@material/top-app-bar';
+
 import { AnimationsEnum, DelaysEnum, RepeatsEnum, SpeedsEnum } from './enums';
 import { IAction, IConfig } from './interfaces';
 
@@ -14,6 +17,8 @@ function init() {
   const rickEl = document.querySelector('.rick') as HTMLElement;
   const chuckNorrisEl = document.querySelector('.chuck-norris') as HTMLElement;
   // endregion Action elements
+  const counter = document.querySelector('.counter') as HTMLSpanElement;
+
   let actionCounter = 0;
   let isMouseFarEnough = false;
   let switchControl: MDCSwitch;
@@ -276,6 +281,12 @@ function init() {
     switchControl.disabled = true;
 
     actionCounter++;
+    window.localStorage.setItem('counter', actionCounter.toString());
+
+    if (counter) {
+      counter.innerText = actionCounter.toString();
+    }
+
     if (actionCounter <= config.initialBasicMoves) {
       randomAction();
       return;
@@ -292,7 +303,35 @@ function init() {
     document.addEventListener('mousemove', manageMousemoveAction);
   }
 
+  function initCounter() {
+    const counterFromStorage = window.localStorage.getItem('counter');
+    if (counterFromStorage && counter) {
+      counter.innerText = counterFromStorage;
+      actionCounter = parseInt(counterFromStorage, 10);
+    }
+  }
+
+  function initMenu() {
+    const drawerEl = document.querySelector('.mdc-drawer');
+    const topAppBarEl = document.querySelector('.mdc-top-app-bar');
+    if (!drawerEl || !topAppBarEl) return;
+
+    const drawer = MDCDrawer.attachTo(drawerEl);
+    const topAppBar = MDCTopAppBar.attachTo(topAppBarEl);
+
+    const main = document.querySelector('main');
+    if (!main) return;
+
+    topAppBar.setScrollTarget(main);
+    topAppBar.listen('MDCTopAppBar:nav', () => {
+      drawer.open = !drawer.open;
+    });
+  }
+
   function start() {
+    initCounter();
+    initMenu();
+
     const switchContainer = document.querySelector('.mdc-switch');
     if (!switchContainer || !handEl) return;
     switchControl = new MDCSwitch(switchContainer);
@@ -300,6 +339,10 @@ function init() {
     switchEl = switchContainer.querySelector('.mdc-switch__native-control');
     if (!switchEl) return;
     switchEl.addEventListener('change', manageSwitchEvent);
+
+    const topAppBarElement = document.querySelector('.mdc-top-app-bar');
+    if (!topAppBarElement) return;
+    new MDCTopAppBar(topAppBarElement);
   }
 
   start();
