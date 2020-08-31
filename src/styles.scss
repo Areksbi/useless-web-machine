@@ -132,9 +132,17 @@ main {
   }
 
   &__github {
-    border-bottom: 1px solid $blue;
-    height: 20px;
-    margin-bottom: 3px;
-    width: 20px;
+    margin: 0;
+
+    &-logo {
+      border-bottom: 1px solid $blue;
+      height: 20px;
+      margin-bottom: 3px;
+      width: 20px;
+    }
+
+    &-caption {
+      @include visually-hidden;
+    }
   }
 }
