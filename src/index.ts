@@ -189,6 +189,7 @@ function init() {
         document.body.classList.remove(bgBodyClass);
       }
 
+      elem.style.willChange = 'auto';
       switchControl.disabled = false;
     }
 
@@ -221,6 +222,7 @@ function init() {
     bgBodyClass?: string
   ): void {
     if (!elem) return;
+    elem.style.willChange = 'transform';
 
     if (bgBodyClass) {
       document.body.classList.add(bgBodyClass);
