@@ -6,126 +6,14 @@ import { MDCSnackbar } from '@material/snackbar';
 import { MDCTopAppBar } from '@material/top-app-bar';
 
 import { AnimationsEnum, DelaysEnum, RepeatsEnum, SpeedsEnum } from './enums';
-import { IAction, IConfig } from './interfaces';
+import { actions, config } from './config';
 
 function init() {
-  // region Action elements
-  const handEl = document.querySelector('.hand') as HTMLElement;
-  const donutEl = document.querySelector('.donut') as HTMLElement;
-  const batmanEl = document.querySelector('.batman') as HTMLElement;
-  const saitamaEl = document.querySelector('.saitama') as HTMLElement;
-  const rickEl = document.querySelector('.rick') as HTMLElement;
-  const chuckNorrisEl = document.querySelector('.chuck-norris') as HTMLElement;
-  const crashBandicootEl = document.querySelector('.crash-bandicoot') as HTMLElement;
-  const elonMuskEl = document.querySelector('.elon-musk') as HTMLElement;
-  const obamaEl = document.querySelector('.obama') as HTMLElement;
-  // endregion Action elements
   const counter = document.querySelector('.counter') as HTMLSpanElement;
-
   let actionCounter = 0;
   let isMouseFarEnough = false;
   let switchControl: MDCSwitch;
   let switchEl: HTMLInputElement | null;
-
-  if (!handEl || !donutEl || !batmanEl || !saitamaEl || !rickEl || !chuckNorrisEl || !crashBandicootEl || !elonMuskEl || !obamaEl) return;
-
-  // region Configs
-  const config: IConfig = {
-    chances: {
-      mousemove: {
-        active: 0,
-        total: 100,
-      },
-    },
-    classes: {
-      batman: {
-        container: 'batman__container',
-        el: 'batman',
-        hidden: 'batman--hidden',
-      },
-      collision: {
-        hidden: 'collision--hidden',
-      },
-      copyright: {
-        el: 'copyright__date',
-      },
-    },
-    distanceMinToTriggerAction: 50,
-    initialBasicMoves: 2,
-    timerDisappearImages: 500,
-  };
-
-  const actionsOnClick: IAction[] = [
-    {
-      action: () => triggerAction(handEl),
-      id: 0,
-      probability: 35,
-    },
-    {
-      action: () => triggerAction(handEl, AnimationsEnum.BOUNCE_IN_RIGHT, SpeedsEnum.FASTER, RepeatsEnum.ONE, DelaysEnum.TWO),
-      id: 1,
-      probability: 15,
-    },
-    {
-      action: () => triggerAction(handEl, AnimationsEnum.BOUNCE_IN_RIGHT, SpeedsEnum.SLOW),
-      id: 2,
-      probability: 10,
-    },
-    {
-      action: () => triggerAction(handEl, AnimationsEnum.BOUNCE_IN_RIGHT, SpeedsEnum.FAST, RepeatsEnum.TWO),
-      id: 3,
-      probability: 10,
-    },
-    {
-      action: () => triggerAction(donutEl, AnimationsEnum.FADE_IN_UP, SpeedsEnum.SLOW),
-      id: 4,
-      probability: 5,
-    },
-    {
-      action: () =>
-        triggerAction(
-          batmanEl,
-          AnimationsEnum.FADE_IN,
-          SpeedsEnum.FASTER,
-          RepeatsEnum.ONE,
-          DelaysEnum.ONE,
-          config.classes.batman.container
-        ),
-      id: 5,
-      probability: 5,
-    },
-    {
-      action: () => triggerAction(saitamaEl, AnimationsEnum.BOUNCE_IN_RIGHT, SpeedsEnum.SLOW),
-      id: 6,
-      probability: 5,
-    },
-    {
-      action: () => triggerAction(rickEl, AnimationsEnum.BOUNCE_IN_RIGHT, SpeedsEnum.SLOW),
-      id: 7,
-      probability: 5,
-    },
-    {
-      action: () => triggerAction(chuckNorrisEl, AnimationsEnum.FADE_IN_UP, SpeedsEnum.SLOW),
-      id: 8,
-      probability: 5,
-    },
-    {
-      action: () => triggerAction(crashBandicootEl, AnimationsEnum.BOUNCE_IN_DOWN, SpeedsEnum.SLOW),
-      id: 9,
-      probability: 5,
-    },
-    {
-      action: () => triggerAction(elonMuskEl, AnimationsEnum.FADE_IN_UP, SpeedsEnum.SLOW),
-      id: 10,
-      probability: 5,
-    },
-    {
-      action: () => triggerAction(obamaEl, AnimationsEnum.BOUNCE_IN_LEFT, SpeedsEnum.SLOW),
-      id: 11,
-      probability: 5,
-    },
-  ].sort((a: IAction, b: IAction) => a.probability - b.probability);
-  // endregion Configs
 
   function initCopyright() {
     const copyrightDate = document.querySelector(`.${config.classes.copyright.el}`) as HTMLSpanElement;
@@ -278,19 +166,26 @@ function init() {
 
   function randomAction(): void {
     if (actionCounter <= config.initialBasicMoves) {
-      triggerAction(handEl);
-      return;
+      const basicAction = actions.find((action) => action.id === 0);
+      if (basicAction) {
+        triggerAction(
+          basicAction.el,
+          basicAction.animation,
+          basicAction.speed,
+          basicAction.repeats,
+          basicAction.delay,
+          basicAction.container
+        );
+        return;
+      }
     }
 
-    const totalProbabilities = actionsOnClick.reduce((acc, curr) => acc + curr.probability, 0);
+    const totalProbabilities = actions.reduce((acc, curr) => acc + curr.probability, 0);
     const probabilityToTrigger = getRandomProbabilities(totalProbabilities);
-
-    // TODO: remove before release
-    console.log('probabilityToTrigger: ', probabilityToTrigger);
 
     let sum = 0;
     let previousSum = 0;
-    const actionToTrigger = actionsOnClick.find((actionOnClick): boolean => {
+    const actionToTrigger = actions.find((actionOnClick): boolean => {
       if (probabilityToTrigger === 0) return true;
 
       sum += actionOnClick.probability;
@@ -301,7 +196,14 @@ function init() {
     });
 
     if (!actionToTrigger) return;
-    actionToTrigger.action();
+    triggerAction(
+      actionToTrigger.el,
+      actionToTrigger.animation,
+      actionToTrigger.speed,
+      actionToTrigger.repeats,
+      actionToTrigger.delay,
+      actionToTrigger.container
+    );
   }
 
   function manageSwitchEvent(evt: Event): void {
@@ -358,7 +260,7 @@ function init() {
 
   function initSwitch() {
     const switchContainer = document.querySelector('.mdc-switch');
-    if (!switchContainer || !handEl) return;
+    if (!switchContainer) return;
     switchControl = new MDCSwitch(switchContainer);
 
     switchEl = switchContainer.querySelector('.mdc-switch__native-control');

@@ -1,7 +1,14 @@
+import { AnimationsEnum, DelaysEnum, RepeatsEnum, SpeedsEnum } from './enums';
+
 export interface IAction {
-  action: () => void;
+  el: HTMLElement;
   id: number;
   probability: number;
+  animation?: AnimationsEnum;
+  container?: string;
+  delay?: DelaysEnum;
+  speed?: SpeedsEnum;
+  repeats?: RepeatsEnum;
 }
 
 export interface IChance {
