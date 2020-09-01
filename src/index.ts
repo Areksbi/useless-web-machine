@@ -7,6 +7,7 @@ import { MDCTopAppBar } from '@material/top-app-bar';
 
 import { AnimationsEnum, DelaysEnum, RepeatsEnum, SpeedsEnum } from './enums';
 import { actions, config } from './config';
+import { calculateDistance, getRandomProbabilities } from './utils';
 
 function init() {
   const counter = document.querySelector('.counter') as HTMLSpanElement;
@@ -22,26 +23,28 @@ function init() {
     copyrightDate.innerText = new Date().getFullYear().toString();
   }
 
-  function calculateDistance(elem: HTMLElement, mouseX: number, mouseY: number): number {
-    const rect = elem.getBoundingClientRect();
-    return Math.floor(
-      Math.sqrt(Math.pow(mouseX - (rect.left + elem.offsetWidth / 2), 2) + Math.pow(mouseY - (rect.top + elem.offsetHeight / 2), 2))
-    );
+  function initMenu() {
+    const drawerEl = document.querySelector('.mdc-drawer');
+    const topAppBarEl = document.querySelector('.mdc-top-app-bar');
+    if (!drawerEl || !topAppBarEl) return;
+
+    const drawer = MDCDrawer.attachTo(drawerEl);
+    const topAppBar = MDCTopAppBar.attachTo(topAppBarEl);
+
+    const main = document.querySelector('main');
+    if (!main) return;
+
+    topAppBar.setScrollTarget(main);
+    topAppBar.listen('MDCTopAppBar:nav', () => {
+      drawer.open = !drawer.open;
+    });
   }
 
-  function getRandomProbabilities(multiplier: number = 100): number {
-    return Math.floor(Math.random() * multiplier);
-  }
-
-  function manageFirstMousemove(): void {
-    if (!window.sessionStorage.getItem('isFirstMousemove')) {
-      const snackbarEl = document.querySelector('.mdc-snackbar');
-      if (!snackbarEl) return;
-
-      const snackbar = new MDCSnackbar(snackbarEl);
-      snackbar.open();
-
-      window.sessionStorage.setItem('isFirstMousemove', 'false');
+  function initCounter() {
+    const counterFromStorage = window.localStorage.getItem('counter');
+    if (counterFromStorage && counter) {
+      counter.innerText = counterFromStorage;
+      actionCounter = parseInt(counterFromStorage, 10);
     }
   }
 
@@ -59,6 +62,18 @@ function init() {
 
     document.removeEventListener('mousemove', manageMousemoveAction);
     isMouseFarEnough = false;
+  }
+
+  function manageFirstMousemove(): void {
+    if (!window.sessionStorage.getItem('isFirstMousemove')) {
+      const snackbarEl = document.querySelector('.mdc-snackbar');
+      if (!snackbarEl) return;
+
+      const snackbar = new MDCSnackbar(snackbarEl);
+      snackbar.open();
+
+      window.sessionStorage.setItem('isFirstMousemove', 'false');
+    }
   }
 
   function setSwitchOff(): void {
@@ -133,7 +148,6 @@ function init() {
     elem.addEventListener('animationend', onStartAnimationEnd);
   }
 
-  // region Animations on click
   function triggerAction(
     elem: HTMLElement | null,
     animation: AnimationsEnum = AnimationsEnum.BOUNCE_IN_RIGHT,
@@ -162,7 +176,6 @@ function init() {
 
     handleAnimations(elem, speed, repeats, delay, animation, bgBodyClass);
   }
-  // endregion Animations on click
 
   function randomAction(): void {
     if (actionCounter <= config.initialBasicMoves) {
@@ -233,31 +246,6 @@ function init() {
     document.addEventListener('mousemove', manageMousemoveAction);
   }
 
-  function initCounter() {
-    const counterFromStorage = window.localStorage.getItem('counter');
-    if (counterFromStorage && counter) {
-      counter.innerText = counterFromStorage;
-      actionCounter = parseInt(counterFromStorage, 10);
-    }
-  }
-
-  function initMenu() {
-    const drawerEl = document.querySelector('.mdc-drawer');
-    const topAppBarEl = document.querySelector('.mdc-top-app-bar');
-    if (!drawerEl || !topAppBarEl) return;
-
-    const drawer = MDCDrawer.attachTo(drawerEl);
-    const topAppBar = MDCTopAppBar.attachTo(topAppBarEl);
-
-    const main = document.querySelector('main');
-    if (!main) return;
-
-    topAppBar.setScrollTarget(main);
-    topAppBar.listen('MDCTopAppBar:nav', () => {
-      drawer.open = !drawer.open;
-    });
-  }
-
   function initSwitch() {
     const switchContainer = document.querySelector('.mdc-switch');
     if (!switchContainer) return;
@@ -266,10 +254,6 @@ function init() {
     switchEl = switchContainer.querySelector('.mdc-switch__native-control');
     if (!switchEl) return;
     switchEl.addEventListener('change', manageSwitchEvent);
-
-    const topAppBarElement = document.querySelector('.mdc-top-app-bar');
-    if (!topAppBarElement) return;
-    new MDCTopAppBar(topAppBarElement);
   }
 
   initSwitch();
