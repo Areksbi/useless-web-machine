@@ -11,8 +11,6 @@ export const config: IConfig = {
   classes: {
     batman: {
       container: 'batman__container',
-      el: 'batman',
-      hidden: 'batman--hidden',
     },
     collision: {
       hidden: 'collision--hidden',
