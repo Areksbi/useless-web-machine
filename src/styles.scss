@@ -29,7 +29,7 @@ $z-index-image-above: 10;
   }
 
   &__container {
-    .add-animations__link,
+    .copyright,
     .mdc-top-app-bar,
     .mdc-drawer {
       opacity: 0;
@@ -45,6 +45,18 @@ $z-index-image-above: 10;
   position: absolute;
   white-space: nowrap;
   width: 1px;
+}
+
+@mixin action-image($top, $left, $z-index: $z-index-image-above) {
+  @if ($left) {
+    left: $left;
+  }
+  @if ($top) {
+    top: $top;
+  }
+  position: absolute;
+
+  @include concealable-image($z-index);
 }
 // endregion Mixins
 
@@ -127,13 +139,13 @@ main {
   margin-bottom: 40px;
 }
 
-.collision {
-  left: 6px;
-  margin: 0;
-  position: absolute;
-  top: -8px;
+.alternate-animation {
+  animation-direction: alternate-reverse;
+}
 
-  @include concealable-image($z-index-collision);
+.collision {
+  @include action-image($top: -8px, $left: 6px, $z-index: $z-index-collision);
+  margin: 0;
 
   &__caption {
     @include visually-hidden;
@@ -141,12 +153,8 @@ main {
 }
 
 .hand {
-  left: 50%;
+  @include action-image($top: 50%, $left: 50%);
   margin: 0;
-  position: absolute;
-  top: 50%;
-
-  @include concealable-image;
 
   &__caption {
     @include visually-hidden;
@@ -154,23 +162,11 @@ main {
 }
 
 .donut {
-  position: absolute;
-  right: -42px;
-  top: -38px;
-
-  @include concealable-image;
+  @include action-image($top: -38px, $left: -320px);
 }
 
 .saitama {
-  position: absolute;
-  top: -35px;
-  left: -80px;
-
-  @include concealable-image;
-}
-
-.alternate-animation {
-  animation-direction: alternate-reverse;
+  @include action-image($top: -35px, $left: -80px);
 }
 
 .batman {
@@ -182,27 +178,19 @@ main {
 }
 
 .rick {
-  left: 30px;
-  position: absolute;
-  top: -140px;
-
-  @include concealable-image;
+  @include action-image($top: -140px, $left: 30px);
 }
 
 .chuck-norris {
-  left: -212px;
-  position: absolute;
-  top: -160px;
-
-  @include concealable-image($z-index-image-below);
+  @include action-image($top: -160px, $left: -212px, $z-index: $z-index-image-below);
 }
 
 .crash-bandicoot {
-  left: -215px;
-  position: absolute;
-  top: -320px;
+  @include action-image($top: -320px, $left: -215px);
+}
 
-  @include concealable-image;
+.elon-musk {
+  @include action-image($top: -260px, $left: -40px, $z-index: $z-index-image-below);
 }
 
 .add-animations {
@@ -231,7 +219,9 @@ main {
   bottom: 0;
   font-size: 0.75rem;
   left: 0;
+  opacity: 1;
   position: absolute;
   text-align: center;
+  transition: opacity 250ms ease;
   width: 100%;
 }
