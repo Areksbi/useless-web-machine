@@ -198,34 +198,31 @@ main {
 
 .add-animations {
   &__link {
-    align-items: center;
     bottom: 10px;
-    left: 0;
-    display: flex;
-    justify-content: center;
-    opacity: 1;
     position: absolute;
-    transition: opacity 250ms ease;
-    width: 100%;
-
-    &--hidden {
-      opacity: 0;
-      pointer-events: none;
-    }
   }
 
   &__github {
-    margin: 0;
-
     &-logo {
-      border-bottom: 1px solid $blue;
-      height: 20px;
-      margin-bottom: 3px;
-      width: 20px;
+      height: 24px;
+      margin: {
+        bottom: 0;
+        top: 0;
+      }
+      width: 24px;
     }
 
     &-caption {
       @include visually-hidden;
     }
   }
+}
+
+.copyright {
+  bottom: 0;
+  font-size: 0.75rem;
+  left: 0;
+  position: absolute;
+  text-align: center;
+  width: 100%;
 }

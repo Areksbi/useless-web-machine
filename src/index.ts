@@ -44,6 +44,9 @@ function init() {
       collision: {
         hidden: 'collision--hidden',
       },
+      copyright: {
+        el: 'copyright__date',
+      },
     },
     distanceMinToTriggerAction: 50,
     initialBasicMoves: 2,
@@ -111,6 +114,13 @@ function init() {
     },
   ].sort((a: IAction, b: IAction) => a.probability - b.probability);
   // endregion Configs
+
+  function initCopyright() {
+    const copyrightDate = document.querySelector(`.${config.classes.copyright.el}`) as HTMLSpanElement;
+    if (!copyrightDate) return;
+
+    copyrightDate.innerText = new Date().getFullYear().toString();
+  }
 
   function calculateDistance(elem: HTMLElement, mouseX: number, mouseY: number): number {
     const rect = elem.getBoundingClientRect();
@@ -334,10 +344,7 @@ function init() {
     });
   }
 
-  function start() {
-    initCounter();
-    initMenu();
-
+  function initSwitch() {
     const switchContainer = document.querySelector('.mdc-switch');
     if (!switchContainer || !handEl) return;
     switchControl = new MDCSwitch(switchContainer);
@@ -351,7 +358,10 @@ function init() {
     new MDCTopAppBar(topAppBarElement);
   }
 
-  start();
+  initSwitch();
+  initCounter();
+  initMenu();
+  initCopyright();
 
   document.removeEventListener('DOMContentLoaded', init);
 }
