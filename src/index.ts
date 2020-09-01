@@ -178,6 +178,8 @@ function init() {
   }
 
   function randomAction(): void {
+    switchControl.disabled = true;
+
     if (actionCounter <= config.initialBasicMoves) {
       const basicAction = actions.find((action) => action.id === 0);
       if (basicAction) {
@@ -221,7 +223,6 @@ function init() {
 
   function manageSwitchEvent(evt: Event): void {
     if (!(evt?.target as HTMLInputElement)?.checked) return;
-    switchControl.disabled = true;
 
     actionCounter++;
     window.localStorage.setItem('counter', actionCounter.toString());
