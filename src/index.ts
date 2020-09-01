@@ -1,4 +1,5 @@
 import './styles.scss';
+import * as SuperGif from './libgif';
 
 import { MDCDrawer } from '@material/drawer';
 import { MDCSwitch } from '@material/switch';
@@ -8,6 +9,7 @@ import { MDCTopAppBar } from '@material/top-app-bar';
 import { AnimationsEnum, DelaysEnum, RepeatsEnum, SpeedsEnum } from './enums';
 import { actions, config } from './config';
 import { calculateDistance, getRandomProbabilities } from './utils';
+import { ISuperGifOptions } from './interfaces';
 
 function init() {
   const counter = document.querySelector('.counter') as HTMLSpanElement;
@@ -97,21 +99,10 @@ function init() {
     repeats: RepeatsEnum | undefined,
     delay: DelaysEnum | undefined,
     animation: AnimationsEnum,
-    bgBodyClass?: string
+    bgBodyClass?: string,
+    isGif?: boolean,
+    selector?: string
   ) {
-    if (!elem) return;
-
-    const hiddenClass = Array.from(elem.classList).find((className: string) => className.endsWith('--hidden'));
-    if (!hiddenClass) return;
-    elem.classList.remove(hiddenClass);
-    elem.classList.add(
-      `animate__${speed}`,
-      `animate__repeat-${repeats}`,
-      `animate__delay-${delay}s`,
-      'animate__animated',
-      `animate__${animation}`
-    );
-
     function onEndAnimationEnd() {
       if (!elem) return;
 
@@ -131,21 +122,66 @@ function init() {
 
     function onStartAnimationEnd() {
       setSwitchOff();
-
-      if (!elem) return;
-
       setTimeout(() => {
-        elem.classList.remove(`animate__${animation}`, `animate__repeat-${repeats}`, `animate__delay-${delay}s`);
-        elem.removeEventListener('animationend', onStartAnimationEnd);
+        // TODO: remove after the release
+        console.log('onStartAnimationEnd - first');
+        elem?.classList.remove(`animate__${animation}`, `animate__repeat-${repeats}`, `animate__delay-${delay}s`);
+        elem?.removeEventListener('animationend', onStartAnimationEnd);
 
         setTimeout(() => {
-          elem.classList.add('alternate-animation', `animate__${animation}`);
-          elem.addEventListener('animationend', onEndAnimationEnd);
-        }, 0);
+          // TODO: remove after the release
+          console.log('onStartAnimationEnd - second');
+          elem?.classList.add('alternate-animation', `animate__${animation}`);
+          elem?.addEventListener('animationend', onEndAnimationEnd);
+        }, config.timerDisappearImages);
       }, config.timerDisappearImages);
     }
 
-    elem.addEventListener('animationend', onStartAnimationEnd);
+    function handleGif() {
+      if (!elem || !selector) return;
+
+      const originalEl = elem.cloneNode(true);
+      const superGifOptions: ISuperGifOptions = {
+        draw_while_loading: false,
+        gif: elem,
+        loop_mode: false,
+        on_end: () => {
+          onStartAnimationEnd();
+          const jsGifEl = document.querySelector('.jsgif');
+          if (!jsGifEl) return;
+
+          jsGifEl?.parentNode?.appendChild(originalEl);
+          jsGifEl.remove();
+
+          elem = document.querySelector(selector);
+          onEndAnimationEnd();
+        },
+      };
+      if (delay) {
+        superGifOptions.loop_delay = delay * 1000;
+      }
+      const rub = SuperGif(superGifOptions);
+      rub.load();
+    }
+
+    if (!elem) return;
+
+    const hiddenClass = Array.from(elem.classList).find((className: string) => className.endsWith('--hidden'));
+    if (!hiddenClass) return;
+    elem.classList.remove(hiddenClass);
+    elem.classList.add(
+      `animate__${speed}`,
+      `animate__repeat-${repeats}`,
+      `animate__delay-${delay}s`,
+      'animate__animated',
+      `animate__${animation}`
+    );
+
+    if (selector && isGif && /.*\.gif/.test((elem as HTMLImageElement).src)) {
+      handleGif();
+    } else {
+      elem.addEventListener('animationend', onStartAnimationEnd);
+    }
   }
 
   function triggerAction(
@@ -154,7 +190,8 @@ function init() {
     speed?: SpeedsEnum,
     repeats?: RepeatsEnum,
     delay?: DelaysEnum,
-    bgBodyClass?: string
+    bgBodyClass?: string,
+    isGif?: boolean
   ): void {
     const elem = document.querySelector(selector) as HTMLElement;
     if (!elem) return;
@@ -167,7 +204,7 @@ function init() {
     const src = elem.dataset.src;
     if (src && !elem.getAttribute('src')) {
       const onImageLoad = () => {
-        handleAnimations(elem, speed, repeats, delay, animation, bgBodyClass);
+        handleAnimations(elem, speed, repeats, delay, animation, bgBodyClass, isGif, selector);
         elem.removeEventListener('load', onImageLoad);
       };
       elem.addEventListener('load', onImageLoad);
@@ -175,7 +212,7 @@ function init() {
       return;
     }
 
-    handleAnimations(elem, speed, repeats, delay, animation, bgBodyClass);
+    handleAnimations(elem, speed, repeats, delay, animation, bgBodyClass, isGif, selector);
   }
 
   function randomAction(): void {
@@ -190,7 +227,8 @@ function init() {
           basicAction.speed,
           basicAction.repeats,
           basicAction.delay,
-          basicAction.container
+          basicAction.container,
+          basicAction.gif
         );
         return;
       }
@@ -198,6 +236,9 @@ function init() {
 
     const totalProbabilities = actions.reduce((acc, curr) => acc + curr.probability, 0);
     const probabilityToTrigger = getRandomProbabilities(totalProbabilities);
+
+    // TODO: remove after the release
+    console.log('probabilityToTrigger: ', probabilityToTrigger);
 
     let sum = 0;
     let previousSum = 0;
@@ -218,7 +259,8 @@ function init() {
       actionToTrigger.speed,
       actionToTrigger.repeats,
       actionToTrigger.delay,
-      actionToTrigger.container
+      actionToTrigger.container,
+      actionToTrigger.gif
     );
   }
 

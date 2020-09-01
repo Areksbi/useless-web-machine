@@ -155,4 +155,15 @@ export const actions: IAction[] = [
     selector: '.kill-bill',
     speed: SpeedsEnum.FASTER,
   },
+  {
+    animation: AnimationsEnum.FADE_IN,
+    container: 'goku__container',
+    delay: DelaysEnum.ZERO,
+    gif: true,
+    id: 18,
+    probability: 5,
+    repeats: RepeatsEnum.ONE,
+    selector: '.goku',
+    speed: SpeedsEnum.SLOW,
+  },
 ].sort((a: IAction, b: IAction) => a.probability - b.probability);
