@@ -7,6 +7,7 @@ export interface IAction {
   animation?: AnimationsEnum;
   container?: string;
   delay?: DelaysEnum;
+  gif?: boolean;
   speed?: SpeedsEnum;
   repeats?: RepeatsEnum;
 }

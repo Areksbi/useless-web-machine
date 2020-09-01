@@ -1,4 +1,5 @@
 import './styles.scss';
+import * as SuperGif from './libgif';
 
 import { MDCDrawer } from '@material/drawer';
 import { MDCSwitch } from '@material/switch';
@@ -97,7 +98,9 @@ function init() {
     repeats: RepeatsEnum | undefined,
     delay: DelaysEnum | undefined,
     animation: AnimationsEnum,
-    bgBodyClass?: string
+    bgBodyClass?: string,
+    isGif?: boolean,
+    selector?: string
   ) {
     if (!elem) return;
 
@@ -145,7 +148,40 @@ function init() {
       }, config.timerDisappearImages);
     }
 
-    elem.addEventListener('animationend', onStartAnimationEnd);
+    if (selector && isGif && /.*\.gif/.test((elem as HTMLImageElement).src)) {
+      const originalEl = elem.cloneNode(true);
+      const rub = SuperGif({
+        draw_while_loading: false,
+        gif: elem,
+        loop_mode: false,
+        on_end: () => {
+          setSwitchOff();
+          const jsGifEl = document.querySelector('.jsgif');
+          if (jsGifEl) {
+            jsGifEl?.parentNode?.appendChild(originalEl);
+            jsGifEl.remove();
+            const elemNew = document.querySelector(selector);
+            if (elemNew) {
+              elemNew.classList.add(hiddenClass);
+              elemNew.classList.remove(
+                `animate__${speed}`,
+                `animate__repeat-${repeats}`,
+                `animate__delay-${delay}s`,
+                'animate__animated',
+                `animate__${animation}`
+              );
+            }
+            if (bgBodyClass) {
+              document.body.classList.remove(bgBodyClass);
+            }
+            switchControl.disabled = false;
+          }
+        },
+      });
+      rub.load();
+    } else {
+      elem.addEventListener('animationend', onStartAnimationEnd);
+    }
   }
 
   function triggerAction(
@@ -154,7 +190,8 @@ function init() {
     speed?: SpeedsEnum,
     repeats?: RepeatsEnum,
     delay?: DelaysEnum,
-    bgBodyClass?: string
+    bgBodyClass?: string,
+    isGif?: boolean
   ): void {
     const elem = document.querySelector(selector) as HTMLElement;
     if (!elem) return;
@@ -167,7 +204,7 @@ function init() {
     const src = elem.dataset.src;
     if (src && !elem.getAttribute('src')) {
       const onImageLoad = () => {
-        handleAnimations(elem, speed, repeats, delay, animation, bgBodyClass);
+        handleAnimations(elem, speed, repeats, delay, animation, bgBodyClass, isGif, selector);
         elem.removeEventListener('load', onImageLoad);
       };
       elem.addEventListener('load', onImageLoad);
@@ -175,7 +212,7 @@ function init() {
       return;
     }
 
-    handleAnimations(elem, speed, repeats, delay, animation, bgBodyClass);
+    handleAnimations(elem, speed, repeats, delay, animation, bgBodyClass, isGif, selector);
   }
 
   function randomAction(): void {
@@ -190,7 +227,8 @@ function init() {
           basicAction.speed,
           basicAction.repeats,
           basicAction.delay,
-          basicAction.container
+          basicAction.container,
+          basicAction.gif
         );
         return;
       }
@@ -218,7 +256,8 @@ function init() {
       actionToTrigger.speed,
       actionToTrigger.repeats,
       actionToTrigger.delay,
-      actionToTrigger.container
+      actionToTrigger.container,
+      actionToTrigger.gif
     );
   }
 
