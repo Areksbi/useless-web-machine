@@ -182,4 +182,14 @@ export const actions: IAction[] = [
     selector: '.jackie-chan',
     speed: SpeedsEnum.FASTER,
   },
+  {
+    animation: AnimationsEnum.FADE_IN,
+    container: 'pick-of-destiny__container',
+    delay: DelaysEnum.ONE,
+    id: 21,
+    probability: 5,
+    repeats: RepeatsEnum.ONE,
+    selector: '.pick-of-destiny',
+    speed: SpeedsEnum.SLOWER,
+  },
 ].sort((a: IAction, b: IAction) => a.probability - b.probability);
