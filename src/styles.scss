@@ -47,13 +47,21 @@ $z-index-image-above: 10;
   width: 1px;
 }
 
-@mixin action-image($top, $left, $z-index: $z-index-image-above) {
+@mixin action-image($top, $left, $z-index: $z-index-image-above, $full-screen-bg-color: null) {
   @if ($left) {
     left: $left;
   }
   @if ($top) {
     top: $top;
   }
+  @if ($full-screen-bg-color) {
+    transform: translate(-50%, -50%);
+
+    &__container {
+      background-color: $full-screen-bg-color;
+    }
+  }
+
   position: absolute;
 
   @include concealable-image($z-index);
@@ -170,12 +178,7 @@ main {
 }
 
 .batman {
-  @include action-image($top: 50%, $left: 50%, $z-index: $z-index-image-below);
-  transform: translate(-50%, -50%);
-
-  &__container {
-    background-color: $black;
-  }
+  @include action-image($top: 50%, $left: 50%, $z-index: $z-index-image-below, $full-screen-bg-color: $black);
 }
 
 .rick {
@@ -203,12 +206,7 @@ main {
 }
 
 .james-bond {
-  @include action-image($top: 50%, $left: 50%, $z-index: $z-index-image-below);
-  transform: translate(-50%, -50%);
-
-  &__container {
-    background-color: $black;
-  }
+  @include action-image($top: 50%, $left: 50%, $z-index: $z-index-image-below, $full-screen-bg-color: $black);
 }
 
 .add-animations {
