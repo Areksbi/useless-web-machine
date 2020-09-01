@@ -232,6 +232,10 @@ main {
   @include action-image($top: -300px, $left: -250px);
 }
 
+.gintoki {
+  @include action-image($top: -270px, $left: -280px);
+}
+
 .add-animations {
   &__link {
     bottom: 10px;

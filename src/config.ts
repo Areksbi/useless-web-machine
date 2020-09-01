@@ -192,4 +192,11 @@ export const actions: IAction[] = [
     selector: '.pick-of-destiny',
     speed: SpeedsEnum.SLOWER,
   },
+  {
+    animation: AnimationsEnum.BOUNCE_IN_DOWN,
+    id: 22,
+    probability: 5,
+    selector: '.gintoki',
+    speed: SpeedsEnum.SLOW,
+  },
 ].sort((a: IAction, b: IAction) => a.probability - b.probability);
