@@ -224,7 +224,7 @@ main {
 }
 
 .john-travolta {
-  @include action-image($top: -115px, $left: -280px, $z-index: $z-index-image-below);
+  @include action-image($top: -200px, $left: -340px, $z-index: $z-index-image-below);
 }
 
 .add-animations {
