@@ -18,6 +18,7 @@ function init() {
   const chuckNorrisEl = document.querySelector('.chuck-norris') as HTMLElement;
   const crashBandicootEl = document.querySelector('.crash-bandicoot') as HTMLElement;
   const elonMuskEl = document.querySelector('.elon-musk') as HTMLElement;
+  const obamaEl = document.querySelector('.obama') as HTMLElement;
   // endregion Action elements
   const counter = document.querySelector('.counter') as HTMLSpanElement;
 
@@ -26,7 +27,7 @@ function init() {
   let switchControl: MDCSwitch;
   let switchEl: HTMLInputElement | null;
 
-  if (!handEl || !donutEl || !batmanEl || !saitamaEl || !rickEl || !chuckNorrisEl || !crashBandicootEl || !elonMuskEl) return;
+  if (!handEl || !donutEl || !batmanEl || !saitamaEl || !rickEl || !chuckNorrisEl || !crashBandicootEl || !elonMuskEl || !obamaEl) return;
 
   // region Configs
   const config: IConfig = {
@@ -116,6 +117,11 @@ function init() {
     {
       action: () => triggerAction(elonMuskEl, AnimationsEnum.FADE_IN_UP, SpeedsEnum.SLOW),
       id: 10,
+      probability: 5,
+    },
+    {
+      action: () => triggerAction(obamaEl, AnimationsEnum.BOUNCE_IN_LEFT, SpeedsEnum.SLOW),
+      id: 11,
       probability: 5,
     },
   ].sort((a: IAction, b: IAction) => a.probability - b.probability);
