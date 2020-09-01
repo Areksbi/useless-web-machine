@@ -123,13 +123,17 @@ function init() {
     function onStartAnimationEnd() {
       setSwitchOff();
       setTimeout(() => {
+        // TODO: remove after the release
+        console.log('onStartAnimationEnd - first');
         elem?.classList.remove(`animate__${animation}`, `animate__repeat-${repeats}`, `animate__delay-${delay}s`);
         elem?.removeEventListener('animationend', onStartAnimationEnd);
 
         setTimeout(() => {
+          // TODO: remove after the release
+          console.log('onStartAnimationEnd - second');
           elem?.classList.add('alternate-animation', `animate__${animation}`);
           elem?.addEventListener('animationend', onEndAnimationEnd);
-        }, 0);
+        }, config.timerDisappearImages);
       }, config.timerDisappearImages);
     }
 
@@ -232,6 +236,9 @@ function init() {
 
     const totalProbabilities = actions.reduce((acc, curr) => acc + curr.probability, 0);
     const probabilityToTrigger = getRandomProbabilities(totalProbabilities);
+
+    // TODO: remove after the release
+    console.log('probabilityToTrigger: ', probabilityToTrigger);
 
     let sum = 0;
     let previousSum = 0;
