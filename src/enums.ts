@@ -31,6 +31,7 @@ export enum AnimationsEnum {
   FADE_IN_UP = 'fadeInUp',
 }
 
+// Must be unique values
 export enum ActionIdsEnum {
   HAND_BASE = 0,
   HAND_FASTER = 1,
@@ -55,4 +56,16 @@ export enum ActionIdsEnum {
   JACKIE_CHAN = 20,
   PICK_OF_DESTINY = 21,
   GINTOKI = 22,
+}
+
+// Must be unique values with sum 100(%)
+export enum ProbabilitiesEnum {
+  HAND_BASE = 30,
+  HAND_FASTER = 20,
+  HAND_SLOW = 12,
+  HAND_REPEAT = 8,
+
+  IMAGE = 15,
+  FULL_SCREEN = 10,
+  GIF = 5,
 }

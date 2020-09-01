@@ -7,13 +7,14 @@ import { MDCSnackbar } from '@material/snackbar';
 import { MDCTopAppBar } from '@material/top-app-bar';
 
 import { AnimationsEnum, DelaysEnum, RepeatsEnum, SpeedsEnum } from './enums';
-import { actions, config } from './config';
+import { actions as configActions, config } from './config';
 import { calculateDistance, getRandomProbabilities, isGifExt } from './utils';
-import { ISuperGifOptions } from './interfaces';
+import { IAction, ISuperGifOptions } from './interfaces';
 
 function init() {
   const counter = document.querySelector('.counter') as HTMLSpanElement;
   let actionCounter = 0;
+  let actions: IAction[];
   let isMouseFarEnough = false;
   let switchControl: MDCSwitch;
   let switchEl: HTMLInputElement | null;
@@ -306,6 +307,24 @@ function init() {
     switchEl.addEventListener('change', manageSwitchEvent);
   }
 
+  function initProbabilities() {
+    const counters: { [key: number]: number } = {};
+    actions = configActions
+      .map((action: IAction) => {
+        if (!counters[action.probability]) {
+          counters[action.probability] = 0;
+        }
+        ++counters[action.probability];
+        return action;
+      })
+      .map((action: IAction) => {
+        action.probability = (action.probability / counters[action.probability]) * 100;
+        return action;
+      })
+      .sort((a: IAction, b: IAction) => a.probability - b.probability);
+  }
+
+  initProbabilities();
   initSwitch();
   initCounter();
   initMenu();
