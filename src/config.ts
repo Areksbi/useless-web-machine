@@ -130,8 +130,15 @@ export const actions: IAction[] = [
   {
     animation: AnimationsEnum.BOUNCE_IN_RIGHT,
     id: 14,
-    probability: 500,
+    probability: 5,
     selector: '.joker',
+    speed: SpeedsEnum.SLOW,
+  },
+  {
+    animation: AnimationsEnum.BOUNCE_IN_LEFT,
+    id: 15,
+    probability: 5,
+    selector: '.iron-man',
     speed: SpeedsEnum.SLOW,
   },
 ].sort((a: IAction, b: IAction) => a.probability - b.probability);
