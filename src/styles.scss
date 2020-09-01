@@ -177,7 +177,8 @@ main {
   @include action-image($top: -35px, $left: -80px);
 }
 
-.batman {
+.batman,
+.james-bond {
   @include action-image($top: 50%, $left: 50%, $z-index: $z-index-image-below, $full-screen-bg-color: $black);
 }
 
@@ -205,8 +206,8 @@ main {
   @include action-image($top: -130px, $left: -195px, $z-index: $z-index-image-below);
 }
 
-.james-bond {
-  @include action-image($top: 50%, $left: 50%, $z-index: $z-index-image-below, $full-screen-bg-color: $black);
+.joker {
+  @include action-image($top: -400px, $left: -150px);
 }
 
 .add-animations {

@@ -127,4 +127,11 @@ export const actions: IAction[] = [
     selector: '.james-bond',
     speed: SpeedsEnum.FASTER,
   },
+  {
+    animation: AnimationsEnum.BOUNCE_IN_RIGHT,
+    id: 14,
+    probability: 500,
+    selector: '.joker',
+    speed: SpeedsEnum.SLOW,
+  },
 ].sort((a: IAction, b: IAction) => a.probability - b.probability);
