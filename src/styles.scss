@@ -222,6 +222,10 @@ main {
   @include action-image($top: -30px, $left: -80px, $z-index: $z-index-image-below);
 }
 
+.kill-bill {
+  @include action-image($top: -300px, $left: 20px);
+}
+
 .add-animations {
   &__link {
     bottom: 10px;
