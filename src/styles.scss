@@ -73,10 +73,19 @@ body {
   flex: 1;
 
   .mdc-drawer--dismissible {
-    $menu-height: 64px;
+    @media screen and (max-width: 599px) {
+      $menu-height: 56px;
 
-    height: calc(100% - #{$menu-height});
-    top: $menu-height;
+      height: calc(100% - #{$menu-height});
+      top: $menu-height;
+    }
+
+    @media screen and (min-width: 600px) {
+      $menu-height: 64px;
+
+      height: calc(100% - #{$menu-height});
+      top: $menu-height;
+    }
   }
 }
 
