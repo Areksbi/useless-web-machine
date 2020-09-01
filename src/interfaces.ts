@@ -1,9 +1,9 @@
 import { AnimationsEnum, DelaysEnum, RepeatsEnum, SpeedsEnum } from './enums';
 
 export interface IAction {
-  el: HTMLElement;
   id: number;
   probability: number;
+  selector: string;
   animation?: AnimationsEnum;
   container?: string;
   delay?: DelaysEnum;

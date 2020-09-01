@@ -149,13 +149,14 @@ function init() {
   }
 
   function triggerAction(
-    elem: HTMLElement | null,
+    selector: string,
     animation: AnimationsEnum = AnimationsEnum.BOUNCE_IN_RIGHT,
     speed?: SpeedsEnum,
     repeats?: RepeatsEnum,
     delay?: DelaysEnum,
     bgBodyClass?: string
   ): void {
+    const elem = document.querySelector(selector) as HTMLElement;
     if (!elem) return;
     elem.style.willChange = 'transform';
 
@@ -184,7 +185,7 @@ function init() {
       const basicAction = actions.find((action) => action.id === 0);
       if (basicAction) {
         triggerAction(
-          basicAction.el,
+          basicAction.selector,
           basicAction.animation,
           basicAction.speed,
           basicAction.repeats,
@@ -212,7 +213,7 @@ function init() {
 
     if (!actionToTrigger) return;
     triggerAction(
-      actionToTrigger.el,
+      actionToTrigger.selector,
       actionToTrigger.animation,
       actionToTrigger.speed,
       actionToTrigger.repeats,
