@@ -9,6 +9,7 @@ import { MDCTopAppBar } from '@material/top-app-bar';
 import { AnimationsEnum, DelaysEnum, RepeatsEnum, SpeedsEnum } from './enums';
 import { actions, config } from './config';
 import { calculateDistance, getRandomProbabilities } from './utils';
+import { ISuperGifOptions } from './interfaces';
 
 function init() {
   const counter = document.querySelector('.counter') as HTMLSpanElement;
@@ -102,19 +103,6 @@ function init() {
     isGif?: boolean,
     selector?: string
   ) {
-    if (!elem) return;
-
-    const hiddenClass = Array.from(elem.classList).find((className: string) => className.endsWith('--hidden'));
-    if (!hiddenClass) return;
-    elem.classList.remove(hiddenClass);
-    elem.classList.add(
-      `animate__${speed}`,
-      `animate__repeat-${repeats}`,
-      `animate__delay-${delay}s`,
-      'animate__animated',
-      `animate__${animation}`
-    );
-
     function onEndAnimationEnd() {
       if (!elem) return;
 
@@ -134,51 +122,59 @@ function init() {
 
     function onStartAnimationEnd() {
       setSwitchOff();
-
-      if (!elem) return;
-
       setTimeout(() => {
-        elem.classList.remove(`animate__${animation}`, `animate__repeat-${repeats}`, `animate__delay-${delay}s`);
-        elem.removeEventListener('animationend', onStartAnimationEnd);
+        elem?.classList.remove(`animate__${animation}`, `animate__repeat-${repeats}`, `animate__delay-${delay}s`);
+        elem?.removeEventListener('animationend', onStartAnimationEnd);
 
         setTimeout(() => {
-          elem.classList.add('alternate-animation', `animate__${animation}`);
-          elem.addEventListener('animationend', onEndAnimationEnd);
+          elem?.classList.add('alternate-animation', `animate__${animation}`);
+          elem?.addEventListener('animationend', onEndAnimationEnd);
         }, 0);
       }, config.timerDisappearImages);
     }
 
-    if (selector && isGif && /.*\.gif/.test((elem as HTMLImageElement).src)) {
+    function handleGif() {
+      if (!elem || !selector) return;
+
       const originalEl = elem.cloneNode(true);
-      const rub = SuperGif({
+      const superGifOptions: ISuperGifOptions = {
         draw_while_loading: false,
         gif: elem,
         loop_mode: false,
         on_end: () => {
-          setSwitchOff();
+          onStartAnimationEnd();
           const jsGifEl = document.querySelector('.jsgif');
-          if (jsGifEl) {
-            jsGifEl?.parentNode?.appendChild(originalEl);
-            jsGifEl.remove();
-            const elemNew = document.querySelector(selector);
-            if (elemNew) {
-              elemNew.classList.add(hiddenClass);
-              elemNew.classList.remove(
-                `animate__${speed}`,
-                `animate__repeat-${repeats}`,
-                `animate__delay-${delay}s`,
-                'animate__animated',
-                `animate__${animation}`
-              );
-            }
-            if (bgBodyClass) {
-              document.body.classList.remove(bgBodyClass);
-            }
-            switchControl.disabled = false;
-          }
+          if (!jsGifEl) return;
+
+          jsGifEl?.parentNode?.appendChild(originalEl);
+          jsGifEl.remove();
+
+          elem = document.querySelector(selector);
+          onEndAnimationEnd();
         },
-      });
+      };
+      if (delay) {
+        superGifOptions.loop_delay = delay * 1000;
+      }
+      const rub = SuperGif(superGifOptions);
       rub.load();
+    }
+
+    if (!elem) return;
+
+    const hiddenClass = Array.from(elem.classList).find((className: string) => className.endsWith('--hidden'));
+    if (!hiddenClass) return;
+    elem.classList.remove(hiddenClass);
+    elem.classList.add(
+      `animate__${speed}`,
+      `animate__repeat-${repeats}`,
+      `animate__delay-${delay}s`,
+      'animate__animated',
+      `animate__${animation}`
+    );
+
+    if (selector && isGif && /.*\.gif/.test((elem as HTMLImageElement).src)) {
+      handleGif();
     } else {
       elem.addEventListener('animationend', onStartAnimationEnd);
     }

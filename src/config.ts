@@ -158,7 +158,7 @@ export const actions: IAction[] = [
   {
     animation: AnimationsEnum.FADE_IN,
     container: 'goku__container',
-    delay: DelaysEnum.ONE,
+    delay: DelaysEnum.ZERO,
     gif: true,
     id: 18,
     probability: 5,
