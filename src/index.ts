@@ -8,7 +8,7 @@ import { MDCTopAppBar } from '@material/top-app-bar';
 
 import { AnimationsEnum, DelaysEnum, RepeatsEnum, SpeedsEnum } from './enums';
 import { actions, config } from './config';
-import { calculateDistance, getRandomProbabilities } from './utils';
+import { calculateDistance, getRandomProbabilities, isGifExt } from './utils';
 import { ISuperGifOptions } from './interfaces';
 
 function init() {
@@ -161,7 +161,12 @@ function init() {
         superGifOptions.loop_delay = delay * 1000;
       }
       const rub = SuperGif(superGifOptions);
-      rub.load();
+      const src = elem.dataset.src;
+      rub.load_url(src);
+
+      const jsGifEl = document.querySelector('.jsgif');
+      if (!jsGifEl || selector.charAt(0) !== '.') return;
+      jsGifEl.classList.add(selector.replace('.', ''));
     }
 
     if (!elem) return;
@@ -177,7 +182,8 @@ function init() {
       `animate__${animation}`
     );
 
-    if (selector && isGif && /.*\.gif/.test((elem as HTMLImageElement).src)) {
+    const src = elem.dataset.src;
+    if (selector && isGif && src && isGifExt(src)) {
       handleGif();
     } else {
       elem.addEventListener('animationend', onStartAnimationEnd);
@@ -202,7 +208,7 @@ function init() {
     }
 
     const src = elem.dataset.src;
-    if (src && !elem.getAttribute('src')) {
+    if (src && !elem.getAttribute('src') && !isGifExt(src)) {
       const onImageLoad = () => {
         handleAnimations(elem, speed, repeats, delay, animation, bgBodyClass, isGif, selector);
         elem.removeEventListener('load', onImageLoad);

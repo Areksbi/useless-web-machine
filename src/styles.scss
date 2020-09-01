@@ -179,8 +179,7 @@ main {
 
 .batman,
 .james-bond,
-.goku,
-.jsgif {
+.goku {
   @include action-image($top: 50%, $left: 50%, $z-index: $z-index-image-below, $full-screen-bg-color: $black);
 }
 
@@ -222,6 +221,10 @@ main {
 
 .kill-bill {
   @include action-image($top: -300px, $left: 20px);
+}
+
+.john-travolta {
+  @include action-image($top: -115px, $left: -280px, $z-index: $z-index-image-below);
 }
 
 .add-animations {

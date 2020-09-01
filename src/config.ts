@@ -166,4 +166,13 @@ export const actions: IAction[] = [
     selector: '.goku',
     speed: SpeedsEnum.SLOW,
   },
+  {
+    animation: AnimationsEnum.FADE_IN,
+    delay: DelaysEnum.ZERO,
+    gif: true,
+    id: 19,
+    probability: 5,
+    repeats: RepeatsEnum.ONE,
+    selector: '.john-travolta',
+  },
 ].sort((a: IAction, b: IAction) => a.probability - b.probability);
