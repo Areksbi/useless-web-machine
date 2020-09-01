@@ -153,6 +153,6 @@ export const actions: IAction[] = [
     id: 17,
     probability: 5,
     selector: '.kill-bill',
-    speed: SpeedsEnum.SLOW,
+    speed: SpeedsEnum.FASTER,
   },
 ].sort((a: IAction, b: IAction) => a.probability - b.probability);
