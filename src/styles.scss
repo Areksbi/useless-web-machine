@@ -227,6 +227,10 @@ main {
   @include action-image($top: -200px, $left: -340px, $z-index: $z-index-image-below);
 }
 
+.jackie-chan {
+  @include action-image($top: -300px, $left: -250px);
+}
+
 .add-animations {
   &__link {
     bottom: 10px;

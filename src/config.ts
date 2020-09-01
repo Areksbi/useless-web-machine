@@ -175,4 +175,11 @@ export const actions: IAction[] = [
     repeats: RepeatsEnum.ONE,
     selector: '.john-travolta',
   },
+  {
+    animation: AnimationsEnum.BOUNCE_IN_UP,
+    id: 20,
+    probability: 5,
+    selector: '.jackie-chan',
+    speed: SpeedsEnum.FASTER,
+  },
 ].sort((a: IAction, b: IAction) => a.probability - b.probability);
