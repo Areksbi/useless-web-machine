@@ -10,6 +10,7 @@ const chuckNorrisEl = document.querySelector('.chuck-norris') as HTMLElement;
 const crashBandicootEl = document.querySelector('.crash-bandicoot') as HTMLElement;
 const elonMuskEl = document.querySelector('.elon-musk') as HTMLElement;
 const obamaEl = document.querySelector('.obama') as HTMLElement;
+const harryPotter = document.querySelector('.harry-potter') as HTMLElement;
 
 export const config: IConfig = {
   chances: {
@@ -122,6 +123,13 @@ export const actions: IAction[] = [
     animation: AnimationsEnum.BOUNCE_IN_LEFT,
     el: obamaEl,
     id: 11,
+    probability: 5,
+    speed: SpeedsEnum.SLOW,
+  },
+  {
+    animation: AnimationsEnum.FADE_IN_UP,
+    el: harryPotter,
+    id: 12,
     probability: 5,
     speed: SpeedsEnum.SLOW,
   },

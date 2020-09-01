@@ -197,6 +197,10 @@ main {
   @include action-image($top: -250px, $left: -400px, $z-index: $z-index-image-below);
 }
 
+.harry-potter {
+  @include action-image($top: -130px, $left: -195px, $z-index: $z-index-image-below);
+}
+
 .add-animations {
   &__link {
     bottom: 10px;
