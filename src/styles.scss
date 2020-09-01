@@ -214,6 +214,14 @@ main {
   @include action-image($top: -120px, $left: -330px, $z-index: $z-index-image-below);
 }
 
+.iron-man {
+  @include action-image($top: -120px, $left: -330px, $z-index: $z-index-image-below);
+}
+
+.jack-sparrow {
+  @include action-image($top: -30px, $left: -80px, $z-index: $z-index-image-below);
+}
+
 .add-animations {
   &__link {
     bottom: 10px;
