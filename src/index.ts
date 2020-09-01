@@ -3,21 +3,19 @@ import * as SuperGif from './libgif';
 
 import { MDCDrawer } from '@material/drawer';
 import { MDCSwitch } from '@material/switch';
-import { MDCSnackbar } from '@material/snackbar';
 import { MDCTopAppBar } from '@material/top-app-bar';
 
 import { AnimationsEnum, DelaysEnum, RepeatsEnum, SpeedsEnum } from './enums';
 import { actions as configActions, config } from './config';
-import { calculateDistance, getRandomProbabilities, isGifExt } from './utils';
+import { getRandomProbabilities, isGifExt } from './utils';
 import { IAction, ISuperGifOptions } from './interfaces';
 
 function init() {
   const counter = document.querySelector('.counter') as HTMLSpanElement;
   let actionCounter = 0;
   let actions: IAction[];
-  let isMouseFarEnough = false;
   let switchControl: MDCSwitch;
-  let switchEl: HTMLInputElement | null;
+  let totalProbabilities = 0;
 
   function initCopyright() {
     const copyrightDate = document.querySelector(`.${config.classes.copyright.el}`) as HTMLSpanElement;
@@ -48,34 +46,6 @@ function init() {
     if (counterFromStorage && counter) {
       counter.innerText = counterFromStorage;
       actionCounter = parseInt(counterFromStorage, 10);
-    }
-  }
-
-  function manageMousemoveAction(evt: MouseEvent): void {
-    if (!switchEl) return;
-
-    const mX = evt.pageX;
-    const mY = evt.pageY;
-    const distance = calculateDistance(switchEl, mX, mY);
-
-    if (distance > config.distanceMinToTriggerAction) isMouseFarEnough = true;
-    if (distance < config.distanceMinToTriggerAction && !isMouseFarEnough) return;
-
-    randomAction();
-
-    document.removeEventListener('mousemove', manageMousemoveAction);
-    isMouseFarEnough = false;
-  }
-
-  function manageFirstMousemove(): void {
-    if (!window.sessionStorage.getItem('isFirstMousemove')) {
-      const snackbarEl = document.querySelector('.mdc-snackbar');
-      if (!snackbarEl) return;
-
-      const snackbar = new MDCSnackbar(snackbarEl);
-      snackbar.open();
-
-      window.sessionStorage.setItem('isFirstMousemove', 'false');
     }
   }
 
@@ -124,14 +94,10 @@ function init() {
     function onStartAnimationEnd() {
       setSwitchOff();
       setTimeout(() => {
-        // TODO: remove after the release
-        console.log('onStartAnimationEnd - first');
         elem?.classList.remove(`animate__${animation}`, `animate__repeat-${repeats}`, `animate__delay-${delay}s`);
         elem?.removeEventListener('animationend', onStartAnimationEnd);
 
         setTimeout(() => {
-          // TODO: remove after the release
-          console.log('onStartAnimationEnd - second');
           elem?.classList.add('alternate-animation', `animate__${animation}`);
           elem?.addEventListener('animationend', onEndAnimationEnd);
         }, config.timerDisappearImages);
@@ -241,12 +207,7 @@ function init() {
       }
     }
 
-    const totalProbabilities = actions.reduce((acc, curr) => acc + curr.probability, 0);
     const probabilityToTrigger = getRandomProbabilities(totalProbabilities);
-
-    // TODO: remove after the release
-    console.log('probabilityToTrigger: ', probabilityToTrigger);
-
     let sum = 0;
     let previousSum = 0;
     const actionToTrigger = actions.find((actionOnClick): boolean => {
@@ -281,20 +242,7 @@ function init() {
       counter.innerText = actionCounter.toString();
     }
 
-    if (actionCounter <= config.initialBasicMoves) {
-      randomAction();
-      return;
-    }
-
-    const randomProbability = getRandomProbabilities(config.chances.mousemove.total);
-    const doesNextMoveHasOnMoveAction = randomProbability < config.chances.mousemove.active;
-    if (!doesNextMoveHasOnMoveAction) {
-      randomAction();
-      return;
-    }
-
-    manageFirstMousemove();
-    document.addEventListener('mousemove', manageMousemoveAction);
+    randomAction();
   }
 
   function initSwitch() {
@@ -302,7 +250,7 @@ function init() {
     if (!switchContainer) return;
     switchControl = new MDCSwitch(switchContainer);
 
-    switchEl = switchContainer.querySelector('.mdc-switch__native-control');
+    const switchEl = switchContainer.querySelector('.mdc-switch__native-control');
     if (!switchEl) return;
     switchEl.addEventListener('change', manageSwitchEvent);
   }
@@ -322,6 +270,8 @@ function init() {
         return action;
       })
       .sort((a: IAction, b: IAction) => a.probability - b.probability);
+
+    totalProbabilities = actions.reduce((acc, curr) => acc + curr.probability, 0);
   }
 
   initProbabilities();

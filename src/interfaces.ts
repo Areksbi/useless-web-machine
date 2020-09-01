@@ -24,9 +24,6 @@ export interface IClass {
 }
 
 export interface IConfig {
-  chances: {
-    [key: string]: IChance;
-  };
   classes: {
     [key: string]: IClass;
   };

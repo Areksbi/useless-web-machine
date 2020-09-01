@@ -62,8 +62,8 @@ export enum ActionIdsEnum {
 export enum ProbabilitiesEnum {
   HAND_BASE = 30,
   HAND_FASTER = 20,
-  HAND_SLOW = 12,
-  HAND_REPEAT = 8,
+  HAND_SLOW = 8,
+  HAND_REPEAT = 12,
 
   IMAGE = 15,
   FULL_SCREEN = 10,

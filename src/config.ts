@@ -2,12 +2,6 @@ import { IAction, IConfig } from './interfaces';
 import { ActionIdsEnum, AnimationsEnum, DelaysEnum, ProbabilitiesEnum, RepeatsEnum, SpeedsEnum } from './enums';
 
 export const config: IConfig = {
-  chances: {
-    mousemove: {
-      active: 0,
-      total: 100,
-    },
-  },
   classes: {
     collision: {
       hidden: 'collision--hidden',
@@ -16,7 +10,6 @@ export const config: IConfig = {
       el: 'copyright__date',
     },
   },
-  distanceMinToTriggerAction: 50,
   initialBasicMoves: 2,
   timerDisappearImages: 500,
 };
