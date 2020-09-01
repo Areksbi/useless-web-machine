@@ -256,15 +256,15 @@ function init() {
   }
 
   function initProbabilities() {
-    const counters: { [key: number]: number } = {};
+    const counters = configActions.reduce((acc: { [key: number]: number }, curr: IAction) => {
+      if (!acc[curr.probability]) {
+        acc[curr.probability] = 0;
+      }
+      ++acc[curr.probability];
+      return acc;
+    }, {});
+
     actions = configActions
-      .map((action: IAction) => {
-        if (!counters[action.probability]) {
-          counters[action.probability] = 0;
-        }
-        ++counters[action.probability];
-        return action;
-      })
       .map((action: IAction) => {
         action.probability = (action.probability / counters[action.probability]) * 100;
         return action;
