@@ -9,9 +9,6 @@ export const config: IConfig = {
     },
   },
   classes: {
-    batman: {
-      container: 'batman__container',
-    },
     collision: {
       hidden: 'collision--hidden',
     },
@@ -63,7 +60,7 @@ export const actions: IAction[] = [
   },
   {
     animation: AnimationsEnum.FADE_IN,
-    container: config.classes.batman.container,
+    container: 'batman__container',
     delay: DelaysEnum.ONE,
     id: 5,
     probability: 5,
@@ -119,5 +116,15 @@ export const actions: IAction[] = [
     probability: 5,
     selector: '.harry-potter',
     speed: SpeedsEnum.SLOW,
+  },
+  {
+    animation: AnimationsEnum.FADE_IN,
+    container: 'james-bond__container',
+    delay: DelaysEnum.ONE,
+    id: 13,
+    probability: 5,
+    repeats: RepeatsEnum.ONE,
+    selector: '.james-bond',
+    speed: SpeedsEnum.FASTER,
   },
 ].sort((a: IAction, b: IAction) => a.probability - b.probability);

@@ -170,7 +170,8 @@ main {
 }
 
 .batman {
-  @include concealable-image($z-index-image-below);
+  @include action-image($top: 50%, $left: 50%, $z-index: $z-index-image-below);
+  transform: translate(-50%, -50%);
 
   &__container {
     background-color: $black;
@@ -199,6 +200,15 @@ main {
 
 .harry-potter {
   @include action-image($top: -130px, $left: -195px, $z-index: $z-index-image-below);
+}
+
+.james-bond {
+  @include action-image($top: 50%, $left: 50%, $z-index: $z-index-image-below);
+  transform: translate(-50%, -50%);
+
+  &__container {
+    background-color: $black;
+  }
 }
 
 .add-animations {
