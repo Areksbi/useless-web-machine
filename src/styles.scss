@@ -180,7 +180,8 @@ main {
 .batman,
 .james-bond,
 .goku,
-.pick-of-destiny {
+.pick-of-destiny,
+.riven {
   @include action-image($top: 50%, $left: 50%, $z-index: $z-index-image-below, $full-screen-bg-color: $black);
 }
 
@@ -242,10 +243,6 @@ main {
 
 .levi {
   @include action-image($top: -70px, $left: -180px);
-}
-
-.riven {
-  @include action-image($top: -400px, $left: 10px);
 }
 
 .minion {
