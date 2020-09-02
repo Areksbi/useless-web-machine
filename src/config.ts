@@ -206,4 +206,10 @@ export const actions: IAction[] = [
     selector: '.levi',
     speed: SpeedsEnum.FAST,
   },
+  {
+    animation: AnimationsEnum.BOUNCE_IN_RIGHT,
+    id: ActionIdsEnum.MINION,
+    probability: ProbabilitiesEnum.IMAGE,
+    selector: '.minion',
+  },
 ];

@@ -244,6 +244,10 @@ main {
   @include action-image($top: -70px, $left: -180px);
 }
 
+.minion {
+  @include action-image($top: -190px, $left: 10px);
+}
+
 .add-animations {
   &__link {
     bottom: 10px;
