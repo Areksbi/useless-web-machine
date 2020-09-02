@@ -259,6 +259,13 @@ export const actions: IAction[] = [
     speed: SpeedsEnum.SLOWER,
   },
   {
+    animation: AnimationsEnum.BOUNCE_IN_LEFT,
+    id: ActionIdsEnum.LARA_CROFT,
+    probability: ProbabilitiesEnum.IMAGE,
+    selector: '.lara-croft',
+    speed: SpeedsEnum.SLOW,
+  },
+  {
     animation: AnimationsEnum.FADE_IN,
     container: 'devil-may-cry__container',
     delay: DelaysEnum.ONE,
@@ -275,7 +282,7 @@ export const actions: IAction[] = [
   // ProbabilitiesEnum.HAND_REPEAT: 1/1
   // ProbabilitiesEnum.IMAGE: 21/56
   //    RIGHT: 8/26
-  //    LEFT: 3/10
+  //    LEFT: 4/10
   //    BOTTOM (UP): 7/10
   //    TOP (DOWN): 2/10
   // ProbabilitiesEnum.FULL_SCREEN: 5/25
