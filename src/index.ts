@@ -256,6 +256,9 @@ function init() {
   }
 
   function initProbabilities() {
+    const configTotalProbabilities = configActions.reduce((acc: number, curr: IAction) => acc + curr.probability, 0);
+    const minProbability = Math.min(...configActions.map((action: IAction) => action.probability));
+    const multiplier = 1 / (minProbability / configTotalProbabilities);
     const counters = configActions.reduce((acc: { [key: number]: number }, curr: IAction) => {
       if (!acc[curr.probability]) {
         acc[curr.probability] = 0;
@@ -266,12 +269,12 @@ function init() {
 
     actions = configActions
       .map((action: IAction) => {
-        action.probability = (action.probability / counters[action.probability]) * 100;
+        action.probability = (action.probability / counters[action.probability]) * multiplier;
         return action;
       })
       .sort((a: IAction, b: IAction) => a.probability - b.probability);
 
-    totalProbabilities = actions.reduce((acc, curr) => acc + curr.probability, 0);
+    totalProbabilities = actions.reduce((acc: number, curr: IAction) => acc + curr.probability, 0);
   }
 
   initProbabilities();
