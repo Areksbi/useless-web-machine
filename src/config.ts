@@ -258,6 +258,6 @@ export const actions: IAction[] = [
   // ProbabilitiesEnum.HAND_SLOW: 1/1
   // ProbabilitiesEnum.HAND_REPEAT: 1/1
   // ProbabilitiesEnum.IMAGE: 20/56
-  // ProbabilitiesEnum.FULL_SCREEN: 4/30
+  // ProbabilitiesEnum.FULL_SCREEN: 4/25
   // ProbabilitiesEnum.GIF: 3/15
 ];
