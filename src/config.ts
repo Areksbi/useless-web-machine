@@ -192,4 +192,11 @@ export const actions: IAction[] = [
     selector: '.gintoki',
     speed: SpeedsEnum.SLOW,
   },
+  {
+    animation: AnimationsEnum.BOUNCE_IN_RIGHT,
+    id: ActionIdsEnum.GROOT,
+    probability: ProbabilitiesEnum.IMAGE,
+    selector: '.groot',
+    speed: SpeedsEnum.SLOW,
+  },
 ];

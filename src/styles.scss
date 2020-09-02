@@ -236,6 +236,10 @@ main {
   @include action-image($top: -270px, $left: -280px);
 }
 
+.groot {
+  @include action-image($top: -365px, $left: -155px);
+}
+
 .add-animations {
   &__link {
     bottom: 10px;
