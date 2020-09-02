@@ -258,6 +258,15 @@ export const actions: IAction[] = [
     selector: '.johnny-sins',
     speed: SpeedsEnum.SLOWER,
   },
+  {
+    animation: AnimationsEnum.FADE_IN,
+    container: 'devil-may-cry__container',
+    delay: DelaysEnum.ONE,
+    id: ActionIdsEnum.DEVIL_MAY_CRY,
+    probability: ProbabilitiesEnum.FULL_SCREEN,
+    repeats: RepeatsEnum.ONE,
+    selector: '.devil-may-cry',
+  },
 
   // Counters for DEV porpoise (sum must be 100):
   // ProbabilitiesEnum.HAND_BASE: 1/1
@@ -269,6 +278,6 @@ export const actions: IAction[] = [
   //    LEFT: 3/10
   //    BOTTOM (UP): 7/10
   //    TOP (DOWN): 2/10
-  // ProbabilitiesEnum.FULL_SCREEN: 4/25
+  // ProbabilitiesEnum.FULL_SCREEN: 5/25
   // ProbabilitiesEnum.GIF: 3/15
 ];
