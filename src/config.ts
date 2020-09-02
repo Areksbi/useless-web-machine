@@ -274,6 +274,12 @@ export const actions: IAction[] = [
     repeats: RepeatsEnum.ONE,
     selector: '.devil-may-cry',
   },
+  {
+    animation: AnimationsEnum.FADE_IN_DOWN,
+    id: ActionIdsEnum.BREAKING_BAD,
+    probability: ProbabilitiesEnum.IMAGE,
+    selector: '.breaking-bad',
+  },
 
   // Counters for DEV porpoise (sum must be 100):
   // ProbabilitiesEnum.HAND_BASE: 1/1
@@ -284,7 +290,7 @@ export const actions: IAction[] = [
   //    RIGHT: 8/33
   //    LEFT: 4/11
   //    BOTTOM (UP): 7/11
-  //    TOP (DOWN): 2/11
+  //    TOP (DOWN): 3/11
   // ProbabilitiesEnum.FULL_SCREEN: 5/18
   // ProbabilitiesEnum.GIF: 3/12
 ];
