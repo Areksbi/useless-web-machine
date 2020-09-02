@@ -249,6 +249,10 @@ main {
   @include action-image($top: -190px, $left: 10px);
 }
 
+.jinx {
+  @include action-image($top: -290px, $left: -20px);
+}
+
 .add-animations {
   &__link {
     bottom: 10px;
