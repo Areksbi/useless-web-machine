@@ -199,4 +199,11 @@ export const actions: IAction[] = [
     selector: '.groot',
     speed: SpeedsEnum.SLOW,
   },
+  {
+    animation: AnimationsEnum.FADE_IN_UP,
+    id: ActionIdsEnum.LEVI,
+    probability: ProbabilitiesEnum.IMAGE,
+    selector: '.levi',
+    speed: SpeedsEnum.FAST,
+  },
 ];

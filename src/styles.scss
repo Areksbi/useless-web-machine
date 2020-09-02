@@ -240,6 +240,10 @@ main {
   @include action-image($top: -365px, $left: -155px);
 }
 
+.levi {
+  @include action-image($top: -70px, $left: -180px);
+}
+
 .add-animations {
   &__link {
     bottom: 10px;
