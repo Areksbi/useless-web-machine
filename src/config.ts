@@ -280,17 +280,4 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.breaking-bad',
   },
-
-  // Counters for DEV porpoise (sum must be 100):
-  // ProbabilitiesEnum.HAND_BASE: 1/1
-  // ProbabilitiesEnum.HAND_FASTER: 1/1
-  // ProbabilitiesEnum.HAND_SLOW: 1/1
-  // ProbabilitiesEnum.HAND_REPEAT: 1/1
-  // ProbabilitiesEnum.IMAGE:
-  //    RIGHT: 8/33
-  //    LEFT: 4/11
-  //    BOTTOM (UP): 7/11
-  //    TOP (DOWN): 3/11
-  // ProbabilitiesEnum.FULL_SCREEN: 5/18
-  // ProbabilitiesEnum.GIF: 3/12
 ];

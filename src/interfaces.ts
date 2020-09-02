@@ -1,5 +1,11 @@
 import { AnimationsEnum, DelaysEnum, RepeatsEnum, SpeedsEnum } from './enums';
 
+export interface IStatCounter {
+  current: number;
+  name: string;
+  target: number;
+}
+
 export interface IAction {
   id: number;
   probability: number;
@@ -12,12 +18,7 @@ export interface IAction {
   repeats?: RepeatsEnum;
 }
 
-export interface IChance {
-  active: number;
-  total: number;
-}
-
-export interface IClass {
+interface IClass {
   container?: string;
   el?: string;
   hidden?: string;
