@@ -253,6 +253,10 @@ main {
   @include action-image($top: -290px, $left: -20px);
 }
 
+.sasuke {
+  @include action-image($top: -110px, $left: -25px);
+}
+
 .add-animations {
   &__link {
     bottom: 10px;
