@@ -251,4 +251,13 @@ export const actions: IAction[] = [
     selector: '.matrix',
     speed: SpeedsEnum.FASTER,
   },
+
+  // Counters for DEV porpoise (sum must be 100):
+  // ProbabilitiesEnum.HAND_BASE: 1/1
+  // ProbabilitiesEnum.HAND_FASTER: 1/1
+  // ProbabilitiesEnum.HAND_SLOW: 1/1
+  // ProbabilitiesEnum.HAND_REPEAT: 1/1
+  // ProbabilitiesEnum.IMAGE: 20/56
+  // ProbabilitiesEnum.FULL_SCREEN: 4/30
+  // ProbabilitiesEnum.GIF: 3/15
 ];
