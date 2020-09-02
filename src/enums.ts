@@ -62,6 +62,7 @@ export enum ActionIdsEnum {
   MINION = 26,
   JINX = 27,
   SASUKE = 28,
+  TRUMP = 29,
 }
 
 // Must be unique values with sum 100(%)

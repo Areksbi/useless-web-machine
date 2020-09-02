@@ -257,6 +257,10 @@ main {
   @include action-image($top: -110px, $left: -25px);
 }
 
+.trump {
+  @include action-image($top: -270px, $left: -60px);
+}
+
 .add-animations {
   &__link {
     bottom: 10px;

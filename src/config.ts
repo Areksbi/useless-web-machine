@@ -233,4 +233,11 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.sasuke',
   },
+  {
+    animation: AnimationsEnum.BOUNCE_IN_RIGHT,
+    id: ActionIdsEnum.TRUMP,
+    probability: 50000,
+    selector: '.trump',
+    speed: SpeedsEnum.SLOW,
+  },
 ];
