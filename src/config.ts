@@ -280,4 +280,12 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.breaking-bad',
   },
+  {
+    animation: AnimationsEnum.FADE_IN,
+    container: 'death-note__container',
+    gif: true,
+    id: ActionIdsEnum.DEATH_NOTE,
+    probability: ProbabilitiesEnum.GIF,
+    selector: '.death-note',
+  },
 ];
