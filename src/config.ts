@@ -240,4 +240,15 @@ export const actions: IAction[] = [
     selector: '.trump',
     speed: SpeedsEnum.SLOW,
   },
+  {
+    animation: AnimationsEnum.FADE_IN,
+    container: 'matrix__container',
+    delay: DelaysEnum.ZERO,
+    gif: true,
+    id: ActionIdsEnum.MATRIX,
+    probability: ProbabilitiesEnum.GIF,
+    repeats: RepeatsEnum.ONE,
+    selector: '.matrix',
+    speed: SpeedsEnum.FASTER,
+  },
 ];
