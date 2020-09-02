@@ -208,6 +208,13 @@ export const actions: IAction[] = [
   },
   {
     animation: AnimationsEnum.BOUNCE_IN_RIGHT,
+    id: ActionIdsEnum.RIVEN,
+    probability: ProbabilitiesEnum.IMAGE,
+    selector: '.riven',
+    speed: SpeedsEnum.SLOW,
+  },
+  {
+    animation: AnimationsEnum.BOUNCE_IN_RIGHT,
     id: ActionIdsEnum.MINION,
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.minion',
