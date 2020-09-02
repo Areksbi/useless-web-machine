@@ -262,6 +262,10 @@ main {
   @include action-image($top: -270px, $left: -60px);
 }
 
+.johnny-sins {
+  @include action-image($top: -270px, $left: -460px, $z-index: $z-index-image-below);
+}
+
 .add-animations {
   &__link {
     bottom: 10px;

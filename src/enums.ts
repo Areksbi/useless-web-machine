@@ -64,6 +64,7 @@ export enum ActionIdsEnum {
   SASUKE = 28,
   TRUMP = 29,
   MATRIX = 29,
+  JOHNNY_SINS = 30,
 }
 
 // Must be unique values with sum 100(%)
