@@ -214,7 +214,6 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.FULL_SCREEN,
     repeats: RepeatsEnum.ONE,
     selector: '.riven',
-    speed: SpeedsEnum.SLOW,
   },
   {
     animation: AnimationsEnum.BOUNCE_IN_RIGHT,
