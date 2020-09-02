@@ -266,6 +266,10 @@ main {
   @include action-image($top: -270px, $left: -460px, $z-index: $z-index-image-below);
 }
 
+.lara-croft {
+  @include action-image($top: -304px, $left: -600px, $z-index: $z-index-image-below);
+}
+
 .add-animations {
   &__link {
     bottom: 10px;
