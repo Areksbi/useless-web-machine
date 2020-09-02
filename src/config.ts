@@ -258,10 +258,10 @@ export const actions: IAction[] = [
   // ProbabilitiesEnum.HAND_SLOW: 1/1
   // ProbabilitiesEnum.HAND_REPEAT: 1/1
   // ProbabilitiesEnum.IMAGE: 20/56
-  // RIGHT: 8/26
-  // LEFT: 2/10
-  // BOTTOM (UP): 7/10
-  // TOP (DOWN): 2/10
+  //    RIGHT: 8/26
+  //    LEFT: 2/10
+  //    BOTTOM (UP): 7/10
+  //    TOP (DOWN): 2/10
   // ProbabilitiesEnum.FULL_SCREEN: 4/25
   // ProbabilitiesEnum.GIF: 3/15
 ];
