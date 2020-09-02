@@ -76,7 +76,7 @@ export enum ProbabilitiesEnum {
   HAND_SLOW = 8,
   HAND_REPEAT = 12,
 
-  IMAGE = 20,
-  FULL_SCREEN = 10,
-  GIF = 5,
+  IMAGE = 25,
+  FULL_SCREEN = 6,
+  GIF = 4,
 }
