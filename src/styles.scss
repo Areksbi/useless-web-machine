@@ -287,6 +287,10 @@ main {
   @include action-image($top: -170px, $left: 20px);
 }
 
+.timmy-turner {
+  @include action-image($top: -80px, $left: 25px);
+}
+
 .surrender {
   @include action-image($top: 50%, $left: 50%, $full-screen-bg-color: $grey);
 }

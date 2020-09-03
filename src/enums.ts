@@ -74,6 +74,7 @@ export enum ActionIdsEnum {
   CLOUD_VS_SEPHIROTH = 35,
   ADVENTURE_TIME = 36,
   PABLO_ESCOBAR = 37,
+  TIMMY_TURNER = 38,
 
   SURRENDER = 101,
 }

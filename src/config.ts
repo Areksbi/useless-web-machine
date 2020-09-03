@@ -306,6 +306,12 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.pablo-escobar',
   },
+  {
+    animation: AnimationsEnum.BOUNCE_IN_RIGHT,
+    id: ActionIdsEnum.TIMMY_TURNER,
+    probability: ProbabilitiesEnum.IMAGE,
+    selector: '.timmy-turner',
+  },
 
   {
     animation: AnimationsEnum.FADE_IN,

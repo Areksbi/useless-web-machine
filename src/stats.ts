@@ -36,7 +36,7 @@ export default function stats() {
           (action.animation === AnimationsEnum.BOUNCE_IN_RIGHT || action.animation === AnimationsEnum.FADE_IN_RIGHT)
       ).length,
       name: 'IMAGE:IN_RIGHT',
-      target: 34,
+      target: 37,
     },
     {
       current: actions.filter(
@@ -45,7 +45,7 @@ export default function stats() {
           (action.animation === AnimationsEnum.BOUNCE_IN_LEFT || action.animation === AnimationsEnum.FADE_IN_LEFT)
       ).length,
       name: 'IMAGE:IN_LEFT',
-      target: 11,
+      target: 10,
     },
     {
       current: actions.filter(
@@ -54,7 +54,7 @@ export default function stats() {
           (action.animation === AnimationsEnum.BOUNCE_IN_UP || action.animation === AnimationsEnum.FADE_IN_UP)
       ).length,
       name: 'IMAGE:IN_UP',
-      target: 11,
+      target: 10,
     },
     {
       current: actions.filter(
@@ -63,7 +63,7 @@ export default function stats() {
           (action.animation === AnimationsEnum.BOUNCE_IN_DOWN || action.animation === AnimationsEnum.FADE_IN_DOWN)
       ).length,
       name: 'IMAGE:IN_DOWN',
-      target: 11,
+      target: 10,
     },
     {
       current: actions.filter((action: IAction) => action.probability === ProbabilitiesEnum.FULL_SCREEN).length,
