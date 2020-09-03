@@ -291,9 +291,16 @@ export const actions: IAction[] = [
     container: 'cloud-vs-sephiroth__container',
     delay: DelaysEnum.ONE,
     id: ActionIdsEnum.CLOUD_VS_SEPHIROTH,
-    probability: 50000,
+    probability: ProbabilitiesEnum.FULL_SCREEN,
     selector: '.cloud-vs-sephiroth',
   },
+  {
+    animation: AnimationsEnum.BOUNCE_IN_DOWN,
+    id: ActionIdsEnum.ADVENTURE_TIME,
+    probability: ProbabilitiesEnum.IMAGE,
+    selector: '.adventure-time',
+  },
+
   {
     animation: AnimationsEnum.FADE_IN,
     container: 'surrender__container',

@@ -279,6 +279,10 @@ main {
   @include action-image($top: -400px, $left: -260px, $z-index: $z-index-image-below);
 }
 
+.adventure-time {
+  @include action-image($top: -510px, $left: -190px);
+}
+
 .surrender {
   @include action-image($top: 50%, $left: 50%, $full-screen-bg-color: $grey);
 }

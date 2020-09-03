@@ -70,6 +70,7 @@ export enum ActionIdsEnum {
   BREAKING_BAD = 33,
   DEATH_NOTE = 34,
   CLOUD_VS_SEPHIROTH = 35,
+  ADVENTURE_TIME = 36,
 
   SURRENDER = 101,
 }
