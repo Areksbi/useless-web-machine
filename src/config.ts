@@ -11,6 +11,7 @@ export const config: IConfig = {
     },
   },
   initialBasicMoves: 2,
+  surrenderOn: 1000,
   timerDisappearImages: 500,
 };
 

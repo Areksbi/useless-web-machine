@@ -49,54 +49,6 @@ function init() {
     }
   }
 
-  function surrenderAction() {
-    function handleSurrenderGif() {
-      if (!surrenderAction) return;
-
-      const superGifOptions: ISuperGifOptions = {
-        draw_while_loading: false,
-        gif: elem,
-        loop_mode: true,
-      };
-      if (surrenderAction.delay) {
-        superGifOptions.loop_delay = surrenderAction.delay * 1000;
-      }
-      const rub = SuperGif(superGifOptions);
-      const src = elem.dataset.src;
-      rub.load_url(src);
-
-      const jsGifEl = document.querySelector('.jsgif');
-      if (!jsGifEl || surrenderAction.selector.charAt(0) !== '.') return;
-      jsGifEl.classList.add(surrenderAction.selector.replace('.', ''));
-    }
-
-    switchControl.disabled = true;
-
-    const surrenderAction = actions.find((action) => action.id === ActionIdsEnum.SURRENDER);
-    if (!surrenderAction) return;
-
-    const elem = document.querySelector(surrenderAction.selector) as HTMLElement;
-    if (!elem) return;
-    elem.style.willChange = 'transform';
-
-    if (surrenderAction.container) {
-      document.body.classList.add(surrenderAction.container);
-    }
-
-    const hiddenClass = Array.from(elem.classList).find((className: string) => className.endsWith('--hidden'));
-    if (!hiddenClass) return;
-    elem.classList.remove(hiddenClass);
-    elem.classList.add(
-      `animate__${surrenderAction.speed}`,
-      `animate__repeat-${surrenderAction.repeats}`,
-      `animate__delay-${surrenderAction.delay}s`,
-      'animate__animated',
-      `animate__${surrenderAction.animation}`
-    );
-
-    handleSurrenderGif();
-  }
-
   function setSwitchOff(): void {
     const collisionEl = document.querySelector('.collision');
     if (!collisionEl) return;
@@ -152,28 +104,56 @@ function init() {
       }, config.timerDisappearImages);
     }
 
-    function handleGif() {
+    function handleOnEndGif(originalEl: Node) {
+      if (!selector) return;
+
+      onStartAnimationEnd();
+      const jsGifEl = document.querySelector('.jsgif');
+      if (!jsGifEl) return;
+
+      jsGifEl?.parentNode?.appendChild(originalEl);
+      jsGifEl.remove();
+
+      elem = document.querySelector(selector);
+      onEndAnimationEnd();
+    }
+
+    function handleGif(isSurrender: boolean = false) {
       if (!elem || !selector) return;
 
       const originalEl = elem.cloneNode(true);
       const superGifOptions: ISuperGifOptions = {
         draw_while_loading: false,
         gif: elem,
-        loop_mode: false,
+        loop_mode: isSurrender,
         on_end: () => {
-          onStartAnimationEnd();
-          const jsGifEl = document.querySelector('.jsgif');
-          if (!jsGifEl) return;
+          if (isSurrender) {
+            import('@material/ripple/index').then(({ MDCRipple }) => {
+              const onKeepPlayingClick = () => {
+                if (!keepPlaying) return;
 
-          jsGifEl?.parentNode?.appendChild(originalEl);
-          jsGifEl.remove();
+                rub.pause();
+                handleOnEndGif(originalEl);
+                keepPlaying.classList.add('keep-playing--hidden');
+                buttonRipple.unlisten('click', onKeepPlayingClick);
+              };
 
-          elem = document.querySelector(selector);
-          onEndAnimationEnd();
+              const continueAfterSurrenderBtn = document.querySelector('.mdc-button');
+              const keepPlaying = document.querySelector('.keep-playing');
+              if (!continueAfterSurrenderBtn || !keepPlaying) return;
+
+              const buttonRipple = new MDCRipple(continueAfterSurrenderBtn);
+              buttonRipple.listen('click', onKeepPlayingClick);
+              keepPlaying.classList.remove('keep-playing--hidden');
+            });
+            return;
+          }
+
+          handleOnEndGif(originalEl);
         },
       };
       if (delay) {
-        superGifOptions.loop_delay = delay * 1000;
+        superGifOptions.loop_delay = delay * config.surrenderOn;
       }
       const rub = SuperGif(superGifOptions);
       const src = elem.dataset.src;
@@ -199,10 +179,11 @@ function init() {
 
     const src = elem.dataset.src;
     if (selector && isGif && src && isGifExt(src)) {
-      handleGif();
-    } else {
-      elem.addEventListener('animationend', onStartAnimationEnd);
+      handleGif(actionCounter === config.surrenderOn);
+      return;
     }
+
+    elem.addEventListener('animationend', onStartAnimationEnd);
   }
 
   function triggerAction(
@@ -238,6 +219,22 @@ function init() {
 
   function randomAction(): void {
     switchControl.disabled = true;
+
+    if (actionCounter === config.surrenderOn) {
+      const surrenderAction = actions.find((action) => action.id === ActionIdsEnum.SURRENDER);
+      if (surrenderAction) {
+        triggerAction(
+          surrenderAction.selector,
+          surrenderAction.animation,
+          surrenderAction.speed,
+          surrenderAction.repeats,
+          surrenderAction.delay,
+          surrenderAction.container,
+          surrenderAction.gif
+        );
+        return;
+      }
+    }
 
     if (actionCounter <= config.initialBasicMoves) {
       const basicAction = actions.find((action) => action.id === ActionIdsEnum.HAND_BASE);
@@ -288,11 +285,6 @@ function init() {
 
     if (counter) {
       counter.innerText = actionCounter.toString();
-    }
-
-    if (actionCounter === 1000) {
-      surrenderAction();
-      return;
     }
 
     randomAction();
