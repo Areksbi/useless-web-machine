@@ -28,6 +28,8 @@ export enum AnimationsEnum {
 
   FADE_IN = 'fadeIn',
   FADE_IN_DOWN = 'fadeInDown',
+  FADE_IN_LEFT = 'fadeinLeft',
+  FADE_IN_RIGHT = 'fadeInRight',
   FADE_IN_UP = 'fadeInUp',
 }
 
@@ -71,6 +73,7 @@ export enum ActionIdsEnum {
   DEATH_NOTE = 34,
   CLOUD_VS_SEPHIROTH = 35,
   ADVENTURE_TIME = 36,
+  PABLO_ESCOBAR = 37,
 
   SURRENDER = 101,
 }

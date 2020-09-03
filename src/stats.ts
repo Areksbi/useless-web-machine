@@ -31,16 +31,20 @@ export default function stats() {
     },
     {
       current: actions.filter(
-        (action: IAction) => action.probability === ProbabilitiesEnum.IMAGE && action.animation === AnimationsEnum.BOUNCE_IN_RIGHT
+        (action: IAction) =>
+          action.probability === ProbabilitiesEnum.IMAGE &&
+          (action.animation === AnimationsEnum.BOUNCE_IN_RIGHT || action.animation === AnimationsEnum.FADE_IN_RIGHT)
       ).length,
-      name: 'IMAGE:BOUNCE_IN_RIGHT',
+      name: 'IMAGE:IN_RIGHT',
       target: 34,
     },
     {
       current: actions.filter(
-        (action: IAction) => action.probability === ProbabilitiesEnum.IMAGE && action.animation === AnimationsEnum.BOUNCE_IN_LEFT
+        (action: IAction) =>
+          action.probability === ProbabilitiesEnum.IMAGE &&
+          (action.animation === AnimationsEnum.BOUNCE_IN_LEFT || action.animation === AnimationsEnum.FADE_IN_LEFT)
       ).length,
-      name: 'IMAGE:BOUNCE_IN_LEFT',
+      name: 'IMAGE:IN_LEFT',
       target: 11,
     },
     {
@@ -49,7 +53,7 @@ export default function stats() {
           action.probability === ProbabilitiesEnum.IMAGE &&
           (action.animation === AnimationsEnum.BOUNCE_IN_UP || action.animation === AnimationsEnum.FADE_IN_UP)
       ).length,
-      name: 'IMAGE:BOUNCE_IN_UP',
+      name: 'IMAGE:IN_UP',
       target: 11,
     },
     {
@@ -58,7 +62,7 @@ export default function stats() {
           action.probability === ProbabilitiesEnum.IMAGE &&
           (action.animation === AnimationsEnum.BOUNCE_IN_DOWN || action.animation === AnimationsEnum.FADE_IN_DOWN)
       ).length,
-      name: 'IMAGE:BOUNCE_IN_DOWN',
+      name: 'IMAGE:IN_DOWN',
       target: 11,
     },
     {

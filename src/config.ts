@@ -300,6 +300,12 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.adventure-time',
   },
+  {
+    animation: AnimationsEnum.FADE_IN_RIGHT,
+    id: ActionIdsEnum.PABLO_ESCOBAR,
+    probability: ProbabilitiesEnum.IMAGE,
+    selector: '.pablo-escobar',
+  },
 
   {
     animation: AnimationsEnum.FADE_IN,
