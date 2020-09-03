@@ -5,7 +5,7 @@ import { MDCDrawer } from '@material/drawer';
 import { MDCSwitch } from '@material/switch';
 import { MDCTopAppBar } from '@material/top-app-bar';
 
-import { AnimationsEnum, DelaysEnum, RepeatsEnum, SpeedsEnum } from './enums';
+import { ActionIdsEnum, AnimationsEnum, DelaysEnum, ProbabilitiesEnum, RepeatsEnum, SpeedsEnum } from './enums';
 import { actions as configActions, config } from './config';
 import { getRandomProbabilities, isDevMode, isGifExt } from './utils';
 import { IAction, ISuperGifOptions } from './interfaces';
@@ -104,28 +104,56 @@ function init() {
       }, config.timerDisappearImages);
     }
 
-    function handleGif() {
+    function handleOnEndGif(originalEl: Node) {
+      if (!selector) return;
+
+      onStartAnimationEnd();
+      const jsGifEl = document.querySelector('.jsgif');
+      if (!jsGifEl) return;
+
+      jsGifEl?.parentNode?.appendChild(originalEl);
+      jsGifEl.remove();
+
+      elem = document.querySelector(selector);
+      onEndAnimationEnd();
+    }
+
+    function handleGif(isSurrender: boolean = false) {
       if (!elem || !selector) return;
 
       const originalEl = elem.cloneNode(true);
       const superGifOptions: ISuperGifOptions = {
         draw_while_loading: false,
         gif: elem,
-        loop_mode: false,
+        loop_mode: isSurrender,
         on_end: () => {
-          onStartAnimationEnd();
-          const jsGifEl = document.querySelector('.jsgif');
-          if (!jsGifEl) return;
+          if (isSurrender) {
+            import('@material/ripple/index').then(({ MDCRipple }) => {
+              const onKeepPlayingClick = () => {
+                if (!keepPlaying) return;
 
-          jsGifEl?.parentNode?.appendChild(originalEl);
-          jsGifEl.remove();
+                rub.pause();
+                handleOnEndGif(originalEl);
+                keepPlaying.classList.add('keep-playing--hidden');
+                buttonRipple.unlisten('click', onKeepPlayingClick);
+              };
 
-          elem = document.querySelector(selector);
-          onEndAnimationEnd();
+              const continueAfterSurrenderBtn = document.querySelector('.mdc-button');
+              const keepPlaying = document.querySelector('.keep-playing');
+              if (!continueAfterSurrenderBtn || !keepPlaying) return;
+
+              const buttonRipple = new MDCRipple(continueAfterSurrenderBtn);
+              buttonRipple.listen('click', onKeepPlayingClick);
+              keepPlaying.classList.remove('keep-playing--hidden');
+            });
+            return;
+          }
+
+          handleOnEndGif(originalEl);
         },
       };
       if (delay) {
-        superGifOptions.loop_delay = delay * 1000;
+        superGifOptions.loop_delay = delay * config.surrenderOn;
       }
       const rub = SuperGif(superGifOptions);
       const src = elem.dataset.src;
@@ -151,10 +179,11 @@ function init() {
 
     const src = elem.dataset.src;
     if (selector && isGif && src && isGifExt(src)) {
-      handleGif();
-    } else {
-      elem.addEventListener('animationend', onStartAnimationEnd);
+      handleGif(actionCounter === config.surrenderOn);
+      return;
     }
+
+    elem.addEventListener('animationend', onStartAnimationEnd);
   }
 
   function triggerAction(
@@ -191,8 +220,24 @@ function init() {
   function randomAction(): void {
     switchControl.disabled = true;
 
+    if (actionCounter === config.surrenderOn) {
+      const surrenderAction = actions.find((action) => action.id === ActionIdsEnum.SURRENDER);
+      if (surrenderAction) {
+        triggerAction(
+          surrenderAction.selector,
+          surrenderAction.animation,
+          surrenderAction.speed,
+          surrenderAction.repeats,
+          surrenderAction.delay,
+          surrenderAction.container,
+          surrenderAction.gif
+        );
+        return;
+      }
+    }
+
     if (actionCounter <= config.initialBasicMoves) {
-      const basicAction = actions.find((action) => action.id === 0);
+      const basicAction = actions.find((action) => action.id === ActionIdsEnum.HAND_BASE);
       if (basicAction) {
         triggerAction(
           basicAction.selector,
@@ -257,7 +302,11 @@ function init() {
 
   function initProbabilities() {
     const configTotalProbabilities = configActions.reduce((acc: number, curr: IAction) => acc + curr.probability, 0);
-    const minProbability = Math.min(...configActions.map((action: IAction) => action.probability));
+    const minProbability = Math.min(
+      ...configActions
+        .map((action: IAction) => action.probability)
+        .filter((probability: number) => probability !== ProbabilitiesEnum.SURRENDER)
+    );
     const multiplier = 1 / (minProbability / configTotalProbabilities);
     const counters = configActions.reduce((acc: { [key: number]: number }, curr: IAction) => {
       if (!acc[curr.probability]) {

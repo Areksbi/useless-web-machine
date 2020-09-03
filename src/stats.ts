@@ -25,6 +25,11 @@ export default function stats() {
       target: 1,
     },
     {
+      current: actions.filter((action: IAction) => action.probability === ProbabilitiesEnum.SURRENDER).length,
+      name: 'SURRENDER',
+      target: 1,
+    },
+    {
       current: actions.filter(
         (action: IAction) => action.probability === ProbabilitiesEnum.IMAGE && action.animation === AnimationsEnum.BOUNCE_IN_RIGHT
       ).length,
