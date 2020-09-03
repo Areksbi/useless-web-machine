@@ -7,7 +7,7 @@ export enum SpeedsEnum {
 
 export enum DelaysEnum {
   ZERO = 0,
-  ONE = 1, // Standard for body background-color (look at: styles.scss > body > transition)
+  ONE = 1,
   TWO = 2,
   THREE = 3,
   FOUR = 4,
@@ -69,6 +69,7 @@ export enum ActionIdsEnum {
   DEVIL_MAY_CRY = 32,
   BREAKING_BAD = 33,
   DEATH_NOTE = 34,
+  SURRENDER = 101,
 }
 
 // Must be unique values with sum 100(%)
@@ -81,4 +82,6 @@ export enum ProbabilitiesEnum {
   IMAGE = 25,
   FULL_SCREEN = 6,
   GIF = 4,
+
+  SURRENDER = 0,
 }

@@ -151,7 +151,6 @@ export const actions: IAction[] = [
   {
     animation: AnimationsEnum.FADE_IN,
     container: 'goku__container',
-    delay: DelaysEnum.ZERO,
     gif: true,
     id: ActionIdsEnum.GOKU,
     probability: ProbabilitiesEnum.GIF,
@@ -161,7 +160,6 @@ export const actions: IAction[] = [
   },
   {
     animation: AnimationsEnum.FADE_IN,
-    delay: DelaysEnum.ZERO,
     gif: true,
     id: ActionIdsEnum.JOHN_TRAVOLTA,
     probability: ProbabilitiesEnum.GIF,
@@ -243,7 +241,6 @@ export const actions: IAction[] = [
   {
     animation: AnimationsEnum.FADE_IN,
     container: 'matrix__container',
-    delay: DelaysEnum.ZERO,
     gif: true,
     id: ActionIdsEnum.MATRIX,
     probability: ProbabilitiesEnum.GIF,
@@ -287,5 +284,14 @@ export const actions: IAction[] = [
     id: ActionIdsEnum.DEATH_NOTE,
     probability: ProbabilitiesEnum.GIF,
     selector: '.death-note',
+  },
+  {
+    animation: AnimationsEnum.FADE_IN,
+    container: 'surrender__container',
+    gif: true,
+    id: ActionIdsEnum.SURRENDER,
+    probability: ProbabilitiesEnum.SURRENDER,
+    selector: '.surrender',
+    speed: SpeedsEnum.SLOWER,
   },
 ];

@@ -5,7 +5,7 @@ import { MDCDrawer } from '@material/drawer';
 import { MDCSwitch } from '@material/switch';
 import { MDCTopAppBar } from '@material/top-app-bar';
 
-import { AnimationsEnum, DelaysEnum, RepeatsEnum, SpeedsEnum } from './enums';
+import { ActionIdsEnum, AnimationsEnum, DelaysEnum, ProbabilitiesEnum, RepeatsEnum, SpeedsEnum } from './enums';
 import { actions as configActions, config } from './config';
 import { getRandomProbabilities, isDevMode, isGifExt } from './utils';
 import { IAction, ISuperGifOptions } from './interfaces';
@@ -47,6 +47,54 @@ function init() {
       counter.innerText = counterFromStorage;
       actionCounter = parseInt(counterFromStorage, 10);
     }
+  }
+
+  function surrenderAction() {
+    function handleSurrenderGif() {
+      if (!surrenderAction) return;
+
+      const superGifOptions: ISuperGifOptions = {
+        draw_while_loading: false,
+        gif: elem,
+        loop_mode: true,
+      };
+      if (surrenderAction.delay) {
+        superGifOptions.loop_delay = surrenderAction.delay * 1000;
+      }
+      const rub = SuperGif(superGifOptions);
+      const src = elem.dataset.src;
+      rub.load_url(src);
+
+      const jsGifEl = document.querySelector('.jsgif');
+      if (!jsGifEl || surrenderAction.selector.charAt(0) !== '.') return;
+      jsGifEl.classList.add(surrenderAction.selector.replace('.', ''));
+    }
+
+    switchControl.disabled = true;
+
+    const surrenderAction = actions.find((action) => action.id === ActionIdsEnum.SURRENDER);
+    if (!surrenderAction) return;
+
+    const elem = document.querySelector(surrenderAction.selector) as HTMLElement;
+    if (!elem) return;
+    elem.style.willChange = 'transform';
+
+    if (surrenderAction.container) {
+      document.body.classList.add(surrenderAction.container);
+    }
+
+    const hiddenClass = Array.from(elem.classList).find((className: string) => className.endsWith('--hidden'));
+    if (!hiddenClass) return;
+    elem.classList.remove(hiddenClass);
+    elem.classList.add(
+      `animate__${surrenderAction.speed}`,
+      `animate__repeat-${surrenderAction.repeats}`,
+      `animate__delay-${surrenderAction.delay}s`,
+      'animate__animated',
+      `animate__${surrenderAction.animation}`
+    );
+
+    handleSurrenderGif();
   }
 
   function setSwitchOff(): void {
@@ -192,7 +240,7 @@ function init() {
     switchControl.disabled = true;
 
     if (actionCounter <= config.initialBasicMoves) {
-      const basicAction = actions.find((action) => action.id === 0);
+      const basicAction = actions.find((action) => action.id === ActionIdsEnum.HAND_BASE);
       if (basicAction) {
         triggerAction(
           basicAction.selector,
@@ -242,6 +290,11 @@ function init() {
       counter.innerText = actionCounter.toString();
     }
 
+    if (actionCounter === 1000) {
+      surrenderAction();
+      return;
+    }
+
     randomAction();
   }
 
@@ -257,7 +310,11 @@ function init() {
 
   function initProbabilities() {
     const configTotalProbabilities = configActions.reduce((acc: number, curr: IAction) => acc + curr.probability, 0);
-    const minProbability = Math.min(...configActions.map((action: IAction) => action.probability));
+    const minProbability = Math.min(
+      ...configActions
+        .map((action: IAction) => action.probability)
+        .filter((probability: number) => probability !== ProbabilitiesEnum.SURRENDER)
+    );
     const multiplier = 1 / (minProbability / configTotalProbabilities);
     const counters = configActions.reduce((acc: { [key: number]: number }, curr: IAction) => {
       if (!acc[curr.probability]) {

@@ -8,6 +8,7 @@
 
 $black: black;
 $blue: #0000ee;
+$grey: #a4a4a4;
 
 $z-index-base: 0;
 $z-index-top-bar: 4;
@@ -82,7 +83,6 @@ body {
   justify-content: center;
   margin: 0;
   position: relative;
-  transition: background-color 1s; // Standard for body background-color (look at: enums.ts > DelaysEnum > ONE)
   height: 100vh;
   overflow: hidden;
   width: 100vw;
@@ -274,6 +274,10 @@ main {
 
 .breaking-bad {
   @include action-image($top: -400px, $left: -260px, $z-index: $z-index-image-below);
+}
+
+.surrender {
+  @include action-image($top: 50%, $left: 50%, $full-screen-bg-color: $grey);
 }
 
 .add-animations {
