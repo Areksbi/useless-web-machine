@@ -69,6 +69,7 @@ export enum ActionIdsEnum {
   DEVIL_MAY_CRY = 32,
   BREAKING_BAD = 33,
   DEATH_NOTE = 34,
+
   SURRENDER = 101,
 }
 

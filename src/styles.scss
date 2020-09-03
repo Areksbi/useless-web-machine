@@ -279,7 +279,7 @@ main {
 }
 
 .surrender {
-  @include action-image($top: 50%, $left: 50%, $z-index: $z-index-image-above, $full-screen-bg-color: $grey);
+  @include action-image($top: 50%, $left: 50%, $full-screen-bg-color: $grey);
 }
 
 .keep-playing {
