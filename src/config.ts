@@ -288,6 +288,14 @@ export const actions: IAction[] = [
   },
   {
     animation: AnimationsEnum.FADE_IN,
+    container: 'cloud-vs-sephiroth__container',
+    delay: DelaysEnum.ONE,
+    id: ActionIdsEnum.CLOUD_VS_SEPHIROTH,
+    probability: 50000,
+    selector: '.cloud-vs-sephiroth',
+  },
+  {
+    animation: AnimationsEnum.FADE_IN,
     container: 'surrender__container',
     gif: true,
     id: ActionIdsEnum.SURRENDER,
