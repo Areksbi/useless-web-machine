@@ -78,6 +78,7 @@ export enum ActionIdsEnum {
   SHREK = 39,
   LEONARDO_DICAPRIO = 40,
   SORA = 41,
+  JOTARU = 42,
 
   SURRENDER = 101,
 }

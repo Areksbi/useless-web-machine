@@ -327,10 +327,16 @@ export const actions: IAction[] = [
   {
     animation: AnimationsEnum.BOUNCE_IN_RIGHT,
     id: ActionIdsEnum.SORA,
-    // probability: ProbabilitiesEnum.IMAGE,
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.sora',
     speed: SpeedsEnum.SLOW,
+  },
+  {
+    animation: AnimationsEnum.FADE_IN_UP,
+    id: ActionIdsEnum.JOTARU,
+    probability: ProbabilitiesEnum.IMAGE,
+    selector: '.jotaru',
+    speed: SpeedsEnum.SLOWER,
   },
 
   {
