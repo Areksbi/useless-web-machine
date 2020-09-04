@@ -65,7 +65,6 @@ export enum ActionIdsEnum {
   JINX = 27,
   SASUKE = 28,
   TRUMP = 29,
-  MATRIX = 29,
   JOHNNY_SINS = 30,
   LARA_CROFT = 31,
   DEVIL_MAY_CRY = 32,
@@ -80,6 +79,7 @@ export enum ActionIdsEnum {
   SORA = 41,
   JOTARU = 42,
   PHINEAS_AND_FERB = 43,
+  MATRIX = 44,
 
   SURRENDER = 101,
 }
