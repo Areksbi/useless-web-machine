@@ -85,6 +85,7 @@ export enum ActionIdsEnum {
   SPIDER_MAN = 47,
   DUCK_WITH_KNIFE = 48,
   ROOSTER_WITH_KNIFE = 49,
+  LUFFY = 50,
 
   SURRENDER = 101,
 }

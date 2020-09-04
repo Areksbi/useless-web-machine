@@ -380,6 +380,13 @@ export const actions: IAction[] = [
     selector: '.rooster-with-knife',
     speed: SpeedsEnum.FAST,
   },
+  {
+    animation: AnimationsEnum.FADE_IN_DOWN,
+    id: ActionIdsEnum.LUFFY,
+    probability: ProbabilitiesEnum.IMAGE,
+    selector: '.luffy',
+    speed: SpeedsEnum.FASTER,
+  },
 
   {
     animation: AnimationsEnum.FADE_IN,
