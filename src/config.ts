@@ -318,6 +318,12 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.shrek',
   },
+  {
+    animation: AnimationsEnum.BOUNCE_IN_RIGHT,
+    id: ActionIdsEnum.LEONARDO_DICAPRIO,
+    probability: ProbabilitiesEnum.IMAGE,
+    selector: '.leonardo-dicaprio',
+  },
 
   {
     animation: AnimationsEnum.FADE_IN,
