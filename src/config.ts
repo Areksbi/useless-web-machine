@@ -352,6 +352,12 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.FULL_SCREEN,
     selector: '.power-rangers',
   },
+  {
+    animation: AnimationsEnum.BOUNCE_IN_RIGHT,
+    id: ActionIdsEnum.INUYASHA,
+    probability: ProbabilitiesEnum.IMAGE,
+    selector: '.inuyasha',
+  },
 
   {
     animation: AnimationsEnum.FADE_IN,

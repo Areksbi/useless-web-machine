@@ -312,6 +312,10 @@ main {
   @include action-image($top: -180px, $left: -60px);
 }
 
+.inuyasha {
+  @include action-image($top: -325px, $left: -5px);
+}
+
 .surrender {
   @include action-image($top: 50%, $left: 50%, $full-screen-bg-color: $grey);
 }
