@@ -366,6 +366,13 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.FULL_SCREEN,
     selector: '.spider-man',
   },
+  {
+    animation: AnimationsEnum.BOUNCE_IN_LEFT,
+    id: ActionIdsEnum.DUCK_WITH_KNIFE,
+    probability: ProbabilitiesEnum.IMAGE,
+    selector: '.duck-with-knife',
+    speed: SpeedsEnum.FAST,
+  },
 
   {
     animation: AnimationsEnum.FADE_IN,
