@@ -324,6 +324,14 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.leonardo-dicaprio',
   },
+  {
+    animation: AnimationsEnum.BOUNCE_IN_RIGHT,
+    id: ActionIdsEnum.SORA,
+    // probability: ProbabilitiesEnum.IMAGE,
+    probability: ProbabilitiesEnum.IMAGE,
+    selector: '.sora',
+    speed: SpeedsEnum.SLOW,
+  },
 
   {
     animation: AnimationsEnum.FADE_IN,

@@ -299,6 +299,10 @@ main {
   @include action-image($top: -70px, $left: -145px);
 }
 
+.sora {
+  @include action-image($top: -210px, $left: 10px);
+}
+
 .surrender {
   @include action-image($top: 50%, $left: 50%, $full-screen-bg-color: $grey);
 }
