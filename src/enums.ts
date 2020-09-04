@@ -80,6 +80,7 @@ export enum ActionIdsEnum {
   JOTARU = 42,
   PHINEAS_AND_FERB = 43,
   MATRIX = 44,
+  POWER_RANGERS = 45,
 
   SURRENDER = 101,
 }

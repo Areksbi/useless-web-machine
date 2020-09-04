@@ -344,6 +344,14 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.phineas-and-ferb',
   },
+  {
+    animation: AnimationsEnum.FADE_IN,
+    container: 'power-rangers__container',
+    delay: DelaysEnum.ONE,
+    id: ActionIdsEnum.POWER_RANGERS,
+    probability: ProbabilitiesEnum.FULL_SCREEN,
+    selector: '.power-rangers',
+  },
 
   {
     animation: AnimationsEnum.FADE_IN,
