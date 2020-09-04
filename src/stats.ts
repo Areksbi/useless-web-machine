@@ -36,7 +36,7 @@ export default function stats() {
           (action.animation === AnimationsEnum.BOUNCE_IN_RIGHT || action.animation === AnimationsEnum.FADE_IN_RIGHT)
       ).length,
       name: 'IMAGE:IN_RIGHT',
-      target: 37,
+      target: 36,
     },
     {
       current: actions.filter(
