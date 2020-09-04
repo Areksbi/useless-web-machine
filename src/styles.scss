@@ -307,6 +307,10 @@ main {
   @include action-image($top: -98px, $left: -130px, $z-index: $z-index-image-below);
 }
 
+.phineas-and-ferb {
+  @include action-image($top: -180px, $left: -60px);
+}
+
 .surrender {
   @include action-image($top: 50%, $left: 50%, $full-screen-bg-color: $grey);
 }

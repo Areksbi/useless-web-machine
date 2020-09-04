@@ -338,6 +338,12 @@ export const actions: IAction[] = [
     selector: '.jotaru',
     speed: SpeedsEnum.SLOWER,
   },
+  {
+    animation: AnimationsEnum.BOUNCE_IN_RIGHT,
+    id: ActionIdsEnum.PHINEAS_AND_FERB,
+    probability: ProbabilitiesEnum.IMAGE,
+    selector: '.phineas-and-ferb',
+  },
 
   {
     animation: AnimationsEnum.FADE_IN,
