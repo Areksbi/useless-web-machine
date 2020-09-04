@@ -82,6 +82,7 @@ export enum ActionIdsEnum {
   MATRIX = 44,
   POWER_RANGERS = 45,
   INUYASHA = 46,
+  SPIDER_MAN = 47,
 
   SURRENDER = 101,
 }

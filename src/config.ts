@@ -358,6 +358,14 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.inuyasha',
   },
+  {
+    animation: AnimationsEnum.FADE_IN,
+    container: 'spider-man__container',
+    delay: DelaysEnum.ONE,
+    id: ActionIdsEnum.SPIDER_MAN,
+    probability: ProbabilitiesEnum.FULL_SCREEN,
+    selector: '.spider-man',
+  },
 
   {
     animation: AnimationsEnum.FADE_IN,
