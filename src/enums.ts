@@ -75,6 +75,7 @@ export enum ActionIdsEnum {
   ADVENTURE_TIME = 36,
   PABLO_ESCOBAR = 37,
   TIMMY_TURNER = 38,
+  SHREK = 39,
 
   SURRENDER = 101,
 }

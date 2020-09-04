@@ -312,6 +312,12 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.timmy-turner',
   },
+  {
+    animation: AnimationsEnum.FADE_IN_LEFT,
+    id: ActionIdsEnum.SHREK,
+    probability: ProbabilitiesEnum.IMAGE,
+    selector: '.shrek',
+  },
 
   {
     animation: AnimationsEnum.FADE_IN,
