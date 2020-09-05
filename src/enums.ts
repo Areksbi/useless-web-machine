@@ -99,6 +99,7 @@ export enum ActionIdsEnum {
   SHINING = 61,
   MR_BEAN = 62,
   THE_MASK = 63,
+  OLAF = 64,
 
   SURRENDER = 101,
 }

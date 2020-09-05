@@ -375,6 +375,10 @@ main {
   @include action-image($top: -250px, $left: -80px, $z-index: $z-index-image-below);
 }
 
+.olaf {
+  @include action-image($top: -260px, $left: -10px, $z-index: $z-index-image-below);
+}
+
 .surrender {
   @include action-image($top: 50%, $left: 50%, $full-screen-bg-color: $grey);
 }

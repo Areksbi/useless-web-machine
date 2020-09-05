@@ -488,4 +488,10 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.GIF,
     selector: '.the-mask',
   },
+  {
+    animation: AnimationsEnum.BOUNCE_IN_RIGHT,
+    id: ActionIdsEnum.OLAF,
+    probability: ProbabilitiesEnum.IMAGE,
+    selector: '.olaf',
+  },
 ];
