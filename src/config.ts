@@ -517,4 +517,12 @@ export const actions: IAction[] = [
     selector: '.lego',
     speed: SpeedsEnum.FAST,
   },
+  {
+    animation: AnimationsEnum.BOUNCE_IN_RIGHT,
+    id: ActionIdsEnum.GENIE,
+    probability: ProbabilitiesEnum.IMAGE,
+    repeats: RepeatsEnum.THREE,
+    selector: '.genie',
+    speed: SpeedsEnum.FAST,
+  },
 ];

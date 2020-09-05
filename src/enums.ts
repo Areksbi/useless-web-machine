@@ -103,6 +103,7 @@ export enum ActionIdsEnum {
   WALL_E = 65,
   THIS_IS_SPARTA = 66,
   LEGO = 67,
+  GENIE = 68,
 
   SURRENDER = 101,
 }

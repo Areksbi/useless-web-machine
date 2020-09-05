@@ -385,6 +385,10 @@ main {
   @include action-image($top: -200px, $left: 15px);
 }
 
+.genie {
+  @include action-image($top: -90px, $left: -35px);
+}
+
 .surrender {
   @include action-image($top: 50%, $left: 50%, $full-screen-bg-color: $grey);
 }
