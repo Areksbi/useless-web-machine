@@ -107,6 +107,7 @@ export enum ActionIdsEnum {
   NOKIA_3310 = 69,
   FULLMETAL_ALCHEMIST = 70,
   MY_HERO_ACADEMIA = 71,
+  BLACK_ROCK_SHOOTER = 72,
 
   SURRENDER = 101,
 }

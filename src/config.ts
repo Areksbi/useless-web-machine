@@ -547,4 +547,13 @@ export const actions: IAction[] = [
     selector: '.my-hero-academia',
     speed: SpeedsEnum.FAST,
   },
+  {
+    animation: AnimationsEnum.FADE_IN,
+    container: 'black-rock-shooter__container',
+    delay: DelaysEnum.ONE,
+    id: ActionIdsEnum.BLACK_ROCK_SHOOTER,
+    probability: ProbabilitiesEnum.FULL_SCREEN,
+    selector: '.black-rock-shooter',
+    speed: SpeedsEnum.SLOW,
+  },
 ];
