@@ -381,6 +381,10 @@ main {
   @include action-image($top: -260px, $left: -10px, $z-index: $z-index-image-below);
 }
 
+.lego {
+  @include action-image($top: -200px, $left: 15px);
+}
+
 .surrender {
   @include action-image($top: 50%, $left: 50%, $full-screen-bg-color: $grey);
 }

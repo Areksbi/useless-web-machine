@@ -510,4 +510,11 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.GIF,
     selector: '.this-is-sparta',
   },
+  {
+    animation: AnimationsEnum.BOUNCE_IN_RIGHT,
+    id: ActionIdsEnum.LEGO,
+    probability: ProbabilitiesEnum.IMAGE,
+    selector: '.lego',
+    speed: SpeedsEnum.FAST,
+  },
 ];
