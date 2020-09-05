@@ -1,3 +1,11 @@
+export enum GenresEnum {
+  ANIME,
+  CARTOON,
+  GAME,
+  MOVIE,
+  RANDOM,
+}
+
 export enum SpeedsEnum {
   SLOW = 'slow',
   SLOWER = 'slower',
