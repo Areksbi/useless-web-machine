@@ -257,7 +257,7 @@ export const actions: IAction[] = [
     speed: SpeedsEnum.SLOWER,
   },
   {
-    animation: AnimationsEnum.BOUNCE_IN_LEFT,
+    animation: AnimationsEnum.FADE_IN_RIGHT,
     id: ActionIdsEnum.LARA_CROFT,
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.lara-croft',
