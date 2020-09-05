@@ -105,6 +105,7 @@ export enum ActionIdsEnum {
   LEGO = 67,
   GENIE = 68,
   NOKIA_3310 = 69,
+  FULLMETAL_ALCHEMIST = 70,
 
   SURRENDER = 101,
 }

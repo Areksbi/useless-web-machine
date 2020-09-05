@@ -532,4 +532,12 @@ export const actions: IAction[] = [
     selector: '.nokia-3310',
     speed: SpeedsEnum.FAST,
   },
+  {
+    animation: AnimationsEnum.FADE_IN_RIGHT,
+    delay: DelaysEnum.ONE,
+    id: ActionIdsEnum.FULLMETAL_ALCHEMIST,
+    probability: ProbabilitiesEnum.IMAGE,
+    selector: '.fullmetal-alchemist',
+    speed: SpeedsEnum.FAST,
+  },
 ];
