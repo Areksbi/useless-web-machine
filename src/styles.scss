@@ -195,7 +195,9 @@ main {
 .power-rangers,
 .spider-man,
 .terminator,
-.the-mask {
+.the-mask,
+.wall-e,
+.this-is-sparta {
   @include action-image($top: 50%, $left: 50%, $z-index: $z-index-image-below, $full-screen-bg-color: $black);
 }
 

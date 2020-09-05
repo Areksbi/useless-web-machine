@@ -494,4 +494,20 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.olaf',
   },
+  {
+    animation: AnimationsEnum.FADE_IN,
+    container: 'wall-e__container',
+    gif: true,
+    id: ActionIdsEnum.WALL_E,
+    probability: ProbabilitiesEnum.GIF,
+    selector: '.wall-e',
+  },
+  {
+    animation: AnimationsEnum.FADE_IN,
+    container: 'this-is-sparta__container',
+    gif: true,
+    id: ActionIdsEnum.THIS_IS_SPARTA,
+    probability: ProbabilitiesEnum.GIF,
+    selector: '.this-is-sparta',
+  },
 ];
