@@ -438,4 +438,13 @@ export const actions: IAction[] = [
     selector: '.marty',
     speed: SpeedsEnum.FAST,
   },
+  {
+    animation: AnimationsEnum.FADE_IN,
+    container: 'terminator__container',
+    delay: DelaysEnum.ONE,
+    id: ActionIdsEnum.TERMINATOR,
+    probability: ProbabilitiesEnum.FULL_SCREEN,
+    selector: '.terminator',
+    speed: SpeedsEnum.SLOW,
+  },
 ];
