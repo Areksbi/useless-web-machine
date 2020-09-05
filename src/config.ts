@@ -433,7 +433,7 @@ export const actions: IAction[] = [
   },
   {
     animation: AnimationsEnum.FADE_IN_RIGHT,
-    id: ActionIdsEnum.RAMBO,
+    id: ActionIdsEnum.MARTY,
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.marty',
     speed: SpeedsEnum.FAST,
