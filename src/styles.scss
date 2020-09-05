@@ -194,7 +194,8 @@ main {
 .cloud-vs-sephiroth,
 .power-rangers,
 .spider-man,
-.terminator {
+.terminator,
+.the-mask {
   @include action-image($top: 50%, $left: 50%, $z-index: $z-index-image-below, $full-screen-bg-color: $black);
 }
 

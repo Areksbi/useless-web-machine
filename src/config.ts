@@ -480,4 +480,12 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.mr-bean',
   },
+  {
+    animation: AnimationsEnum.FADE_IN,
+    container: 'the-mask__container',
+    gif: true,
+    id: ActionIdsEnum.THE_MASK,
+    probability: ProbabilitiesEnum.GIF,
+    selector: '.the-mask',
+  },
 ];
