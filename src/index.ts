@@ -322,7 +322,6 @@ function init() {
         probability: (action.probability / counters[action.probability]) * multiplier,
       }))
       .sort((a: IAction, b: IAction) => a.probability - b.probability);
-
     totalProbabilities = actions.reduce((acc: number, curr: IAction) => acc + curr.probability, 0);
   }
 

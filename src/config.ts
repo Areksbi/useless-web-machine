@@ -387,7 +387,6 @@ export const actions: IAction[] = [
     selector: '.luffy',
     speed: SpeedsEnum.FASTER,
   },
-
   {
     animation: AnimationsEnum.FADE_IN,
     container: 'surrender__container',
@@ -396,5 +395,47 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.SURRENDER,
     selector: '.surrender',
     speed: SpeedsEnum.SLOWER,
+  },
+  {
+    animation: AnimationsEnum.BOUNCE_IN_RIGHT,
+    id: ActionIdsEnum.SOLID_SNAKE,
+    probability: ProbabilitiesEnum.IMAGE,
+    selector: '.solid-snake',
+    speed: SpeedsEnum.SLOW,
+  },
+  {
+    animation: AnimationsEnum.BOUNCE_IN_RIGHT,
+    id: ActionIdsEnum.NEMESIS,
+    probability: ProbabilitiesEnum.IMAGE,
+    selector: '.nemesis',
+    speed: SpeedsEnum.SLOW,
+  },
+  {
+    animation: AnimationsEnum.BOUNCE_IN_LEFT,
+    id: ActionIdsEnum.LINK,
+    probability: ProbabilitiesEnum.IMAGE,
+    selector: '.link',
+    speed: SpeedsEnum.FAST,
+  },
+  {
+    animation: AnimationsEnum.FADE_IN_UP,
+    id: ActionIdsEnum.DARTH_VADER,
+    probability: ProbabilitiesEnum.IMAGE,
+    selector: '.darth-vader',
+    speed: SpeedsEnum.SLOW,
+  },
+  {
+    animation: AnimationsEnum.BOUNCE_IN_RIGHT,
+    id: ActionIdsEnum.RAMBO,
+    probability: ProbabilitiesEnum.IMAGE,
+    selector: '.rambo',
+    speed: SpeedsEnum.SLOW,
+  },
+  {
+    animation: AnimationsEnum.FADE_IN_RIGHT,
+    id: ActionIdsEnum.RAMBO,
+    probability: ProbabilitiesEnum.IMAGE,
+    selector: '.marty',
+    speed: SpeedsEnum.FAST,
   },
 ];

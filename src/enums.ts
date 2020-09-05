@@ -86,6 +86,12 @@ export enum ActionIdsEnum {
   DUCK_WITH_KNIFE = 48,
   ROOSTER_WITH_KNIFE = 49,
   LUFFY = 50,
+  SOLID_SNAKE = 51,
+  NEMESIS = 52,
+  LINK = 53,
+  DARTH_VADER = 54,
+  RAMBO = 55,
+  MARTY = 56,
 
   SURRENDER = 101,
 }

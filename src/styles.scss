@@ -171,6 +171,10 @@ main {
   }
 }
 
+.darth-vader {
+  @include action-image($top: -30px, $left: -60px);
+}
+
 .donut {
   @include action-image($top: -38px, $left: -320px);
 }
@@ -253,8 +257,20 @@ main {
   @include action-image($top: -70px, $left: -180px);
 }
 
+.link {
+  @include action-image($top: -180px, $left: -940px);
+}
+
 .minion {
   @include action-image($top: -190px, $left: 10px);
+}
+
+.marty {
+  @include action-image($top: -315px, $left: -60px);
+}
+
+.nemesis {
+  @include action-image($top: -130px, $left: -10px);
 }
 
 .jinx {
@@ -293,6 +309,10 @@ main {
   @include action-image($top: -80px, $left: 25px);
 }
 
+.rambo {
+  @include action-image($top: -300px, $left: 10px);
+}
+
 .shrek {
   @include action-image($top: -220px, $left: -250px, $z-index: $z-index-image-below);
 }
@@ -303,6 +323,10 @@ main {
 
 .sora {
   @include action-image($top: -210px, $left: 10px);
+}
+
+.solid-snake {
+  @include action-image($top: -325px, $left: -30px);
 }
 
 .jotaru {
