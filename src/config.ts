@@ -540,4 +540,11 @@ export const actions: IAction[] = [
     selector: '.fullmetal-alchemist',
     speed: SpeedsEnum.FAST,
   },
+  {
+    animation: AnimationsEnum.BOUNCE_IN_RIGHT,
+    id: ActionIdsEnum.MY_HERO_ACADEMIA,
+    probability: ProbabilitiesEnum.IMAGE,
+    selector: '.my-hero-academia',
+    speed: SpeedsEnum.FAST,
+  },
 ];
