@@ -525,4 +525,11 @@ export const actions: IAction[] = [
     selector: '.genie',
     speed: SpeedsEnum.FAST,
   },
+  {
+    animation: AnimationsEnum.BOUNCE_IN_DOWN,
+    id: ActionIdsEnum.NOKIA_3310,
+    probability: ProbabilitiesEnum.IMAGE,
+    selector: '.nokia-3310',
+    speed: SpeedsEnum.FAST,
+  },
 ];
