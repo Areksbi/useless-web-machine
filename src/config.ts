@@ -474,4 +474,10 @@ export const actions: IAction[] = [
     selector: '.shining',
     speed: SpeedsEnum.SLOW,
   },
+  {
+    animation: AnimationsEnum.FADE_IN_RIGHT,
+    id: ActionIdsEnum.MR_BEAN,
+    probability: ProbabilitiesEnum.IMAGE,
+    selector: '.mr-bean',
+  },
 ];
