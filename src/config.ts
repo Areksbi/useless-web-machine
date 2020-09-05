@@ -460,4 +460,11 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.legolas',
   },
+  {
+    animation: AnimationsEnum.FADE_IN_DOWN,
+    id: ActionIdsEnum.THOR,
+    probability: ProbabilitiesEnum.IMAGE,
+    selector: '.thor',
+    speed: SpeedsEnum.FAST,
+  },
 ];

@@ -95,6 +95,7 @@ export enum ActionIdsEnum {
   TERMINATOR = 57,
   HARTMAN = 58,
   LEGOLAS = 59,
+  THOR = 60,
 
   SURRENDER = 101,
 }
