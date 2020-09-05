@@ -447,4 +447,11 @@ export const actions: IAction[] = [
     selector: '.terminator',
     speed: SpeedsEnum.SLOW,
   },
+  {
+    animation: AnimationsEnum.FADE_IN_RIGHT,
+    id: ActionIdsEnum.HARTMAN,
+    probability: ProbabilitiesEnum.IMAGE,
+    selector: '.hartman',
+    speed: SpeedsEnum.FAST,
+  },
 ];
