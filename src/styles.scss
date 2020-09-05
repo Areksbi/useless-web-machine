@@ -366,6 +366,10 @@ main {
   @include action-image($top: -440px, $left: -200px);
 }
 
+.shining {
+  @include action-image($top: -132px, $left: 30px);
+}
+
 .surrender {
   @include action-image($top: 50%, $left: 50%, $full-screen-bg-color: $grey);
 }

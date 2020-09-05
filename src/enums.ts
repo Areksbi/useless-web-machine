@@ -96,6 +96,7 @@ export enum ActionIdsEnum {
   HARTMAN = 58,
   LEGOLAS = 59,
   THOR = 60,
+  SHINING = 61,
 
   SURRENDER = 101,
 }

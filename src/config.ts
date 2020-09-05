@@ -467,4 +467,11 @@ export const actions: IAction[] = [
     selector: '.thor',
     speed: SpeedsEnum.FAST,
   },
+  {
+    animation: AnimationsEnum.BOUNCE_IN_RIGHT,
+    id: ActionIdsEnum.SHINING,
+    probability: ProbabilitiesEnum.IMAGE,
+    selector: '.shining',
+    speed: SpeedsEnum.SLOW,
+  },
 ];
