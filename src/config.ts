@@ -556,4 +556,11 @@ export const actions: IAction[] = [
     selector: '.black-rock-shooter',
     speed: SpeedsEnum.SLOW,
   },
+  {
+    animation: AnimationsEnum.BOUNCE_IN_RIGHT,
+    id: ActionIdsEnum.KIM_JONG_UN,
+    probability: ProbabilitiesEnum.IMAGE,
+    selector: '.kim-jong-un',
+    speed: SpeedsEnum.FASTER,
+  },
 ];
