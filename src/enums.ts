@@ -118,6 +118,7 @@ export enum ActionIdsEnum {
   BLACK_ROCK_SHOOTER = 72,
   KIM_JONG_UN = 73,
   JEFF_BEZOS = 74,
+  EINSTEIN = 75,
 
   SURRENDER = 101,
 }

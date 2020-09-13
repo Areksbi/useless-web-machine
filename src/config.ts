@@ -569,4 +569,10 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.jeff-bezos',
   },
+  {
+    animation: AnimationsEnum.BOUNCE_IN_DOWN,
+    id: ActionIdsEnum.EINSTEIN,
+    probability: ProbabilitiesEnum.IMAGE,
+    selector: '.einstein',
+  },
 ];
