@@ -563,4 +563,10 @@ export const actions: IAction[] = [
     selector: '.kim-jong-un',
     speed: SpeedsEnum.FASTER,
   },
+  {
+    animation: AnimationsEnum.BOUNCE_IN_RIGHT,
+    id: ActionIdsEnum.JEFF_BEZOS,
+    probability: ProbabilitiesEnum.IMAGE,
+    selector: '.jeff-bezos',
+  },
 ];

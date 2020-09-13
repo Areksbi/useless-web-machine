@@ -117,6 +117,7 @@ export enum ActionIdsEnum {
   MY_HERO_ACADEMIA = 71,
   BLACK_ROCK_SHOOTER = 72,
   KIM_JONG_UN = 73,
+  JEFF_BEZOS = 74,
 
   SURRENDER = 101,
 }
