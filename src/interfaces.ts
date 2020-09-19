@@ -1,4 +1,4 @@
-import { AnimationsEnum, DelaysEnum, RepeatsEnum, SpeedsEnum } from './enums';
+import { AnimationsEnum, DelaysEnum, RepeatsEnum, SpeedsEnum, TypesEnum } from './enums';
 
 export interface IStatCounter {
   current: number;
@@ -10,6 +10,7 @@ export interface IAction {
   id: number;
   probability: number;
   selector: string;
+  type: TypesEnum;
   animation?: AnimationsEnum;
   container?: string;
   delay?: DelaysEnum;

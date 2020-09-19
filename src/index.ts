@@ -5,7 +5,7 @@ import { MDCDrawer } from '@material/drawer';
 import { MDCSwitch } from '@material/switch';
 import { MDCTopAppBar } from '@material/top-app-bar';
 
-import { ActionIdsEnum, AnimationsEnum, DelaysEnum, ProbabilitiesEnum, RepeatsEnum, SpeedsEnum } from './enums';
+import { ActionIdsEnum, AnimationsEnum, DelaysEnum, ProbabilitiesEnum, RepeatsEnum, SpeedsEnum, TypesEnum } from './enums';
 import { actions as configActions, config } from './config';
 import { getRandomProbabilities, isDevMode, isGifExt } from './utils';
 import { IAction, ISuperGifOptions } from './interfaces';
@@ -196,6 +196,7 @@ function init() {
     selector: string,
     animation: AnimationsEnum = AnimationsEnum.BOUNCE_IN_RIGHT,
     id: ActionIdsEnum,
+    type: TypesEnum,
     speed?: SpeedsEnum,
     repeats?: RepeatsEnum,
     delay?: DelaysEnum,
@@ -205,7 +206,7 @@ function init() {
     const elem = document.querySelector(selector) as HTMLElement;
     if (!elem) return;
 
-    window.gtag('event', 'Clicks', {
+    window.gtag('event', TypesEnum[type], {
       event_category: 'Actions',
       event_label: ActionIdsEnum[id],
       value: id,
@@ -241,6 +242,7 @@ function init() {
           surrenderAction.selector,
           surrenderAction.animation,
           surrenderAction.id,
+          surrenderAction.type,
           surrenderAction.speed,
           surrenderAction.repeats,
           surrenderAction.delay,
@@ -258,6 +260,7 @@ function init() {
           basicAction.selector,
           basicAction.animation,
           basicAction.id,
+          basicAction.type,
           basicAction.speed,
           basicAction.repeats,
           basicAction.delay,
@@ -286,6 +289,7 @@ function init() {
       actionToTrigger.selector,
       actionToTrigger.animation,
       actionToTrigger.id,
+      actionToTrigger.type,
       actionToTrigger.speed,
       actionToTrigger.repeats,
       actionToTrigger.delay,

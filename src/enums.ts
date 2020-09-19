@@ -145,3 +145,11 @@ export enum ProbabilitiesEnum {
 
   SURRENDER = 0,
 }
+
+export enum TypesEnum {
+  HAND,
+  IMAGE,
+  FULL_SCREEN,
+  GIF,
+  SURRENDER,
+}

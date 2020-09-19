@@ -1,5 +1,5 @@
 import { IAction, IConfig } from './interfaces';
-import { ActionIdsEnum, AnimationsEnum, DelaysEnum, ProbabilitiesEnum, RepeatsEnum, SpeedsEnum } from './enums';
+import { ActionIdsEnum, AnimationsEnum, DelaysEnum, ProbabilitiesEnum, RepeatsEnum, SpeedsEnum, TypesEnum } from './enums';
 
 export const config: IConfig = {
   classes: {
@@ -20,6 +20,7 @@ export const actions: IAction[] = [
     id: ActionIdsEnum.HAND_BASE,
     probability: ProbabilitiesEnum.HAND_BASE,
     selector: '.hand',
+    type: TypesEnum.HAND,
   },
   {
     animation: AnimationsEnum.BOUNCE_IN_RIGHT,
@@ -29,6 +30,7 @@ export const actions: IAction[] = [
     repeats: RepeatsEnum.ONE,
     selector: '.hand',
     speed: SpeedsEnum.FASTER,
+    type: TypesEnum.HAND,
   },
   {
     animation: AnimationsEnum.BOUNCE_IN_RIGHT,
@@ -36,6 +38,7 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.HAND_SLOW,
     selector: '.hand',
     speed: SpeedsEnum.SLOW,
+    type: TypesEnum.HAND,
   },
   {
     animation: AnimationsEnum.BOUNCE_IN_RIGHT,
@@ -44,6 +47,7 @@ export const actions: IAction[] = [
     repeats: RepeatsEnum.TWO,
     selector: '.hand',
     speed: SpeedsEnum.FAST,
+    type: TypesEnum.HAND,
   },
   {
     animation: AnimationsEnum.FADE_IN_UP,
@@ -51,6 +55,7 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.donut',
     speed: SpeedsEnum.SLOW,
+    type: TypesEnum.IMAGE,
   },
   {
     animation: AnimationsEnum.FADE_IN,
@@ -61,6 +66,7 @@ export const actions: IAction[] = [
     repeats: RepeatsEnum.ONE,
     selector: '.batman',
     speed: SpeedsEnum.FASTER,
+    type: TypesEnum.FULL_SCREEN,
   },
   {
     animation: AnimationsEnum.BOUNCE_IN_RIGHT,
@@ -68,6 +74,7 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.saitama',
     speed: SpeedsEnum.SLOW,
+    type: TypesEnum.IMAGE,
   },
   {
     animation: AnimationsEnum.BOUNCE_IN_RIGHT,
@@ -75,6 +82,7 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.rick',
     speed: SpeedsEnum.SLOW,
+    type: TypesEnum.IMAGE,
   },
   {
     animation: AnimationsEnum.FADE_IN_UP,
@@ -82,6 +90,7 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.chuck-norris',
     speed: SpeedsEnum.SLOW,
+    type: TypesEnum.IMAGE,
   },
   {
     animation: AnimationsEnum.BOUNCE_IN_DOWN,
@@ -89,6 +98,7 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.crash-bandicoot',
     speed: SpeedsEnum.SLOW,
+    type: TypesEnum.IMAGE,
   },
   {
     animation: AnimationsEnum.FADE_IN_UP,
@@ -96,6 +106,7 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.elon-musk',
     speed: SpeedsEnum.SLOW,
+    type: TypesEnum.IMAGE,
   },
   {
     animation: AnimationsEnum.BOUNCE_IN_LEFT,
@@ -103,6 +114,7 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.obama',
     speed: SpeedsEnum.SLOW,
+    type: TypesEnum.IMAGE,
   },
   {
     animation: AnimationsEnum.FADE_IN_UP,
@@ -110,6 +122,7 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.harry-potter',
     speed: SpeedsEnum.SLOW,
+    type: TypesEnum.IMAGE,
   },
   {
     animation: AnimationsEnum.FADE_IN,
@@ -120,6 +133,7 @@ export const actions: IAction[] = [
     repeats: RepeatsEnum.ONE,
     selector: '.james-bond',
     speed: SpeedsEnum.FASTER,
+    type: TypesEnum.FULL_SCREEN,
   },
   {
     animation: AnimationsEnum.BOUNCE_IN_RIGHT,
@@ -127,6 +141,7 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.joker',
     speed: SpeedsEnum.SLOW,
+    type: TypesEnum.IMAGE,
   },
   {
     animation: AnimationsEnum.BOUNCE_IN_LEFT,
@@ -134,6 +149,7 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.iron-man',
     speed: SpeedsEnum.SLOW,
+    type: TypesEnum.IMAGE,
   },
   {
     animation: AnimationsEnum.FADE_IN_UP,
@@ -141,6 +157,7 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.jack-sparrow',
     speed: SpeedsEnum.SLOW,
+    type: TypesEnum.IMAGE,
   },
   {
     animation: AnimationsEnum.FADE_IN_DOWN,
@@ -148,6 +165,7 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.kill-bill',
     speed: SpeedsEnum.FASTER,
+    type: TypesEnum.IMAGE,
   },
   {
     animation: AnimationsEnum.FADE_IN,
@@ -158,6 +176,7 @@ export const actions: IAction[] = [
     repeats: RepeatsEnum.ONE,
     selector: '.goku',
     speed: SpeedsEnum.SLOW,
+    type: TypesEnum.GIF,
   },
   {
     animation: AnimationsEnum.FADE_IN,
@@ -166,6 +185,7 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.GIF,
     repeats: RepeatsEnum.ONE,
     selector: '.john-travolta',
+    type: TypesEnum.GIF,
   },
   {
     animation: AnimationsEnum.BOUNCE_IN_UP,
@@ -173,6 +193,7 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.jackie-chan',
     speed: SpeedsEnum.FASTER,
+    type: TypesEnum.IMAGE,
   },
   {
     animation: AnimationsEnum.FADE_IN,
@@ -183,6 +204,7 @@ export const actions: IAction[] = [
     repeats: RepeatsEnum.ONE,
     selector: '.pick-of-destiny',
     speed: SpeedsEnum.SLOWER,
+    type: TypesEnum.FULL_SCREEN,
   },
   {
     animation: AnimationsEnum.BOUNCE_IN_DOWN,
@@ -190,6 +212,7 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.gintoki',
     speed: SpeedsEnum.SLOW,
+    type: TypesEnum.IMAGE,
   },
   {
     animation: AnimationsEnum.BOUNCE_IN_RIGHT,
@@ -197,6 +220,7 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.groot',
     speed: SpeedsEnum.SLOW,
+    type: TypesEnum.IMAGE,
   },
   {
     animation: AnimationsEnum.FADE_IN_UP,
@@ -204,6 +228,7 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.levi',
     speed: SpeedsEnum.FAST,
+    type: TypesEnum.IMAGE,
   },
   {
     animation: AnimationsEnum.FADE_IN,
@@ -213,24 +238,28 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.FULL_SCREEN,
     repeats: RepeatsEnum.ONE,
     selector: '.riven',
+    type: TypesEnum.FULL_SCREEN,
   },
   {
     animation: AnimationsEnum.BOUNCE_IN_RIGHT,
     id: ActionIdsEnum.MINION,
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.minion',
+    type: TypesEnum.IMAGE,
   },
   {
     animation: AnimationsEnum.BOUNCE_IN_RIGHT,
     id: ActionIdsEnum.JINX,
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.jinx',
+    type: TypesEnum.IMAGE,
   },
   {
     animation: AnimationsEnum.BOUNCE_IN_RIGHT,
     id: ActionIdsEnum.SASUKE,
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.sasuke',
+    type: TypesEnum.IMAGE,
   },
   {
     animation: AnimationsEnum.BOUNCE_IN_RIGHT,
@@ -238,6 +267,7 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.trump',
     speed: SpeedsEnum.SLOW,
+    type: TypesEnum.IMAGE,
   },
   {
     animation: AnimationsEnum.FADE_IN,
@@ -248,6 +278,7 @@ export const actions: IAction[] = [
     repeats: RepeatsEnum.ONE,
     selector: '.matrix',
     speed: SpeedsEnum.FASTER,
+    type: TypesEnum.GIF,
   },
   {
     animation: AnimationsEnum.BOUNCE_IN_LEFT,
@@ -255,6 +286,7 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.johnny-sins',
     speed: SpeedsEnum.SLOWER,
+    type: TypesEnum.IMAGE,
   },
   {
     animation: AnimationsEnum.FADE_IN_RIGHT,
@@ -262,6 +294,7 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.lara-croft',
     speed: SpeedsEnum.SLOW,
+    type: TypesEnum.IMAGE,
   },
   {
     animation: AnimationsEnum.FADE_IN,
@@ -271,12 +304,14 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.FULL_SCREEN,
     repeats: RepeatsEnum.ONE,
     selector: '.devil-may-cry',
+    type: TypesEnum.FULL_SCREEN,
   },
   {
     animation: AnimationsEnum.FADE_IN_DOWN,
     id: ActionIdsEnum.BREAKING_BAD,
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.breaking-bad',
+    type: TypesEnum.IMAGE,
   },
   {
     animation: AnimationsEnum.FADE_IN,
@@ -285,6 +320,7 @@ export const actions: IAction[] = [
     id: ActionIdsEnum.DEATH_NOTE,
     probability: ProbabilitiesEnum.GIF,
     selector: '.death-note',
+    type: TypesEnum.GIF,
   },
   {
     animation: AnimationsEnum.FADE_IN,
@@ -293,36 +329,42 @@ export const actions: IAction[] = [
     id: ActionIdsEnum.CLOUD_VS_SEPHIROTH,
     probability: ProbabilitiesEnum.FULL_SCREEN,
     selector: '.cloud-vs-sephiroth',
+    type: TypesEnum.FULL_SCREEN,
   },
   {
     animation: AnimationsEnum.BOUNCE_IN_DOWN,
     id: ActionIdsEnum.ADVENTURE_TIME,
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.adventure-time',
+    type: TypesEnum.IMAGE,
   },
   {
     animation: AnimationsEnum.FADE_IN_RIGHT,
     id: ActionIdsEnum.PABLO_ESCOBAR,
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.pablo-escobar',
+    type: TypesEnum.IMAGE,
   },
   {
     animation: AnimationsEnum.BOUNCE_IN_RIGHT,
     id: ActionIdsEnum.TIMMY_TURNER,
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.timmy-turner',
+    type: TypesEnum.IMAGE,
   },
   {
     animation: AnimationsEnum.FADE_IN_LEFT,
     id: ActionIdsEnum.SHREK,
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.shrek',
+    type: TypesEnum.IMAGE,
   },
   {
     animation: AnimationsEnum.BOUNCE_IN_RIGHT,
     id: ActionIdsEnum.LEONARDO_DICAPRIO,
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.leonardo-dicaprio',
+    type: TypesEnum.IMAGE,
   },
   {
     animation: AnimationsEnum.BOUNCE_IN_RIGHT,
@@ -330,6 +372,7 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.sora',
     speed: SpeedsEnum.SLOW,
+    type: TypesEnum.IMAGE,
   },
   {
     animation: AnimationsEnum.FADE_IN_UP,
@@ -337,12 +380,14 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.jotaru',
     speed: SpeedsEnum.SLOWER,
+    type: TypesEnum.IMAGE,
   },
   {
     animation: AnimationsEnum.BOUNCE_IN_RIGHT,
     id: ActionIdsEnum.PHINEAS_AND_FERB,
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.phineas-and-ferb',
+    type: TypesEnum.IMAGE,
   },
   {
     animation: AnimationsEnum.FADE_IN,
@@ -351,12 +396,14 @@ export const actions: IAction[] = [
     id: ActionIdsEnum.POWER_RANGERS,
     probability: ProbabilitiesEnum.FULL_SCREEN,
     selector: '.power-rangers',
+    type: TypesEnum.FULL_SCREEN,
   },
   {
     animation: AnimationsEnum.BOUNCE_IN_RIGHT,
     id: ActionIdsEnum.INUYASHA,
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.inuyasha',
+    type: TypesEnum.IMAGE,
   },
   {
     animation: AnimationsEnum.FADE_IN,
@@ -365,6 +412,7 @@ export const actions: IAction[] = [
     id: ActionIdsEnum.SPIDER_MAN,
     probability: ProbabilitiesEnum.FULL_SCREEN,
     selector: '.spider-man',
+    type: TypesEnum.FULL_SCREEN,
   },
   {
     animation: AnimationsEnum.BOUNCE_IN_LEFT,
@@ -372,6 +420,7 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.duck-with-knife',
     speed: SpeedsEnum.FAST,
+    type: TypesEnum.IMAGE,
   },
   {
     animation: AnimationsEnum.FADE_IN_UP,
@@ -379,6 +428,7 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.rooster-with-knife',
     speed: SpeedsEnum.FAST,
+    type: TypesEnum.IMAGE,
   },
   {
     animation: AnimationsEnum.FADE_IN_DOWN,
@@ -386,6 +436,7 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.luffy',
     speed: SpeedsEnum.FASTER,
+    type: TypesEnum.IMAGE,
   },
   {
     animation: AnimationsEnum.FADE_IN,
@@ -395,6 +446,7 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.SURRENDER,
     selector: '.surrender',
     speed: SpeedsEnum.SLOWER,
+    type: TypesEnum.SURRENDER,
   },
   {
     animation: AnimationsEnum.BOUNCE_IN_RIGHT,
@@ -402,6 +454,7 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.solid-snake',
     speed: SpeedsEnum.SLOW,
+    type: TypesEnum.IMAGE,
   },
   {
     animation: AnimationsEnum.BOUNCE_IN_RIGHT,
@@ -409,6 +462,7 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.nemesis',
     speed: SpeedsEnum.SLOW,
+    type: TypesEnum.IMAGE,
   },
   {
     animation: AnimationsEnum.BOUNCE_IN_LEFT,
@@ -416,6 +470,7 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.link',
     speed: SpeedsEnum.FAST,
+    type: TypesEnum.IMAGE,
   },
   {
     animation: AnimationsEnum.FADE_IN_UP,
@@ -423,6 +478,7 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.darth-vader',
     speed: SpeedsEnum.SLOW,
+    type: TypesEnum.IMAGE,
   },
   {
     animation: AnimationsEnum.BOUNCE_IN_RIGHT,
@@ -430,6 +486,7 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.rambo',
     speed: SpeedsEnum.SLOW,
+    type: TypesEnum.IMAGE,
   },
   {
     animation: AnimationsEnum.FADE_IN_RIGHT,
@@ -437,6 +494,7 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.marty',
     speed: SpeedsEnum.FAST,
+    type: TypesEnum.IMAGE,
   },
   {
     animation: AnimationsEnum.FADE_IN,
@@ -446,6 +504,7 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.FULL_SCREEN,
     selector: '.terminator',
     speed: SpeedsEnum.SLOW,
+    type: TypesEnum.FULL_SCREEN,
   },
   {
     animation: AnimationsEnum.FADE_IN_RIGHT,
@@ -453,12 +512,14 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.hartman',
     speed: SpeedsEnum.FAST,
+    type: TypesEnum.IMAGE,
   },
   {
     animation: AnimationsEnum.FADE_IN_RIGHT,
     id: ActionIdsEnum.LEGOLAS,
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.legolas',
+    type: TypesEnum.IMAGE,
   },
   {
     animation: AnimationsEnum.FADE_IN_DOWN,
@@ -466,6 +527,7 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.thor',
     speed: SpeedsEnum.FAST,
+    type: TypesEnum.IMAGE,
   },
   {
     animation: AnimationsEnum.BOUNCE_IN_RIGHT,
@@ -473,12 +535,14 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.shining',
     speed: SpeedsEnum.SLOW,
+    type: TypesEnum.IMAGE,
   },
   {
     animation: AnimationsEnum.FADE_IN_RIGHT,
     id: ActionIdsEnum.MR_BEAN,
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.mr-bean',
+    type: TypesEnum.IMAGE,
   },
   {
     animation: AnimationsEnum.FADE_IN,
@@ -487,12 +551,14 @@ export const actions: IAction[] = [
     id: ActionIdsEnum.THE_MASK,
     probability: ProbabilitiesEnum.GIF,
     selector: '.the-mask',
+    type: TypesEnum.GIF,
   },
   {
     animation: AnimationsEnum.BOUNCE_IN_RIGHT,
     id: ActionIdsEnum.OLAF,
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.olaf',
+    type: TypesEnum.IMAGE,
   },
   {
     animation: AnimationsEnum.FADE_IN,
@@ -501,6 +567,7 @@ export const actions: IAction[] = [
     id: ActionIdsEnum.WALL_E,
     probability: ProbabilitiesEnum.GIF,
     selector: '.wall-e',
+    type: TypesEnum.GIF,
   },
   {
     animation: AnimationsEnum.FADE_IN,
@@ -509,6 +576,7 @@ export const actions: IAction[] = [
     id: ActionIdsEnum.THIS_IS_SPARTA,
     probability: ProbabilitiesEnum.GIF,
     selector: '.this-is-sparta',
+    type: TypesEnum.GIF,
   },
   {
     animation: AnimationsEnum.BOUNCE_IN_RIGHT,
@@ -516,6 +584,7 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.lego',
     speed: SpeedsEnum.FAST,
+    type: TypesEnum.IMAGE,
   },
   {
     animation: AnimationsEnum.BOUNCE_IN_RIGHT,
@@ -524,6 +593,7 @@ export const actions: IAction[] = [
     repeats: RepeatsEnum.THREE,
     selector: '.genie',
     speed: SpeedsEnum.FAST,
+    type: TypesEnum.IMAGE,
   },
   {
     animation: AnimationsEnum.BOUNCE_IN_DOWN,
@@ -531,6 +601,7 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.nokia-3310',
     speed: SpeedsEnum.FAST,
+    type: TypesEnum.IMAGE,
   },
   {
     animation: AnimationsEnum.FADE_IN_RIGHT,
@@ -539,6 +610,7 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.fullmetal-alchemist',
     speed: SpeedsEnum.FAST,
+    type: TypesEnum.IMAGE,
   },
   {
     animation: AnimationsEnum.BOUNCE_IN_RIGHT,
@@ -546,6 +618,7 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.my-hero-academia',
     speed: SpeedsEnum.FAST,
+    type: TypesEnum.IMAGE,
   },
   {
     animation: AnimationsEnum.FADE_IN,
@@ -555,6 +628,7 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.FULL_SCREEN,
     selector: '.black-rock-shooter',
     speed: SpeedsEnum.SLOW,
+    type: TypesEnum.FULL_SCREEN,
   },
   {
     animation: AnimationsEnum.BOUNCE_IN_RIGHT,
@@ -562,18 +636,21 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.kim-jong-un',
     speed: SpeedsEnum.FASTER,
+    type: TypesEnum.IMAGE,
   },
   {
     animation: AnimationsEnum.BOUNCE_IN_RIGHT,
     id: ActionIdsEnum.JEFF_BEZOS,
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.jeff-bezos',
+    type: TypesEnum.IMAGE,
   },
   {
     animation: AnimationsEnum.BOUNCE_IN_DOWN,
     id: ActionIdsEnum.EINSTEIN,
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.einstein',
+    type: TypesEnum.IMAGE,
   },
   {
     animation: AnimationsEnum.FADE_IN_RIGHT,
@@ -581,6 +658,7 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.marshall-law',
     speed: SpeedsEnum.FASTER,
+    type: TypesEnum.IMAGE,
   },
   {
     animation: AnimationsEnum.BOUNCE_IN_LEFT,
@@ -588,6 +666,7 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.micheal-jordan',
     speed: SpeedsEnum.SLOW,
+    type: TypesEnum.IMAGE,
   },
   {
     animation: AnimationsEnum.BOUNCE_IN_DOWN,
@@ -595,6 +674,7 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.tetris',
     speed: SpeedsEnum.FAST,
+    type: TypesEnum.IMAGE,
   },
   {
     animation: AnimationsEnum.BOUNCE_IN_UP,
@@ -602,6 +682,7 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.areksbi-sbrazo',
     speed: SpeedsEnum.FASTER,
+    type: TypesEnum.IMAGE,
   },
   {
     animation: AnimationsEnum.FADE_IN,
@@ -610,6 +691,7 @@ export const actions: IAction[] = [
     id: ActionIdsEnum.CHARIZARD,
     probability: ProbabilitiesEnum.GIF,
     selector: '.charizard',
+    type: TypesEnum.GIF,
   },
   {
     animation: AnimationsEnum.FADE_IN,
@@ -618,6 +700,7 @@ export const actions: IAction[] = [
     id: ActionIdsEnum.NIER,
     probability: ProbabilitiesEnum.GIF,
     selector: '.nier',
+    type: TypesEnum.GIF,
   },
   {
     animation: AnimationsEnum.BOUNCE_IN_UP,
@@ -625,6 +708,7 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.super-mario',
     speed: SpeedsEnum.FAST,
+    type: TypesEnum.IMAGE,
   },
   {
     animation: AnimationsEnum.FADE_IN,
@@ -633,6 +717,7 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.FULL_SCREEN,
     selector: '.got',
     speed: SpeedsEnum.FAST,
+    type: TypesEnum.FULL_SCREEN,
   },
   {
     animation: AnimationsEnum.FADE_IN,
@@ -641,5 +726,6 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.FULL_SCREEN,
     selector: '.superman',
     speed: SpeedsEnum.FAST,
+    type: TypesEnum.FULL_SCREEN,
   },
 ];

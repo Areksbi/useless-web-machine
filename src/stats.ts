@@ -1,38 +1,23 @@
 import { actions } from './config';
-import { AnimationsEnum, ProbabilitiesEnum } from './enums';
+import { AnimationsEnum, TypesEnum } from './enums';
 import { IAction, IStatCounter } from './interfaces';
 
 export default function stats() {
   const counters: IStatCounter[] = [
     {
-      current: actions.filter((action: IAction) => action.probability === ProbabilitiesEnum.HAND_BASE).length,
-      name: 'HAND_BASE',
-      target: 1,
+      current: actions.filter((action: IAction) => action.type === TypesEnum.HAND).length,
+      name: 'HAND',
+      target: 4,
     },
     {
-      current: actions.filter((action: IAction) => action.probability === ProbabilitiesEnum.HAND_FASTER).length,
-      name: 'HAND_FASTER',
-      target: 1,
-    },
-    {
-      current: actions.filter((action: IAction) => action.probability === ProbabilitiesEnum.HAND_SLOW).length,
-      name: 'HAND_SLOW',
-      target: 1,
-    },
-    {
-      current: actions.filter((action: IAction) => action.probability === ProbabilitiesEnum.HAND_REPEAT).length,
-      name: 'HAND_REPEAT',
-      target: 1,
-    },
-    {
-      current: actions.filter((action: IAction) => action.probability === ProbabilitiesEnum.SURRENDER).length,
+      current: actions.filter((action: IAction) => action.type === TypesEnum.SURRENDER).length,
       name: 'SURRENDER',
       target: 1,
     },
     {
       current: actions.filter(
         (action: IAction) =>
-          action.probability === ProbabilitiesEnum.IMAGE &&
+          action.type === TypesEnum.IMAGE &&
           (action.animation === AnimationsEnum.BOUNCE_IN_RIGHT || action.animation === AnimationsEnum.FADE_IN_RIGHT)
       ).length,
       name: 'IMAGE:IN_RIGHT',
@@ -41,7 +26,7 @@ export default function stats() {
     {
       current: actions.filter(
         (action: IAction) =>
-          action.probability === ProbabilitiesEnum.IMAGE &&
+          action.type === TypesEnum.IMAGE &&
           (action.animation === AnimationsEnum.BOUNCE_IN_LEFT || action.animation === AnimationsEnum.FADE_IN_LEFT)
       ).length,
       name: 'IMAGE:IN_LEFT',
@@ -50,7 +35,7 @@ export default function stats() {
     {
       current: actions.filter(
         (action: IAction) =>
-          action.probability === ProbabilitiesEnum.IMAGE &&
+          action.type === TypesEnum.IMAGE &&
           (action.animation === AnimationsEnum.BOUNCE_IN_UP || action.animation === AnimationsEnum.FADE_IN_UP)
       ).length,
       name: 'IMAGE:IN_UP',
@@ -59,19 +44,19 @@ export default function stats() {
     {
       current: actions.filter(
         (action: IAction) =>
-          action.probability === ProbabilitiesEnum.IMAGE &&
+          action.type === TypesEnum.IMAGE &&
           (action.animation === AnimationsEnum.BOUNCE_IN_DOWN || action.animation === AnimationsEnum.FADE_IN_DOWN)
       ).length,
       name: 'IMAGE:IN_DOWN',
       target: 11,
     },
     {
-      current: actions.filter((action: IAction) => action.probability === ProbabilitiesEnum.FULL_SCREEN).length,
+      current: actions.filter((action: IAction) => action.type === TypesEnum.FULL_SCREEN).length,
       name: 'FULL_SCREEN',
       target: 18,
     },
     {
-      current: actions.filter((action: IAction) => action.probability === ProbabilitiesEnum.GIF).length,
+      current: actions.filter((action: IAction) => action.type === TypesEnum.GIF).length,
       name: 'GIF',
       target: 10,
     },
