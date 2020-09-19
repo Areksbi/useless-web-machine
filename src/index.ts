@@ -10,6 +10,12 @@ import { actions as configActions, config } from './config';
 import { getRandomProbabilities, isDevMode, isGifExt } from './utils';
 import { IAction, ISuperGifOptions } from './interfaces';
 
+declare global {
+  interface Window {
+    gtag: (event: string, action: string, params: { [key: string]: string | number }) => void;
+  }
+}
+
 function init() {
   const counter = document.querySelector('.counter') as HTMLSpanElement;
   let actionCounter = 0;
@@ -189,6 +195,7 @@ function init() {
   function triggerAction(
     selector: string,
     animation: AnimationsEnum = AnimationsEnum.BOUNCE_IN_RIGHT,
+    id: ActionIdsEnum,
     speed?: SpeedsEnum,
     repeats?: RepeatsEnum,
     delay?: DelaysEnum,
@@ -197,6 +204,13 @@ function init() {
   ): void {
     const elem = document.querySelector(selector) as HTMLElement;
     if (!elem) return;
+
+    window.gtag('event', 'Clicks', {
+      event_category: 'Actions',
+      event_label: ActionIdsEnum[id],
+      value: id,
+    });
+
     elem.style.willChange = 'transform';
 
     if (bgBodyClass) {
@@ -226,6 +240,7 @@ function init() {
         triggerAction(
           surrenderAction.selector,
           surrenderAction.animation,
+          surrenderAction.id,
           surrenderAction.speed,
           surrenderAction.repeats,
           surrenderAction.delay,
@@ -242,6 +257,7 @@ function init() {
         triggerAction(
           basicAction.selector,
           basicAction.animation,
+          basicAction.id,
           basicAction.speed,
           basicAction.repeats,
           basicAction.delay,
@@ -269,6 +285,7 @@ function init() {
     triggerAction(
       actionToTrigger.selector,
       actionToTrigger.animation,
+      actionToTrigger.id,
       actionToTrigger.speed,
       actionToTrigger.repeats,
       actionToTrigger.delay,
