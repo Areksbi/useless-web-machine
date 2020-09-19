@@ -734,6 +734,7 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.greta',
     speed: SpeedsEnum.FAST,
+    type: TypesEnum.IMAGE,
   },
   {
     animation: AnimationsEnum.FADE_IN_LEFT,
@@ -741,6 +742,7 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.putin',
     speed: SpeedsEnum.SLOW,
+    type: TypesEnum.IMAGE,
   },
   {
     animation: AnimationsEnum.FADE_IN,
@@ -749,6 +751,7 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.FULL_SCREEN,
     selector: '.nightmare',
     speed: SpeedsEnum.FAST,
+    type: TypesEnum.FULL_SCREEN,
   },
   {
     animation: AnimationsEnum.FADE_IN,
@@ -757,5 +760,6 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.FULL_SCREEN,
     selector: '.alien',
     speed: SpeedsEnum.FAST,
+    type: TypesEnum.FULL_SCREEN,
   },
 ];
