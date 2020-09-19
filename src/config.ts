@@ -622,7 +622,7 @@ export const actions: IAction[] = [
   {
     animation: AnimationsEnum.BOUNCE_IN_UP,
     id: ActionIdsEnum.SUPER_MARIO,
-    probability: 10000,
+    probability: ProbabilitiesEnum.IMAGE,
     selector: '.super-mario',
     speed: SpeedsEnum.FAST,
   },
