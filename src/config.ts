@@ -787,4 +787,11 @@ export const actions: IAction[] = [
     speed: SpeedsEnum.FAST,
     type: TypesEnum.IMAGE,
   },
+  {
+    animation: AnimationsEnum.FADE_IN_UP,
+    id: ActionIdsEnum.DARK_SOULS,
+    probability: ProbabilitiesEnum.IMAGE,
+    selector: '.dark-souls',
+    type: TypesEnum.IMAGE,
+  },
 ];
