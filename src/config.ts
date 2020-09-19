@@ -575,4 +575,11 @@ export const actions: IAction[] = [
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.einstein',
   },
+  {
+    animation: AnimationsEnum.BOUNCE_IN_DOWN,
+    id: ActionIdsEnum.TETRIS,
+    probability: ProbabilitiesEnum.IMAGE,
+    selector: '.tetris',
+    speed: SpeedsEnum.FAST,
+  },
 ];

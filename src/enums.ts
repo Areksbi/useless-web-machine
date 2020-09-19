@@ -119,6 +119,7 @@ export enum ActionIdsEnum {
   KIM_JONG_UN = 73,
   JEFF_BEZOS = 74,
   EINSTEIN = 75,
+  TETRIS = 76,
 
   SURRENDER = 101,
 }
