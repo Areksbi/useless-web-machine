@@ -616,7 +616,7 @@ export const actions: IAction[] = [
     container: 'nier__container',
     gif: true,
     id: ActionIdsEnum.NIER,
-    probability: 50000,
+    probability: ProbabilitiesEnum.GIF,
     selector: '.nier',
   },
 ];
