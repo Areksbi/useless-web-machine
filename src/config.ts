@@ -626,4 +626,12 @@ export const actions: IAction[] = [
     selector: '.super-mario',
     speed: SpeedsEnum.FAST,
   },
+  {
+    animation: AnimationsEnum.FADE_IN,
+    container: 'got__container',
+    id: ActionIdsEnum.GOT,
+    probability: ProbabilitiesEnum.FULL_SCREEN,
+    selector: '.got',
+    speed: SpeedsEnum.FAST,
+  },
 ];
