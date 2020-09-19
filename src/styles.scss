@@ -426,6 +426,10 @@ main {
   @include action-image($top: -170px, $left: -55px, $z-index: $z-index-image-below);
 }
 
+.areksbi-sbrazo {
+  @include action-image($top: -280px, $left: -234px, $z-index: $z-index-image-below);
+}
+
 .surrender {
   @include action-image($top: 50%, $left: 50%, $full-screen-bg-color: $grey);
 }

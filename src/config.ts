@@ -596,4 +596,11 @@ export const actions: IAction[] = [
     selector: '.tetris',
     speed: SpeedsEnum.FAST,
   },
+  {
+    animation: AnimationsEnum.BOUNCE_IN_UP,
+    id: ActionIdsEnum.AREKSBI_SBRAZO,
+    probability: ProbabilitiesEnum.IMAGE,
+    selector: '.areksbi-sbrazo',
+    speed: SpeedsEnum.FASTER,
+  },
 ];
