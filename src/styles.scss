@@ -10,6 +10,7 @@
 $black: black;
 $blue: #0000ee;
 $grey: #a4a4a4;
+$yellow: #fef56a;
 
 $z-index-base: 0;
 $z-index-top-bar: 4;
@@ -471,6 +472,10 @@ main {
 
 .mr-bubz {
   @include action-image($top: -270px, $left: -315px);
+}
+
+.spongebob {
+  @include action-image($top: 50%, $left: 50%, $z-index: $z-index-image-below, $full-screen-bg-color: $yellow);
 }
 
 .surrender {

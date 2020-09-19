@@ -139,8 +139,9 @@ export enum ActionIdsEnum {
   MARK_ZUCKERBERG = 93,
   TORADORA = 94,
   MR_BUBZ = 95,
+  SPONGEBOB = 96,
 
-  SURRENDER = 101,
+  SURRENDER = 100,
 }
 
 // Must be unique values with sum 100(%)

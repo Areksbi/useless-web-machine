@@ -817,4 +817,12 @@ export const actions: IAction[] = [
     speed: SpeedsEnum.FASTER,
     type: TypesEnum.IMAGE,
   },
+  {
+    animation: AnimationsEnum.FADE_IN,
+    container: 'spongebob__container',
+    id: ActionIdsEnum.SPONGEBOB,
+    probability: ProbabilitiesEnum.FULL_SCREEN,
+    selector: '.spongebob',
+    type: TypesEnum.FULL_SCREEN,
+  },
 ];
