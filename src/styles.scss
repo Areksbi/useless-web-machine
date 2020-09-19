@@ -466,7 +466,11 @@ main {
 }
 
 .toradora {
-  @include action-image($top: -200px, $left: -75px, $z-index: $z-index-image-below);
+  @include action-image($top: -200px, $left: -75px);
+}
+
+.mr-bubz {
+  @include action-image($top: -270px, $left: -315px);
 }
 
 .surrender {

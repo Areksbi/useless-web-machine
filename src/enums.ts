@@ -138,6 +138,7 @@ export enum ActionIdsEnum {
   DARK_SOULS = 92,
   MARK_ZUCKERBERG = 93,
   TORADORA = 94,
+  MR_BUBZ = 95,
 
   SURRENDER = 101,
 }

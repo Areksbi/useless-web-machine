@@ -809,4 +809,12 @@ export const actions: IAction[] = [
     speed: SpeedsEnum.FASTER,
     type: TypesEnum.IMAGE,
   },
+  {
+    animation: AnimationsEnum.BOUNCE_IN_LEFT,
+    id: ActionIdsEnum.MR_BUBZ,
+    probability: ProbabilitiesEnum.IMAGE,
+    selector: '.mr-bubz',
+    speed: SpeedsEnum.FASTER,
+    type: TypesEnum.IMAGE,
+  },
 ];
