@@ -801,4 +801,12 @@ export const actions: IAction[] = [
     selector: '.mark-zuckerberg',
     type: TypesEnum.IMAGE,
   },
+  {
+    animation: AnimationsEnum.FADE_IN_RIGHT,
+    id: ActionIdsEnum.TORADORA,
+    probability: ProbabilitiesEnum.IMAGE,
+    selector: '.toradora',
+    speed: SpeedsEnum.FASTER,
+    type: TypesEnum.IMAGE,
+  },
 ];

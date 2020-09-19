@@ -465,6 +465,10 @@ main {
   @include action-image($top: -377px, $left: -230px, $z-index: $z-index-image-below);
 }
 
+.toradora {
+  @include action-image($top: -200px, $left: -75px, $z-index: $z-index-image-below);
+}
+
 .surrender {
   @include action-image($top: 50%, $left: 50%, $full-screen-bg-color: $grey);
 }
