@@ -668,7 +668,7 @@ export const actions: IAction[] = [
     animation: AnimationsEnum.FADE_IN,
     container: 'alien__container',
     id: ActionIdsEnum.ALIEN,
-    probability: 100000000,
+    probability: ProbabilitiesEnum.FULL_SCREEN,
     selector: '.alien',
     speed: SpeedsEnum.FAST,
   },
