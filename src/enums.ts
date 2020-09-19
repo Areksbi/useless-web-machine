@@ -129,6 +129,7 @@ export enum ActionIdsEnum {
   GOT = 83,
   SUPERMAN = 84,
   GRETA = 85,
+  PUTIN = 86,
 
   SURRENDER = 101,
 }

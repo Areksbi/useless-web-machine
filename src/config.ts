@@ -635,10 +635,25 @@ export const actions: IAction[] = [
     speed: SpeedsEnum.FAST,
   },
   {
-    animation: AnimationsEnum.FADE_IN_RIGHT,
+    animation: AnimationsEnum.FADE_IN,
+    container: 'superman__container',
     id: ActionIdsEnum.SUPERMAN,
+    probability: ProbabilitiesEnum.FULL_SCREEN,
+    selector: '.superman',
+    speed: SpeedsEnum.FAST,
+  },
+  {
+    animation: AnimationsEnum.FADE_IN_RIGHT,
+    id: ActionIdsEnum.GRETA,
     probability: ProbabilitiesEnum.IMAGE,
     selector: '.greta',
     speed: SpeedsEnum.FAST,
+  },
+  {
+    animation: AnimationsEnum.FADE_IN_LEFT,
+    id: ActionIdsEnum.PUTIN,
+    probability: ProbabilitiesEnum.IMAGE,
+    selector: '.putin',
+    speed: SpeedsEnum.SLOW,
   },
 ];

@@ -187,6 +187,10 @@ main {
   @include action-image($top: -348px, $left: -386px, $z-index: $z-index-image-below);
 }
 
+.putin {
+  @include action-image($top: -148px, $left: -486px);
+}
+
 .batman,
 .got,
 .superman,
