@@ -45,7 +45,7 @@ export default function stats() {
           (action.animation === AnimationsEnum.BOUNCE_IN_LEFT || action.animation === AnimationsEnum.FADE_IN_LEFT)
       ).length,
       name: 'IMAGE:IN_LEFT',
-      target: 10,
+      target: 11,
     },
     {
       current: actions.filter(
@@ -54,7 +54,7 @@ export default function stats() {
           (action.animation === AnimationsEnum.BOUNCE_IN_UP || action.animation === AnimationsEnum.FADE_IN_UP)
       ).length,
       name: 'IMAGE:IN_UP',
-      target: 10,
+      target: 11,
     },
     {
       current: actions.filter(
@@ -73,7 +73,7 @@ export default function stats() {
     {
       current: actions.filter((action: IAction) => action.probability === ProbabilitiesEnum.GIF).length,
       name: 'GIF',
-      target: 12,
+      target: 10,
     },
   ];
 
