@@ -603,4 +603,12 @@ export const actions: IAction[] = [
     selector: '.areksbi-sbrazo',
     speed: SpeedsEnum.FASTER,
   },
+  {
+    animation: AnimationsEnum.FADE_IN,
+    container: 'charizard__container',
+    gif: true,
+    id: ActionIdsEnum.CHARIZARD,
+    probability: ProbabilitiesEnum.GIF,
+    selector: '.charizard',
+  },
 ];

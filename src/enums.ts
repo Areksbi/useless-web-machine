@@ -123,6 +123,7 @@ export enum ActionIdsEnum {
   MICHEAL_JORDAN = 77,
   TETRIS = 78,
   AREKSBI_SBRAZO = 79,
+  CHARIZARD = 80,
 
   SURRENDER = 101,
 }
