@@ -478,6 +478,10 @@ main {
   @include action-image($top: 50%, $left: 50%, $z-index: $z-index-image-below, $full-screen-bg-color: $yellow);
 }
 
+.psy {
+  @include action-image($top: -270px, $left: -80px);
+}
+
 .surrender {
   @include action-image($top: 50%, $left: 50%, $full-screen-bg-color: $grey);
 }

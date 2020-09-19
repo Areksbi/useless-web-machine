@@ -140,6 +140,7 @@ export enum ActionIdsEnum {
   TORADORA = 94,
   MR_BUBZ = 95,
   SPONGEBOB = 96,
+  PSY = 97,
 
   SURRENDER = 100,
 }

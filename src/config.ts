@@ -825,4 +825,12 @@ export const actions: IAction[] = [
     selector: '.spongebob',
     type: TypesEnum.FULL_SCREEN,
   },
+  {
+    animation: AnimationsEnum.BOUNCE_IN_LEFT,
+    id: ActionIdsEnum.PSY,
+    probability: ProbabilitiesEnum.IMAGE,
+    selector: '.psy',
+    speed: SpeedsEnum.FAST,
+    type: TypesEnum.IMAGE,
+  },
 ];
