@@ -282,6 +282,10 @@ main {
   @include action-image($top: -55px, $left: -290px);
 }
 
+.super-mario {
+  @include action-image($top: -10px, $left: -185px);
+}
+
 .nemesis {
   @include action-image($top: -130px, $left: -10px);
 }

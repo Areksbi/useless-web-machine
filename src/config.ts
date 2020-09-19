@@ -603,4 +603,11 @@ export const actions: IAction[] = [
     selector: '.areksbi-sbrazo',
     speed: SpeedsEnum.FASTER,
   },
+  {
+    animation: AnimationsEnum.BOUNCE_IN_UP,
+    id: ActionIdsEnum.SUPER_MARIO,
+    probability: 10000,
+    selector: '.super-mario',
+    speed: SpeedsEnum.FAST,
+  },
 ];
