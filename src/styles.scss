@@ -461,6 +461,10 @@ main {
   @include action-image($top: -60px, $left: -175px);
 }
 
+.mark-zuckerberg {
+  @include action-image($top: -377px, $left: -230px, $z-index: $z-index-image-below);
+}
+
 .surrender {
   @include action-image($top: 50%, $left: 50%, $full-screen-bg-color: $grey);
 }

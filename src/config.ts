@@ -794,4 +794,11 @@ export const actions: IAction[] = [
     selector: '.dark-souls',
     type: TypesEnum.IMAGE,
   },
+  {
+    animation: AnimationsEnum.BOUNCE_IN_RIGHT,
+    id: ActionIdsEnum.MARK_ZUCKERBERG,
+    probability: ProbabilitiesEnum.IMAGE,
+    selector: '.mark-zuckerberg',
+    type: TypesEnum.IMAGE,
+  },
 ];
