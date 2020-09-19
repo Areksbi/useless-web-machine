@@ -634,4 +634,12 @@ export const actions: IAction[] = [
     selector: '.got',
     speed: SpeedsEnum.FAST,
   },
+  {
+    animation: AnimationsEnum.FADE_IN,
+    container: 'superman__container',
+    id: ActionIdsEnum.SUPERMAN,
+    probability: ProbabilitiesEnum.FULL_SCREEN,
+    selector: '.superman',
+    speed: SpeedsEnum.FAST,
+  },
 ];
