@@ -21,7 +21,7 @@ export default function stats() {
           (action.animation === AnimationsEnum.BOUNCE_IN_RIGHT || action.animation === AnimationsEnum.FADE_IN_RIGHT)
       ).length,
       name: 'IMAGE:IN_RIGHT',
-      target: 37,
+      target: 38,
     },
     {
       current: actions.filter(
@@ -48,7 +48,7 @@ export default function stats() {
           (action.animation === AnimationsEnum.BOUNCE_IN_DOWN || action.animation === AnimationsEnum.FADE_IN_DOWN)
       ).length,
       name: 'IMAGE:IN_DOWN',
-      target: 11,
+      target: 10,
     },
     {
       current: actions.filter((action: IAction) => action.type === TypesEnum.FULL_SCREEN).length,

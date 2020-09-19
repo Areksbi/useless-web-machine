@@ -486,6 +486,10 @@ main {
   @include action-image($top: -150px, $left: 20px);
 }
 
+.roberto {
+  @include action-image($top: -150px, $left: 25px);
+}
+
 .surrender {
   @include action-image($top: 50%, $left: 50%, $full-screen-bg-color: $grey);
 }

@@ -841,4 +841,12 @@ export const actions: IAction[] = [
     speed: SpeedsEnum.FAST,
     type: TypesEnum.IMAGE,
   },
+  {
+    animation: AnimationsEnum.BOUNCE_IN_RIGHT,
+    id: ActionIdsEnum.ROBERTO,
+    probability: ProbabilitiesEnum.IMAGE,
+    selector: '.roberto',
+    speed: SpeedsEnum.FAST,
+    type: TypesEnum.IMAGE,
+  },
 ];
