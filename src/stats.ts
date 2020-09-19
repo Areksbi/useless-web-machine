@@ -30,7 +30,7 @@ export default function stats() {
           (action.animation === AnimationsEnum.BOUNCE_IN_LEFT || action.animation === AnimationsEnum.FADE_IN_LEFT)
       ).length,
       name: 'IMAGE:IN_LEFT',
-      target: 11,
+      target: 10,
     },
     {
       current: actions.filter(
@@ -39,7 +39,7 @@ export default function stats() {
           (action.animation === AnimationsEnum.BOUNCE_IN_UP || action.animation === AnimationsEnum.FADE_IN_UP)
       ).length,
       name: 'IMAGE:IN_UP',
-      target: 11,
+      target: 12,
     },
     {
       current: actions.filter(
