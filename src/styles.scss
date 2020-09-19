@@ -274,6 +274,14 @@ main {
   @include action-image($top: -315px, $left: -60px);
 }
 
+.marshall-law {
+  @include action-image($top: -40px, $left: -90px);
+}
+
+.micheal-jordan {
+  @include action-image($top: -55px, $left: -290px);
+}
+
 .nemesis {
   @include action-image($top: -130px, $left: -10px);
 }

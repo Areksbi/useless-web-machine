@@ -576,6 +576,20 @@ export const actions: IAction[] = [
     selector: '.einstein',
   },
   {
+    animation: AnimationsEnum.FADE_IN_RIGHT,
+    id: ActionIdsEnum.MARSHALL_LAW,
+    probability: ProbabilitiesEnum.IMAGE,
+    selector: '.marshall-law',
+    speed: SpeedsEnum.FASTER,
+  },
+  {
+    animation: AnimationsEnum.BOUNCE_IN_LEFT,
+    id: ActionIdsEnum.MICHEAL_JORDAN,
+    probability: ProbabilitiesEnum.IMAGE,
+    selector: '.micheal-jordan',
+    speed: SpeedsEnum.SLOW,
+  },
+  {
     animation: AnimationsEnum.BOUNCE_IN_DOWN,
     id: ActionIdsEnum.TETRIS,
     probability: ProbabilitiesEnum.IMAGE,
