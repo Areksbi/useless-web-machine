@@ -762,4 +762,14 @@ export const actions: IAction[] = [
     speed: SpeedsEnum.FAST,
     type: TypesEnum.FULL_SCREEN,
   },
+  {
+    animation: AnimationsEnum.FADE_IN,
+    container: 'undertaker__container',
+    gif: true,
+    id: ActionIdsEnum.UNDERTAKER,
+    probability: ProbabilitiesEnum.GIF,
+    selector: '.undertaker',
+    speed: SpeedsEnum.SLOW,
+    type: TypesEnum.GIF,
+  },
 ];

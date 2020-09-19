@@ -132,6 +132,7 @@ export enum ActionIdsEnum {
   PUTIN = 86,
   NIGHTMARE = 87,
   ALIEN = 88,
+  UNDERTAKER = 89,
 
   SURRENDER = 101,
 }
