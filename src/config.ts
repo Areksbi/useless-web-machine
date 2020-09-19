@@ -664,4 +664,12 @@ export const actions: IAction[] = [
     selector: '.nightmare',
     speed: SpeedsEnum.FAST,
   },
+  {
+    animation: AnimationsEnum.FADE_IN,
+    container: 'alien__container',
+    id: ActionIdsEnum.ALIEN,
+    probability: 100000000,
+    selector: '.alien',
+    speed: SpeedsEnum.FAST,
+  },
 ];
