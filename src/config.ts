@@ -656,4 +656,12 @@ export const actions: IAction[] = [
     selector: '.putin',
     speed: SpeedsEnum.SLOW,
   },
+  {
+    animation: AnimationsEnum.FADE_IN,
+    container: 'nightmare__container',
+    id: ActionIdsEnum.NIGHTMARE,
+    probability: ProbabilitiesEnum.FULL_SCREEN,
+    selector: '.nightmare',
+    speed: SpeedsEnum.FAST,
+  },
 ];
