@@ -141,6 +141,7 @@ export enum ActionIdsEnum {
   MR_BUBZ = 95,
   SPONGEBOB = 96,
   PSY = 97,
+  MICHAEL_JACKSON = 98,
 
   SURRENDER = 100,
 }
