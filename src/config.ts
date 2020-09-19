@@ -779,4 +779,12 @@ export const actions: IAction[] = [
     selector: '.lupin',
     type: TypesEnum.IMAGE,
   },
+  {
+    animation: AnimationsEnum.BOUNCE_IN_RIGHT,
+    id: ActionIdsEnum.PEPPA_PIG,
+    probability: ProbabilitiesEnum.IMAGE,
+    selector: '.peppa-pig',
+    speed: SpeedsEnum.FAST,
+    type: TypesEnum.IMAGE,
+  },
 ];

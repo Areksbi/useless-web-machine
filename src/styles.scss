@@ -453,6 +453,10 @@ main {
   @include action-image($top: -20px, $left: 35px);
 }
 
+.peppa-pig {
+  @include action-image($top: -40px, $left: -120px);
+}
+
 .surrender {
   @include action-image($top: 50%, $left: 50%, $full-screen-bg-color: $grey);
 }

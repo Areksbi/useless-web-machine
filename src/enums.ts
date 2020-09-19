@@ -134,6 +134,7 @@ export enum ActionIdsEnum {
   ALIEN = 88,
   UNDERTAKER = 89,
   LUPIN = 90,
+  PEPPA_PIG = 91,
 
   SURRENDER = 101,
 }
