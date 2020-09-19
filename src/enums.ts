@@ -123,7 +123,9 @@ export enum ActionIdsEnum {
   MICHEAL_JORDAN = 77,
   TETRIS = 78,
   AREKSBI_SBRAZO = 79,
-  SUPER_MARIO = 80,
+  CHARIZARD = 80,
+  NIER = 81,
+  SUPER_MARIO = 82,
 
   SURRENDER = 101,
 }

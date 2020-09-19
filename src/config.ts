@@ -604,6 +604,22 @@ export const actions: IAction[] = [
     speed: SpeedsEnum.FASTER,
   },
   {
+    animation: AnimationsEnum.FADE_IN,
+    container: 'charizard__container',
+    gif: true,
+    id: ActionIdsEnum.CHARIZARD,
+    probability: ProbabilitiesEnum.GIF,
+    selector: '.charizard',
+  },
+  {
+    animation: AnimationsEnum.FADE_IN,
+    container: 'nier__container',
+    gif: true,
+    id: ActionIdsEnum.NIER,
+    probability: ProbabilitiesEnum.GIF,
+    selector: '.nier',
+  },
+  {
     animation: AnimationsEnum.BOUNCE_IN_UP,
     id: ActionIdsEnum.SUPER_MARIO,
     probability: 10000,
