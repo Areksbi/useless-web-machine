@@ -772,4 +772,11 @@ export const actions: IAction[] = [
     speed: SpeedsEnum.SLOW,
     type: TypesEnum.GIF,
   },
+  {
+    animation: AnimationsEnum.BOUNCE_IN_RIGHT,
+    id: ActionIdsEnum.LUPIN,
+    probability: ProbabilitiesEnum.IMAGE,
+    selector: '.lupin',
+    type: TypesEnum.IMAGE,
+  },
 ];

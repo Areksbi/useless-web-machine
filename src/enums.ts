@@ -133,6 +133,7 @@ export enum ActionIdsEnum {
   NIGHTMARE = 87,
   ALIEN = 88,
   UNDERTAKER = 89,
+  LUPIN = 90,
 
   SURRENDER = 101,
 }
