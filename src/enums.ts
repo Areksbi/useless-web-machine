@@ -148,14 +148,14 @@ export enum ActionIdsEnum {
 
 // Must be unique values with sum 100(%)
 export enum ProbabilitiesEnum {
-  HAND_BASE = 30,
-  HAND_FASTER = 15,
+  HAND_BASE = 25,
+  HAND_FASTER = 12,
   HAND_SLOW = 8,
-  HAND_REPEAT = 12,
+  HAND_REPEAT = 10,
 
-  IMAGE = 25,
-  FULL_SCREEN = 6,
-  GIF = 4,
+  IMAGE = 30,
+  FULL_SCREEN = 9,
+  GIF = 6,
 
   SURRENDER = 0,
 }

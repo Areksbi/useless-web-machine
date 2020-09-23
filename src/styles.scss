@@ -86,9 +86,26 @@ body {
   justify-content: center;
   margin: 0;
   position: relative;
-  height: 100vh;
   overflow: hidden;
   width: 100vw;
+
+  @media screen and (max-width: 599px) {
+    $menu-height: 56px;
+
+    min-height: calc(100vh - #{$menu-height});
+    /* stylelint-disable */
+    min-height: -webkit-fill-available;
+    /* stylelint-enable */
+  }
+
+  @media screen and (min-width: 600px) {
+    $menu-height: 64px;
+
+    min-height: calc(100vh - #{$menu-height});
+    /* stylelint-disable */
+    min-height: -webkit-fill-available;
+    /* stylelint-enable */
+  }
 }
 
 .app-drawer-layout {
