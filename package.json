@@ -32,9 +32,9 @@
   "homepage": "https://github.com/Areksbi/useless-web-machine#readme",
   "dependencies": {
     "@material/button": "^7.0.0",
+    "@material/dialog": "^7.0.0",
     "@material/drawer": "^7.0.0",
     "@material/icon-button": "^7.0.0",
-    "@material/snackbar": "^7.0.0",
     "@material/switch": "^7.0.0",
     "@material/top-app-bar": "^7.0.0",
     "animate.css": "^4.1.0"

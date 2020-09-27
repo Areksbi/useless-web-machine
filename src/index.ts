@@ -1,6 +1,7 @@
 import './styles.scss';
 import * as SuperGif from './libgif';
 
+import { MDCDialog } from '@material/dialog';
 import { MDCDrawer } from '@material/drawer';
 import { MDCSwitch } from '@material/switch';
 import { MDCTopAppBar } from '@material/top-app-bar';
@@ -321,6 +322,43 @@ function init() {
     switchEl.addEventListener('change', manageSwitchEvent);
   }
 
+  function initCookiePolicy() {
+    const key = 'cookie_accepted';
+    if (window.localStorage.getItem(key) === 'true') return;
+
+    const banner = document.querySelector('.mdc-dialog');
+    if (!banner) return;
+
+    const setCookieAccepted = () => {
+      window.localStorage.setItem(key, 'true');
+      dialog.unlisten('MDCDialog:opened', onDialogOpen);
+      dialog.unlisten('MDCDialog:closed', setCookieAccepted);
+    };
+
+    const onDialogOpen = () => {
+      const cookieButton = document.querySelector('.cookie-policy__button');
+      if (!cookieButton) return;
+
+      const onCookieButtonClick = () => {
+        const hiddenCookieText = document.querySelector('.cookie-policy__full-text');
+        if (!hiddenCookieText) return;
+        hiddenCookieText.classList.remove('cookie-policy__full-text--hidden');
+
+        const email = document.querySelector('.cookie-policy__email');
+        if (!email) return;
+        email.textContent = email.textContent && email.textContent.replace('AT', '@').replace('DOT', '.');
+
+        cookieButton.removeEventListener('click', onCookieButtonClick);
+      };
+      cookieButton.addEventListener('click', onCookieButtonClick);
+    };
+
+    const dialog = new MDCDialog(banner);
+    dialog.listen('MDCDialog:closed', setCookieAccepted);
+    dialog.listen('MDCDialog:opened', onDialogOpen);
+    dialog.open();
+  }
+
   function initProbabilities() {
     const configTotalProbabilities = configActions.reduce((acc: number, curr: IAction) => acc + curr.probability, 0);
     const minProbability = Math.min(
@@ -353,6 +391,7 @@ function init() {
 
   initStats();
   initProbabilities();
+  initCookiePolicy();
   initSwitch();
   initCounter();
   initMenu();

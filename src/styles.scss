@@ -1,9 +1,9 @@
 @import '~@material/button/dist/mdc.button.min.css';
 @import '~@material/drawer/dist/mdc.drawer.min.css';
+@import '~@material/dialog/dist/mdc.dialog.min.css';
 @import '~@material/icon-button/dist/mdc.icon-button.min.css';
 @import '~@material/list/dist/mdc.list.min.css';
 @import '~@material/switch/dist/mdc.switch.min.css';
-@import '~@material/snackbar/dist/mdc.snackbar.min.css';
 @import '~@material/top-app-bar/dist/mdc.top-app-bar.min.css';
 @import '~animate.css/animate.min.css';
 
@@ -23,6 +23,7 @@ $z-index-switch: 8;
 $z-index-collision: 9;
 $z-index-image-above: 10;
 $z-index-keep-playing: 11;
+$z-index-cookie-dialog: 12;
 
 // region Mixins
 @mixin concealable-image($z-index: $z-index-image-above) {
@@ -74,7 +75,7 @@ $z-index-keep-playing: 11;
   @include concealable-image($z-index);
 }
 
-@mixin adaptive-screen-height() {
+@mixin adaptive-screen-height {
   @media screen and (max-width: 599px) {
     min-height: calc(100vh - #{$height-menu-mbl});
     /* stylelint-disable */
@@ -87,6 +88,11 @@ $z-index-keep-playing: 11;
     min-height: -webkit-fill-available;
     /* stylelint-enable */
   }
+}
+
+@mixin no-btn-style {
+  background: transparent;
+  border: 0 solid transparent;
 }
 // endregion Mixins
 
@@ -158,6 +164,10 @@ body {
   z-index: $z-index-switch;
 }
 
+.mdc-dialog {
+  z-index: $z-index-cookie-dialog;
+}
+
 .mdc-switch {
   z-index: $z-index-switch;
 
@@ -168,6 +178,21 @@ body {
 
 .mdc-snackbar {
   margin-bottom: 40px;
+}
+
+.cookie-policy {
+  &__button {
+    @include no-btn-style;
+
+    color: var(--mdc-theme-primary, #6200ee);
+    font-family: inherit;
+    font-size: inherit;
+    padding: 0;
+  }
+
+  &__full-text--hidden {
+    @include visually-hidden;
+  }
 }
 
 .alternate-animation {
