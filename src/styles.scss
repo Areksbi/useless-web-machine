@@ -77,13 +77,16 @@ $z-index-keep-playing: 11;
 @mixin adaptive-screen-height() {
   @media screen and (max-width: 599px) {
     min-height: calc(100vh - #{$height-menu-mbl});
+    /* stylelint-disable */
+    min-height: -webkit-fill-available;
+    /* stylelint-enable */
   }
   @media screen and (min-width: 600px) {
     min-height: calc(100vh - #{$height-menu-dsk});
+    /* stylelint-disable */
+    min-height: -webkit-fill-available;
+    /* stylelint-enable */
   }
-  /* stylelint-disable */
-  min-height: -webkit-fill-available;
-  /* stylelint-enable */
 }
 // endregion Mixins
 
