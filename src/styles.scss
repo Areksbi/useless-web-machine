@@ -12,6 +12,9 @@ $blue: #0000ee;
 $grey: #a4a4a4;
 $yellow: #fef56a;
 
+$height-menu-mbl: 56px;
+$height-menu-dsk: 64px;
+
 $z-index-base: 0;
 $z-index-top-bar: 4;
 $z-index-drawer: 6;
@@ -70,13 +73,26 @@ $z-index-keep-playing: 11;
 
   @include concealable-image($z-index);
 }
+
+@mixin adaptive-screen-height() {
+  @media screen and (max-width: 599px) {
+    min-height: calc(100vh - #{$height-menu-mbl});
+  }
+  @media screen and (min-width: 600px) {
+    min-height: calc(100vh - #{$height-menu-dsk});
+  }
+  /* stylelint-disable */
+  min-height: -webkit-fill-available;
+  /* stylelint-enable */
+}
 // endregion Mixins
 
 html {
   font-family: Roboto, Arial, sans-serif;
-  height: 100vh;
   overflow: hidden;
   width: 100vw;
+
+  @include adaptive-screen-height;
 }
 
 body {
@@ -89,23 +105,7 @@ body {
   overflow: hidden;
   width: 100vw;
 
-  @media screen and (max-width: 599px) {
-    $menu-height: 56px;
-
-    min-height: calc(100vh - #{$menu-height});
-    /* stylelint-disable */
-    min-height: -webkit-fill-available;
-    /* stylelint-enable */
-  }
-
-  @media screen and (min-width: 600px) {
-    $menu-height: 64px;
-
-    min-height: calc(100vh - #{$menu-height});
-    /* stylelint-disable */
-    min-height: -webkit-fill-available;
-    /* stylelint-enable */
-  }
+  @include adaptive-screen-height;
 }
 
 .app-drawer-layout {
