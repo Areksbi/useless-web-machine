@@ -547,19 +547,29 @@
       </footer>
     </div>
 
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-178472645-1"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+         https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-analytics.js"></script>
+
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag('js', new Date());
-
-      gtag('config', 'UA-178472645-1');
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      var firebaseConfig = {
+        apiKey: 'AIzaSyCmlnIafpaedISuUcasqpQ6XwdrOIMgvWg',
+        authDomain: 'useless-web-machine.firebaseapp.com',
+        databaseURL: 'https://useless-web-machine.firebaseio.com',
+        projectId: 'useless-web-machine',
+        storageBucket: 'useless-web-machine.appspot.com',
+        messagingSenderId: '586506802766',
+        appId: '1:586506802766:web:09e6dcd554c909c785151f',
+        measurementId: 'G-QGT8LDMFBV',
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
     </script>
-
-    <!-- Google AdSense -->
-    <script data-ad-client="ca-pub-2127598370241831" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   </body>
 </html>

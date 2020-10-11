@@ -17,13 +17,13 @@ $height-menu-dsk: 64px;
 
 $z-index-base: 0;
 $z-index-top-bar: 4;
-$z-index-drawer: 6;
 $z-index-image-below: 7;
 $z-index-switch: 8;
 $z-index-collision: 9;
-$z-index-image-above: 10;
-$z-index-keep-playing: 11;
-$z-index-cookie-dialog: 12;
+$z-index-drawer: 10;
+$z-index-image-above: 11;
+$z-index-keep-playing: 12;
+$z-index-cookie-dialog: 13;
 
 // region Mixins
 @mixin concealable-image($z-index: $z-index-image-above) {

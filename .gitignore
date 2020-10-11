@@ -5,6 +5,7 @@
 coverage/
 dist/*
 node_modules/
+/.firebase/
 
 # OS generated files
 .DS_Store
