@@ -26,3 +26,9 @@ To create a development build:
 ```sh
 npm run dev
 ```
+
+To deploy:
+
+```sh
+npm run deploy
+```
