@@ -19,6 +19,7 @@ declare global {
 
 function init() {
   const counter = document.querySelector('.counter') as HTMLSpanElement;
+  const isDemo = isDevMode() && false;
   let actionCounter = 0;
   let actions: IAction[];
   let switchControl: MDCSwitch;
@@ -301,6 +302,49 @@ function init() {
     );
   }
 
+  function handleDemoAction() {
+    let action;
+    switch (actionCounter) {
+      case 3:
+        action = actions.find((action) => action.id === ActionIdsEnum.DONUT);
+        break;
+      case 4:
+        action = actions.find((action) => action.id === ActionIdsEnum.HAND_FASTER);
+        break;
+      case 5:
+        action = actions.find((action) => action.id === ActionIdsEnum.BATMAN);
+        break;
+      case 6:
+        action = actions.find((action) => action.id === ActionIdsEnum.HAND_BASE);
+        break;
+      case 7:
+        action = actions.find((action) => action.id === ActionIdsEnum.HAND_REPEAT);
+        break;
+      case 8:
+        action = actions.find((action) => action.id === ActionIdsEnum.MINION);
+        break;
+      case 9:
+        action = actions.find((action) => action.id === ActionIdsEnum.JOHN_TRAVOLTA);
+        break;
+      default:
+        action = actions.find((action) => action.id === ActionIdsEnum.HAND_BASE);
+    }
+
+    if (!action) return;
+
+    triggerAction(
+      action.selector,
+      action.animation,
+      action.id,
+      action.type,
+      action.speed,
+      action.repeats,
+      action.delay,
+      action.container,
+      action.gif
+    );
+  }
+
   function manageSwitchEvent(evt: Event): void {
     if (!(evt?.target as HTMLInputElement)?.checked) return;
 
@@ -309,6 +353,11 @@ function init() {
 
     if (counter) {
       counter.innerText = actionCounter.toString();
+    }
+
+    if (isDemo) {
+      handleDemoAction();
+      return;
     }
 
     randomAction();
