@@ -1,0 +1,602 @@
+@import '~@material/button/dist/mdc.button.min.css';
+@import '~@material/drawer/dist/mdc.drawer.min.css';
+@import '~@material/dialog/dist/mdc.dialog.min.css';
+@import '~@material/icon-button/dist/mdc.icon-button.min.css';
+@import '~@material/list/dist/mdc.list.min.css';
+@import '~@material/switch/dist/mdc.switch.min.css';
+@import '~@material/top-app-bar/dist/mdc.top-app-bar.min.css';
+@import '~animate.css/animate.min.css';
+
+$black: black;
+$blue: #0000ee;
+$grey: #a4a4a4;
+$yellow: #fef56a;
+
+$height-menu-mbl: 56px;
+$height-menu-dsk: 64px;
+
+$z-index-base: 0;
+$z-index-top-bar: 4;
+$z-index-drawer-dsk: 5;
+$z-index-image-below: 7;
+$z-index-switch: 8;
+$z-index-collision: 9;
+$z-index-drawer-mbl: 10;
+$z-index-image-above: 11;
+$z-index-keep-playing: 12;
+$z-index-cookie-dialog: 13;
+
+// region Mixins
+@mixin concealable-image($z-index: $z-index-image-above) {
+  opacity: 1;
+  pointer-events: none;
+  transition: opacity 200ms ease-out;
+  z-index: $z-index;
+
+  &--hidden {
+    opacity: 0;
+  }
+
+  &__container {
+    .copyright,
+    .mdc-top-app-bar,
+    .mdc-drawer {
+      opacity: 0;
+    }
+  }
+}
+
+@mixin visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+@mixin action-image($top, $left, $z-index: $z-index-image-above, $full-screen-bg-color: null) {
+  @if ($left) {
+    left: $left;
+  }
+  @if ($top) {
+    top: $top;
+  }
+  @if ($full-screen-bg-color) {
+    transform: translate(-50%, -50%);
+
+    &__container {
+      background-color: $full-screen-bg-color;
+    }
+  }
+
+  position: absolute;
+
+  @include concealable-image($z-index);
+}
+
+@mixin adaptive-screen-height {
+  @media screen and (max-width: 599px) {
+    min-height: calc(100vh - #{$height-menu-mbl});
+    /* stylelint-disable */
+    min-height: -webkit-fill-available;
+    /* stylelint-enable */
+  }
+  @media screen and (min-width: 600px) {
+    min-height: calc(100vh - #{$height-menu-dsk});
+    /* stylelint-disable */
+    min-height: -webkit-fill-available;
+    /* stylelint-enable */
+  }
+}
+
+@mixin no-btn-style {
+  background: transparent;
+  border: 0 solid transparent;
+}
+// endregion Mixins
+
+html {
+  font-family: Roboto, Arial, sans-serif;
+  overflow: hidden;
+  width: 100vw;
+
+  @include adaptive-screen-height;
+}
+
+body {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0;
+  position: relative;
+  overflow: hidden;
+  width: 100vw;
+
+  @include adaptive-screen-height;
+}
+
+.app-drawer-layout {
+  display: flex;
+  flex: 1;
+
+  .mdc-drawer--dismissible {
+    @media screen and (max-width: 599px) {
+      $menu-height: 56px;
+
+      height: calc(100% - #{$menu-height});
+      top: $menu-height;
+    }
+
+    @media screen and (min-width: 600px) {
+      $menu-height: 64px;
+
+      height: calc(100% - #{$menu-height});
+      top: $menu-height;
+    }
+  }
+}
+
+.paypal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  &__label {
+    display: block;
+    font-size: 0.66rem;
+    line-height: 1.2;
+    margin: 0;
+  }
+}
+
+.mdc-drawer {
+  @media screen and (max-width: 579px) {
+    z-index: $z-index-drawer-mbl;
+  }
+
+  @media screen and (min-width: 580px) {
+    z-index: $z-index-drawer-dsk;
+  }
+}
+
+.mdc-top-app-bar {
+  position: absolute;
+  top: 0;
+}
+
+.main__content {
+  @include visually-hidden;
+}
+
+.main__inner-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: $z-index-switch;
+}
+
+.mdc-dialog {
+  z-index: $z-index-cookie-dialog;
+}
+
+.mdc-switch {
+  z-index: $z-index-switch;
+
+  &__label:not(:focus):not(:active) {
+    @include visually-hidden;
+  }
+}
+
+.mdc-snackbar {
+  margin-bottom: 40px;
+}
+
+.cookie-policy {
+  &__button {
+    @include no-btn-style;
+
+    color: var(--mdc-theme-primary, #6200ee);
+    font-family: inherit;
+    font-size: inherit;
+    padding: 0;
+  }
+
+  &__full-text--hidden {
+    @include visually-hidden;
+  }
+}
+
+.alternate-animation {
+  animation-direction: alternate-reverse;
+}
+
+.collision {
+  @include action-image($top: -8px, $left: 6px, $z-index: $z-index-collision);
+  margin: 0;
+
+  &__caption {
+    @include visually-hidden;
+  }
+}
+
+.hand {
+  @include action-image($top: 50%, $left: 50%);
+  margin: 0;
+
+  &__caption {
+    @include visually-hidden;
+  }
+}
+
+.darth-vader {
+  @include action-image($top: -30px, $left: -60px, $z-index: $z-index-image-below);
+}
+
+.donut {
+  @include action-image($top: -38px, $left: -320px);
+}
+
+.saitama {
+  @include action-image($top: -35px, $left: -80px);
+}
+
+.greta {
+  @include action-image($top: -348px, $left: -386px, $z-index: $z-index-image-below);
+}
+
+.putin {
+  @include action-image($top: -148px, $left: -486px);
+}
+
+.batman,
+.got,
+.alien,
+.nightmare,
+.superman,
+.james-bond,
+.goku,
+.pick-of-destiny,
+.riven,
+.matrix,
+.devil-may-cry,
+.death-note,
+.cloud-vs-sephiroth,
+.power-rangers,
+.spider-man,
+.terminator,
+.the-mask,
+.wall-e,
+.this-is-sparta,
+.black-rock-shooter,
+.charizard,
+.undertaker,
+.nier {
+  @include action-image($top: 50%, $left: 50%, $z-index: $z-index-image-below, $full-screen-bg-color: $black);
+}
+
+.rick {
+  @include action-image($top: -140px, $left: 30px);
+}
+
+.chuck-norris {
+  @include action-image($top: -160px, $left: -212px, $z-index: $z-index-image-below);
+}
+
+.crash-bandicoot {
+  @include action-image($top: -320px, $left: -215px);
+}
+
+.elon-musk {
+  @include action-image($top: -260px, $left: -40px, $z-index: $z-index-image-below);
+}
+
+.obama {
+  @include action-image($top: -250px, $left: -400px, $z-index: $z-index-image-below);
+}
+
+.harry-potter {
+  @include action-image($top: -130px, $left: -195px, $z-index: $z-index-image-below);
+}
+
+.joker {
+  @include action-image($top: -400px, $left: -150px);
+}
+
+.iron-man {
+  @include action-image($top: -120px, $left: -330px, $z-index: $z-index-image-below);
+}
+
+.jack-sparrow {
+  @include action-image($top: -30px, $left: -80px, $z-index: $z-index-image-below);
+}
+
+.kill-bill {
+  @include action-image($top: -300px, $left: 20px);
+}
+
+.john-travolta {
+  @include action-image($top: -200px, $left: -340px, $z-index: $z-index-image-below);
+}
+
+.jackie-chan {
+  @include action-image($top: -300px, $left: -250px);
+}
+
+.gintoki {
+  @include action-image($top: -270px, $left: -280px);
+}
+
+.groot {
+  @include action-image($top: -365px, $left: -155px);
+}
+
+.levi {
+  @include action-image($top: -70px, $left: -180px);
+}
+
+.link {
+  @include action-image($top: -180px, $left: -940px);
+}
+
+.minion {
+  @include action-image($top: -190px, $left: 10px);
+}
+
+.marty {
+  @include action-image($top: -315px, $left: -60px);
+}
+
+.marshall-law {
+  @include action-image($top: -40px, $left: -90px);
+}
+
+.micheal-jordan {
+  @include action-image($top: -55px, $left: -290px);
+}
+
+.super-mario {
+  @include action-image($top: -10px, $left: -185px);
+}
+
+.nemesis {
+  @include action-image($top: -130px, $left: -10px);
+}
+
+.jinx {
+  @include action-image($top: -290px, $left: -20px);
+}
+
+.sasuke {
+  @include action-image($top: -110px, $left: -25px);
+}
+
+.trump {
+  @include action-image($top: -270px, $left: -60px);
+}
+
+.johnny-sins {
+  @include action-image($top: -270px, $left: -460px, $z-index: $z-index-image-below);
+}
+
+.lara-croft {
+  @include action-image($top: -300px, $left: 20px, $z-index: $z-index-image-below);
+}
+
+.breaking-bad {
+  @include action-image($top: -400px, $left: -260px, $z-index: $z-index-image-below);
+}
+
+.adventure-time {
+  @include action-image($top: -510px, $left: -190px);
+}
+
+.pablo-escobar {
+  @include action-image($top: -170px, $left: 20px);
+}
+
+.timmy-turner {
+  @include action-image($top: -80px, $left: 25px);
+}
+
+.rambo {
+  @include action-image($top: -300px, $left: 10px);
+}
+
+.shrek {
+  @include action-image($top: -220px, $left: -250px, $z-index: $z-index-image-below);
+}
+
+.leonardo-dicaprio {
+  @include action-image($top: -70px, $left: -145px);
+}
+
+.sora {
+  @include action-image($top: -210px, $left: 10px);
+}
+
+.solid-snake {
+  @include action-image($top: -325px, $left: -30px);
+}
+
+.jotaru {
+  @include action-image($top: -98px, $left: -130px, $z-index: $z-index-image-below);
+}
+
+.phineas-and-ferb {
+  @include action-image($top: -180px, $left: -60px);
+}
+
+.inuyasha {
+  @include action-image($top: -325px, $left: -5px);
+}
+
+.duck-with-knife {
+  @include action-image($top: -310px, $left: -200px, $z-index: $z-index-image-below);
+}
+
+.rooster-with-knife {
+  @include action-image($top: -200px, $left: -280px, $z-index: $z-index-image-below);
+}
+
+.luffy {
+  @include action-image($top: -230px, $left: -295px, $z-index: $z-index-image-below);
+}
+
+.hartman {
+  @include action-image($top: -145px, $left: -75px, $z-index: $z-index-image-below);
+}
+
+.legolas {
+  @include action-image($top: -70px, $left: -45px, $z-index: $z-index-image-below);
+}
+
+.thor {
+  @include action-image($top: -440px, $left: -200px);
+}
+
+.shining {
+  @include action-image($top: -132px, $left: 30px);
+}
+
+.mr-bean {
+  @include action-image($top: -250px, $left: -80px, $z-index: $z-index-image-below);
+}
+
+.olaf {
+  @include action-image($top: -260px, $left: -10px, $z-index: $z-index-image-below);
+}
+
+.lego {
+  @include action-image($top: -200px, $left: 15px);
+}
+
+.genie {
+  @include action-image($top: -90px, $left: -35px);
+}
+
+.nokia-3310 {
+  @include action-image($top: -425px, $left: -90px);
+}
+
+.fullmetal-alchemist {
+  @include action-image($top: -78px, $left: -135px);
+}
+
+.my-hero-academia {
+  @include action-image($top: -280px, $left: -75px, $z-index: $z-index-image-below);
+}
+
+.kim-jong-un {
+  @include action-image($top: -157px, $left: -15px);
+}
+
+.jeff-bezos {
+  @include action-image($top: -370px, $left: -290px, $z-index: $z-index-image-below);
+}
+
+.einstein {
+  @include action-image($top: -370px, $left: -150px, $z-index: $z-index-image-below);
+}
+
+.tetris {
+  @include action-image($top: -170px, $left: -55px, $z-index: $z-index-image-below);
+}
+
+.areksbi-sbrazo {
+  @include action-image($top: -280px, $left: -234px, $z-index: $z-index-image-below);
+}
+
+.lupin {
+  @include action-image($top: -20px, $left: 35px);
+}
+
+.peppa-pig {
+  @include action-image($top: -40px, $left: -120px);
+}
+
+.dark-souls {
+  @include action-image($top: -60px, $left: -175px);
+}
+
+.mark-zuckerberg {
+  @include action-image($top: -377px, $left: -230px, $z-index: $z-index-image-below);
+}
+
+.toradora {
+  @include action-image($top: -200px, $left: -75px);
+}
+
+.mr-bubz {
+  @include action-image($top: -270px, $left: -315px);
+}
+
+.spongebob {
+  @include action-image($top: 50%, $left: 50%, $z-index: $z-index-image-below, $full-screen-bg-color: $yellow);
+}
+
+.psy {
+  @include action-image($top: -270px, $left: -80px);
+}
+
+.michael-jackson {
+  @include action-image($top: -150px, $left: 20px);
+}
+
+.roberto {
+  @include action-image($top: -150px, $left: 25px);
+}
+
+.surrender {
+  @include action-image($top: 50%, $left: 50%, $full-screen-bg-color: $grey);
+}
+
+.keep-playing {
+  $root: &;
+
+  left: 50%;
+  position: absolute;
+  top: calc(50% + 170px);
+  transform: translate(-50%, -50%);
+  z-index: $z-index-keep-playing;
+
+  &--hidden {
+    display: none;
+  }
+}
+
+.add-animations {
+  &__link {
+    bottom: 10px;
+    position: absolute;
+  }
+
+  &__github {
+    &-logo {
+      height: 24px;
+      margin: {
+        bottom: 0;
+        top: 0;
+      }
+      width: 24px;
+    }
+
+    &-caption {
+      @include visually-hidden;
+    }
+  }
+}
+
+.copyright {
+  bottom: 0;
+  font-size: 0.75rem;
+  left: 0;
+  opacity: 1;
+  position: absolute;
+  text-align: center;
+  transition: opacity 250ms ease;
+  width: 100%;
+}
