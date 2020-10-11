@@ -207,11 +207,13 @@ function init() {
     const elem = document.querySelector(selector) as HTMLElement;
     if (!elem) return;
 
-    window.gtag('event', TypesEnum[type], {
-      event_category: 'Actions',
-      event_label: ActionIdsEnum[id],
-      value: id,
-    });
+    if (!isDevMode()) {
+      window.gtag('event', TypesEnum[type], {
+        event_category: 'Actions',
+        event_label: ActionIdsEnum[id],
+        value: id,
+      });
+    }
 
     elem.style.willChange = 'transform';
 
