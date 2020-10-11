@@ -233,7 +233,7 @@ body {
 }
 
 .darth-vader {
-  @include action-image($top: -30px, $left: -60px);
+  @include action-image($top: -30px, $left: -60px, $z-index: $z-index-image-below);
 }
 
 .donut {
