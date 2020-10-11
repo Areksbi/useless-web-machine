@@ -1,6 +1,6 @@
 {
   "name": "useless-web-machine",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A useless web machine, is a website which has a function but no direct purpose ¯\\_(ツ)_/¯",
   "main": "index.js",
   "scripts": {
